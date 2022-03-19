@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Quelldateien">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Ressourcendateien">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien\BodyParts">
+      <UniqueIdentifier>{9b1bf93e-b0c3-4499-b6f5-5c8708f45424}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\BodyParts">
+      <UniqueIdentifier>{ffdaa38d-8957-4b27-b232-df8384ea995c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\BodyParts\Heart">
+      <UniqueIdentifier>{b7c66330-81af-43b6-9ce5-5d66fd680620}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\BodyParts\Heart">
+      <UniqueIdentifier>{7cb523c9-c94d-4e37-bdda-68e1e4f47c32}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="cavalibrary.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="bodypart.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="human.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="trachea.h">
+      <Filter>Headerdateien\BodyParts</Filter>
+    </ClInclude>
+    <ClInclude Include="bloodvessel.h">
+      <Filter>Headerdateien\BodyParts</Filter>
+    </ClInclude>
+    <ClInclude Include="lung.h">
+      <Filter>Headerdateien\BodyParts</Filter>
+    </ClInclude>
+    <ClInclude Include="tissue.h">
+      <Filter>Headerdateien\BodyParts</Filter>
+    </ClInclude>
+    <ClInclude Include="definitions.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="heart.h">
+      <Filter>Headerdateien\BodyParts\Heart</Filter>
+    </ClInclude>
+    <ClInclude Include="ventricle.h">
+      <Filter>Headerdateien\BodyParts\Heart</Filter>
+    </ClInclude>
+    <ClInclude Include="atrium.h">
+      <Filter>Headerdateien\BodyParts\Heart</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="cavalibrary.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="human.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="bloodvessel.cpp">
+      <Filter>Quelldateien\BodyParts</Filter>
+    </ClCompile>
+    <ClCompile Include="lung.cpp">
+      <Filter>Quelldateien\BodyParts</Filter>
+    </ClCompile>
+    <ClCompile Include="trachea.cpp">
+      <Filter>Quelldateien\BodyParts</Filter>
+    </ClCompile>
+    <ClCompile Include="tissue.cpp">
+      <Filter>Quelldateien\BodyParts</Filter>
+    </ClCompile>
+    <ClCompile Include="ventricle.cpp">
+      <Filter>Quelldateien\BodyParts\Heart</Filter>
+    </ClCompile>
+    <ClCompile Include="heart.cpp">
+      <Filter>Quelldateien\BodyParts\Heart</Filter>
+    </ClCompile>
+    <ClCompile Include="atrium.cpp">
+      <Filter>Quelldateien\BodyParts\Heart</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CavaLibrary.rc">
+      <Filter>Ressourcendateien</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
