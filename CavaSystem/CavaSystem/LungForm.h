@@ -1001,7 +1001,7 @@ namespace CavaSystem {
 			this->lblGas->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblGas->ForeColor = System::Drawing::Color::White;
-			this->lblGas->Location = System::Drawing::Point(11, 139);
+			this->lblGas->Location = System::Drawing::Point(13, 139);
 			this->lblGas->Name = L"lblGas";
 			this->lblGas->Size = System::Drawing::Size(98, 19);
 			this->lblGas->TabIndex = 89;

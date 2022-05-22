@@ -31,7 +31,6 @@ namespace CavaSystem {
 			blood_form = gcnew BloodForm(this);
 
 		}
-	private: System::Windows::Forms::DataVisualization::Charting::Chart^ chData;
 	public:
 
 
@@ -52,6 +51,7 @@ namespace CavaSystem {
 			}
 		}
 	private: System::ComponentModel::IContainer^ components;
+	private: System::Windows::Forms::DataVisualization::Charting::Chart^ chData;
 	private: System::Windows::Forms::Panel^ panHuman;
 	private: System::Windows::Forms::Panel^ pnCVS;
 	private: System::Windows::Forms::Label^ lblCVS;
@@ -82,9 +82,19 @@ namespace CavaSystem {
 		{
 			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(CavaForm::typeid));
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::DataPoint^ dataPoint1 = (gcnew System::Windows::Forms::DataVisualization::Charting::DataPoint(1,
+				4));
+			System::Windows::Forms::DataVisualization::Charting::DataPoint^ dataPoint2 = (gcnew System::Windows::Forms::DataVisualization::Charting::DataPoint(2,
+				3));
+			System::Windows::Forms::DataVisualization::Charting::DataPoint^ dataPoint3 = (gcnew System::Windows::Forms::DataVisualization::Charting::DataPoint(3,
+				6));
+			System::Windows::Forms::DataVisualization::Charting::DataPoint^ dataPoint4 = (gcnew System::Windows::Forms::DataVisualization::Charting::DataPoint(4,
+				6));
+			System::Windows::Forms::DataVisualization::Charting::DataPoint^ dataPoint5 = (gcnew System::Windows::Forms::DataVisualization::Charting::DataPoint(5,
+				5));
 			this->lblCVS = (gcnew System::Windows::Forms::Label());
 			this->cmdRevive = (gcnew System::Windows::Forms::Button());
 			this->cmdComa = (gcnew System::Windows::Forms::Button());
@@ -456,18 +466,20 @@ namespace CavaSystem {
 			this->chData->BackSecondaryColor = System::Drawing::Color::Black;
 			this->chData->BorderlineColor = System::Drawing::Color::Transparent;
 			this->chData->BorderSkin->PageColor = System::Drawing::Color::Black;
-			chartArea3->BackColor = System::Drawing::Color::Transparent;
-			chartArea3->Name = L"chArea";
-			this->chData->ChartAreas->Add(chartArea3);
-			legend3->BackColor = System::Drawing::Color::DimGray;
-			legend3->Docking = System::Windows::Forms::DataVisualization::Charting::Docking::Bottom;
-			legend3->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->chData->CausesValidation = false;
+			chartArea1->BackColor = System::Drawing::Color::Transparent;
+			chartArea1->Name = L"chArea";
+			this->chData->ChartAreas->Add(chartArea1);
+			this->chData->ImeMode = System::Windows::Forms::ImeMode::On;
+			legend1->BackColor = System::Drawing::Color::DimGray;
+			legend1->Docking = System::Windows::Forms::DataVisualization::Charting::Docking::Bottom;
+			legend1->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			legend3->IsTextAutoFit = false;
-			legend3->Name = L"lgLegend";
-			legend3->TitleFont = (gcnew System::Drawing::Font(L"Louis George Café Light", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			legend1->IsTextAutoFit = false;
+			legend1->Name = L"lgLegend";
+			legend1->TitleFont = (gcnew System::Drawing::Font(L"Louis George Café Light", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->chData->Legends->Add(legend3);
+			this->chData->Legends->Add(legend1);
 			this->chData->Location = System::Drawing::Point(644, 100);
 			this->chData->Name = L"chData";
 			this->chData->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::None;
@@ -478,15 +490,20 @@ namespace CavaSystem {
 							static_cast<System::Int32>(static_cast<System::Byte>(43)), static_cast<System::Int32>(static_cast<System::Byte>(47)))
 			};
 			this->chData->RightToLeft = System::Windows::Forms::RightToLeft::No;
-			series3->ChartArea = L"chArea";
-			series3->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series3->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			series1->ChartArea = L"chArea";
+			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series1->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			series3->LabelBackColor = System::Drawing::Color::Transparent;
-			series3->LabelBorderColor = System::Drawing::Color::Transparent;
-			series3->Legend = L"lgLegend";
-			series3->Name = L"CavaValues";
-			this->chData->Series->Add(series3);
+			series1->LabelBackColor = System::Drawing::Color::Transparent;
+			series1->LabelBorderColor = System::Drawing::Color::Transparent;
+			series1->Legend = L"lgLegend";
+			series1->Name = L"CavaValues (Placeholder/Non-Functional)";
+			series1->Points->Add(dataPoint1);
+			series1->Points->Add(dataPoint2);
+			series1->Points->Add(dataPoint3);
+			series1->Points->Add(dataPoint4);
+			series1->Points->Add(dataPoint5);
+			this->chData->Series->Add(series1);
 			this->chData->Size = System::Drawing::Size(288, 300);
 			this->chData->TabIndex = 16;
 			this->chData->Text = L"chData";
