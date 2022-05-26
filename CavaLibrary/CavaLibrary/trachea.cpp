@@ -17,18 +17,21 @@ void Trachea::OxygenTransport(double time, int inflow, double& oxygen, HumanChar
 	oxygen -= block_percentage;
 	this->oxygen = oxygen;
 	ReynoldsNumber();
-	int female = human_characteristic.gender == Gender::female ? 1 : 0;
-	FlowRate(inflow, female);
+	Womersley();
+	FlowRate(inflow);
 }
 
 void Trachea::ReynoldsNumber()
 {
-	_reynolds_number = (_mean_flow_speed * _tracheal_diameter) / _viscosity_of_air;
+	double tmp_tracheal_diameter = _tracheal_diameter * 0.001; //unit adjustment to m
+	_reynolds_number = (_mean_flow_speed * tmp_tracheal_diameter) / _viscosity_of_air;
 }
 
 double Trachea::Womersley()
 {
-	_womersley = _tracheal_diameter / 2.0 * sqrt((2 * PI / _breathing_time) / _viscosity_of_air);
+	double tmp_tracheal_diameter = _tracheal_diameter * 0.001; //unit adjustment to m
+	_breathing_time = 60 / _respiratory_rate;
+	_womersley = tmp_tracheal_diameter / 2.0 * sqrt((2 * PI / _breathing_time) / _viscosity_of_air);
 	return _womersley;
 }
 
@@ -55,6 +58,11 @@ double Trachea::RespiratoryRate()
 double Trachea::Length()
 {
 	return _length;
+}
+
+double Trachea::OuterThickness()
+{
+	return _outer_thickness;
 }
 
 void Trachea::TrachealDiameter(double new_tracheal_diameter)
@@ -87,6 +95,11 @@ void Trachea::LengthMale(double new_length)
 	_length_male = new_length;
 }
 
+void Trachea::OuterThickness(double new_thickness)
+{
+	_outer_thickness = new_thickness;
+}
+
 void Trachea::ResetTrachealDiameter()
 {
 	_tracheal_diameter = 18;
@@ -94,7 +107,7 @@ void Trachea::ResetTrachealDiameter()
 
 void Trachea::ResetViscosityOfAir()
 {
-	_viscosity_of_air = 1.46 * 0.00005;
+	_viscosity_of_air = 1.46 * 0.00001;
 }
 
 void Trachea::ResetMeanFlowSpeed()
@@ -109,33 +122,35 @@ void Trachea::ResetBreathingTime()
 
 void Trachea::ResetLengthFemale()
 {
-	_length_female = 0.0983;
+	_length_female = 9.83;
 }
 
 void Trachea::ResetLengthMale()
 {
-	_length_male = 0.105;
+	_length_male = 10.51;
 }
 
-void Trachea::FlowRate(int inflow, int female)
+void Trachea::ResetOuterThickness()
 {
-	CrossSectionalArea(female);
-	flow_rate = _reynolds_number * _viscosity_of_air  * _cross_sectional_area / _tracheal_diameter;
-	flow_rate *= 60; //unit adjustment
+	_outer_thickness = 3;
+}
+
+void Trachea::FlowRate(int inflow)
+{
+	CrossSectionalArea();
+	double tmp_tracheal_diameter = _tracheal_diameter * 0.001; //unit adjustment to m
+	flow_rate = _reynolds_number * _viscosity_of_air  * _cross_sectional_area / tmp_tracheal_diameter;
+	flow_rate *= 60000; //unit adjustment from m3/s in l/min
 	if (!inflow) {
-		double tmp_breathing_time = _breathing_time * 0.01667;
-		double tmp_inhalation_time = _inhalation_time * 0.01667;
+		_breathing_time = 60 / _respiratory_rate;
+		double tmp_breathing_time = _breathing_time * 0.01667; //unit adjustment to min
+		double tmp_inhalation_time = _inhalation_time * 0.01667; //unit adjustment to min
 		flow_rate *= (tmp_inhalation_time / (tmp_breathing_time - tmp_inhalation_time));
 	}
 }
 
-void Trachea::CrossSectionalArea(int female)
+void Trachea::CrossSectionalArea()
 {
-	if(female)
-		_length = 0.0983;
-	else
-		_length = 0.105;
-
-	_cross_sectional_area = 0.5 * _tracheal_diameter * _length * PI * PI;
+	_cross_sectional_area = 0.25 * PI * (pow(_tracheal_diameter * 0.001, 2) - pow(_tracheal_diameter * 0.001 - 2 * (_outer_thickness * 0.001), 2)); //unit adjustment to 
 }
 

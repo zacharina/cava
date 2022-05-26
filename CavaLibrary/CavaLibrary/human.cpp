@@ -3,7 +3,7 @@
 
 /*
 * Simulation of the human cardiovascular system dependant on time
-* @param time	time passed since the last frame/mathod call
+* @param time	time passed since the last frame/method call
 * @param oxygen	provided amount of oxygen to the in percent 
 */
 void Human::CardiovascularSystem(double time, double* oxygen)
@@ -11,7 +11,6 @@ void Human::CardiovascularSystem(double time, double* oxygen)
 	if (!alive)
 		return;
 
-	_respiratory_rate += trachea->Womersley();
 	if ((_simulation_time + time) - _last_breath_cycle > _cycle_time_breath)
 	{
 		_last_breath_cycle = _simulation_time + time;
@@ -26,6 +25,7 @@ void Human::CardiovascularSystem(double time, double* oxygen)
 
 	double breath_difference = _simulation_time - _last_breath_cycle;
 	double heart_difference = _simulation_time - _last_heart_cycle;
+
 
 	trachea->OxygenTransport(breath_difference, inflow, *oxygen, _characteristics);
 	lung->OxygenTransport(heart_difference, inflow, *oxygen, _characteristics);

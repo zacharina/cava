@@ -14,13 +14,13 @@ using namespace std;
 void Heart::OxygenTransport(double time, int inflow, double& oxygen, HumanCharacteristic human_characteristic)
 {
 	FlowRate();
-	left_atrium->Radius();
-	right_atrium->Radius();
+	left_atrium->Radius(time);
+	right_atrium->Radius(time);
 	left_atrium->Elastance(time);
 	right_atrium->Elastance(time);
 	left_atrium->Pressure(time, 1.0/3.0);
 	right_atrium->Pressure(time, 4.0/6.0);
-	left_ventricle->Radius(time, _radius_addend_lv, _tricuspid_valve_flow_rate, _pulmonary_valve_flow_rate);
+	left_ventricle->Radius(time, _radius_addend_lv, _mitral_valve_flow_rate, _aortic_valve_flow_rate);
 	right_ventricle->Radius(time, _radius_addend_rv, _tricuspid_valve_flow_rate, _pulmonary_valve_flow_rate);
 	left_ventricle->InflowInertance();
 	right_ventricle->InflowInertance();

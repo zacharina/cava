@@ -12,6 +12,30 @@ double Atrium::ActivationFunction(double time)
 	return result;
 }
 
+void Atrium::VolumeAtTime(double time)
+{
+	//note: inefficient //to be changed with volume calculation
+	double cycle_time_percentage = time / _cycle_duration;
+	if (cycle_time_percentage == 0)
+		_volume = _volume_over_time[0];
+	else if (cycle_time_percentage <= ((1.0 / 8.0) * _cycle_duration))
+		_volume = _volume_over_time[1];
+	else if (cycle_time_percentage <= ((2.0 / 8.0) * _cycle_duration))
+		_volume = _volume_over_time[2];
+	else if (cycle_time_percentage <= ((3.0 / 8.0) * _cycle_duration))
+		_volume = _volume_over_time[3];
+	else if (cycle_time_percentage <= ((4.0 / 8.0) * _cycle_duration))
+		_volume = _volume_over_time[4];
+	else if (cycle_time_percentage <= ((5.0 / 8.0) * _cycle_duration))
+		_volume = _volume_over_time[5];
+	else if (cycle_time_percentage <= ((6.0 / 8.0) * _cycle_duration))
+		_volume = _volume_over_time[6];
+	else if (cycle_time_percentage <= ((7.0 / 8.0) * _cycle_duration))
+		_volume = _volume_over_time[7];
+	else 
+		_volume = _volume_over_time[8];
+}
+
 double Atrium::Elastance(double time)
 {
 	elastance = _minimum_elastance + 0.5 * (_maximum_elastance - _minimum_elastance) * ActivationFunction(time - _keytime_1);
@@ -24,8 +48,9 @@ void Atrium::Pressure(double time, double factor)
 	pressure = elastance * factor * PI * _coefficient * _scaling_coefficient * (pow(radius, 2) - pow(_radius_at_zero_pressure, 2));
 }
 
-void Atrium::Radius()
+void Atrium::Radius(double time)
 {
+	VolumeAtTime(time);
 	radius = pow(3.0 / (4.0 * PI) * _volume, 1.0 / 3.0);
 }
 

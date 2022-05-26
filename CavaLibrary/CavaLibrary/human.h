@@ -4,6 +4,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <stdlib.h> 
 #include "bloodvessel.h"
 #include "heart.h"
 #include "lung.h"
@@ -54,7 +55,7 @@ public:
 	HumanCharacteristic _characteristics;
 private:
 
-	double _respiratory_rate = 12.5;
+	double _respiratory_rate = 16;
 
 	double _cycle_time_breath = 60.0 / _respiratory_rate;
 	double _cycle_time_heart = 0.8;

@@ -139,12 +139,12 @@ void Lung::AirMassFlow(double new_air_mass_flow)
 
 void Lung::ResetMassOfAir()
 {
-	_mass_of_air = 0.12;
+	_mass_of_air = 0.00003;
 }
 
 void Lung::ResetVolume()
 {
-	_volume = 0.003251;
+	_volume = 3.251;
 }
 
 void Lung::ResetAreaOfThrottle()
@@ -154,12 +154,12 @@ void Lung::ResetAreaOfThrottle()
 
 void Lung::ResetUpstreamPressure()
 {
-	_upstream_pressure = 10.3;
+	_upstream_pressure = 55.74;
 }
 
 void Lung::ResetDownstreamPressure()
 {
-	_downstream_pressure = 41.0;
+	_downstream_pressure = 14;
 }
 
 void Lung::ResetCriticalPressureRatio()
@@ -189,7 +189,7 @@ void Lung::ResetRespiratoryComplianceOutflow()
 
 void Lung::ResetPressureSummand()
 {
-	_pressure_summand = 1;
+	_pressure_summand = 10;
 }
 
 void Lung::ResetAirMassFlow()
@@ -207,7 +207,7 @@ void Lung::Airflow(double temperature, int inflow)
 	double numerator = flow_coefficient * _area_of_throttle * _upstream_pressure * sqrt(1-_critical_pressure_ratio);
 	double denominator = _atmospheric_density * sqrt(_gas_constant * kelvin_temperature);
 	double factor = sqrt(1 - pow((_downstream_pressure / _upstream_pressure - _critical_pressure_ratio) / (1 - _critical_pressure_ratio), 2));
-	oxygen_flow = (numerator / denominator) * factor;
+	oxygen_flow = 0.980665 * 0.00001 * (numerator / denominator) * factor; //unit adjustment 
 }
 
 void Lung::Pressure(double time, double temperature, int inflow, double summand)
@@ -220,7 +220,7 @@ void Lung::Pressure(double time, double temperature, int inflow, double summand)
 		_respiratory_compliance = _respiratory_compliance_outflow;
 
 	double denominator = pow(_volume, 2) + _respiratory_compliance * _mass_of_air * _gas_constant * kelvin_temperature;
-	pressure = numerator / denominator + summand;	
+	pressure = (0.5 * 0.0101971621297793 * numerator / denominator) + summand;	// 0.5 unit adjustment to cmH20
 }
 
 

@@ -5,6 +5,10 @@
 #include "BloodForm.h"
 #include "Human.h"
 
+#include<iostream>
+#include<fstream>
+
+
 namespace CavaSystem {
 
 	using namespace System;
@@ -14,25 +18,27 @@ namespace CavaSystem {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
+	using namespace std;
+
 	public ref class CavaForm : public System::Windows::Forms::Form
 	{
 	public:
 		CavaForm()
 		{
 			InitializeComponent();
+
 			Gender gender = Gender::female;
-			if(chMale)
+			if(chMale->Checked)
 				gender = Gender::male;
 			human_ptr = new Human((int)numAge->Value, gender, (double)numHeight->Value, (double)numWeight->Value, (double)numTemp->Value);
 
-			trachea_form = gcnew TracheaForm(this);
-			lung_form = gcnew LungForm(this);
-			heart_form = gcnew HeartForm(this);
-			blood_form = gcnew BloodForm(this);
 
+			trachea_form = gcnew TracheaForm(this, human_ptr);
+			lung_form = gcnew LungForm(this, human_ptr);
+			heart_form = gcnew HeartForm(this, human_ptr);
+			blood_form = gcnew BloodForm(this, human_ptr);
 		}
-	public:
-
+	private: System::Windows::Forms::Label^ label1;
 
 	public:
 		bool exit_cava = false;
@@ -137,9 +143,10 @@ namespace CavaSystem {
 			this->lblCVS->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblCVS->ForeColor = System::Drawing::SystemColors::Window;
-			this->lblCVS->Location = System::Drawing::Point(309, 11);
+			this->lblCVS->Location = System::Drawing::Point(464, 17);
+			this->lblCVS->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblCVS->Name = L"lblCVS";
-			this->lblCVS->Size = System::Drawing::Size(330, 23);
+			this->lblCVS->Size = System::Drawing::Size(590, 33);
 			this->lblCVS->TabIndex = 0;
 			this->lblCVS->Text = L"THE HUMAN CARDIOVASCULAR SYSTEM";
 			// 
@@ -150,9 +157,10 @@ namespace CavaSystem {
 			this->cmdRevive->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->cmdRevive->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->cmdRevive->Location = System::Drawing::Point(157, 100);
+			this->cmdRevive->Location = System::Drawing::Point(236, 154);
+			this->cmdRevive->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->cmdRevive->Name = L"cmdRevive";
-			this->cmdRevive->Size = System::Drawing::Size(87, 38);
+			this->cmdRevive->Size = System::Drawing::Size(130, 58);
 			this->cmdRevive->TabIndex = 1;
 			this->cmdRevive->Text = L"Revive";
 			this->cmdRevive->UseVisualStyleBackColor = false;
@@ -165,9 +173,10 @@ namespace CavaSystem {
 			this->cmdComa->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->cmdComa->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->cmdComa->Location = System::Drawing::Point(250, 100);
+			this->cmdComa->Location = System::Drawing::Point(375, 154);
+			this->cmdComa->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->cmdComa->Name = L"cmdComa";
-			this->cmdComa->Size = System::Drawing::Size(87, 38);
+			this->cmdComa->Size = System::Drawing::Size(130, 58);
 			this->cmdComa->TabIndex = 2;
 			this->cmdComa->Text = L"Coma";
 			this->cmdComa->UseVisualStyleBackColor = false;
@@ -178,9 +187,10 @@ namespace CavaSystem {
 			this->cmdTrachea->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->cmdTrachea->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->cmdTrachea->Location = System::Drawing::Point(157, 202);
+			this->cmdTrachea->Location = System::Drawing::Point(236, 311);
+			this->cmdTrachea->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->cmdTrachea->Name = L"cmdTrachea";
-			this->cmdTrachea->Size = System::Drawing::Size(180, 38);
+			this->cmdTrachea->Size = System::Drawing::Size(270, 58);
 			this->cmdTrachea->TabIndex = 4;
 			this->cmdTrachea->Text = L"Trachea";
 			this->cmdTrachea->UseVisualStyleBackColor = true;
@@ -191,9 +201,10 @@ namespace CavaSystem {
 			this->cmdLung->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->cmdLung->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->cmdLung->Location = System::Drawing::Point(157, 254);
+			this->cmdLung->Location = System::Drawing::Point(236, 391);
+			this->cmdLung->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->cmdLung->Name = L"cmdLung";
-			this->cmdLung->Size = System::Drawing::Size(180, 38);
+			this->cmdLung->Size = System::Drawing::Size(270, 58);
 			this->cmdLung->TabIndex = 5;
 			this->cmdLung->Text = L"Lung";
 			this->cmdLung->UseVisualStyleBackColor = true;
@@ -204,9 +215,10 @@ namespace CavaSystem {
 			this->cmdHeart->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->cmdHeart->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->cmdHeart->Location = System::Drawing::Point(157, 307);
+			this->cmdHeart->Location = System::Drawing::Point(236, 472);
+			this->cmdHeart->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->cmdHeart->Name = L"cmdHeart";
-			this->cmdHeart->Size = System::Drawing::Size(180, 38);
+			this->cmdHeart->Size = System::Drawing::Size(270, 58);
 			this->cmdHeart->TabIndex = 6;
 			this->cmdHeart->Text = L"Heart";
 			this->cmdHeart->UseVisualStyleBackColor = true;
@@ -217,9 +229,10 @@ namespace CavaSystem {
 			this->cmdBlood->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->cmdBlood->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->cmdBlood->Location = System::Drawing::Point(157, 362);
+			this->cmdBlood->Location = System::Drawing::Point(236, 557);
+			this->cmdBlood->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->cmdBlood->Name = L"cmdBlood";
-			this->cmdBlood->Size = System::Drawing::Size(180, 38);
+			this->cmdBlood->Size = System::Drawing::Size(270, 58);
 			this->cmdBlood->TabIndex = 7;
 			this->cmdBlood->Text = L"Blood + Tissue";
 			this->cmdBlood->UseVisualStyleBackColor = true;
@@ -242,9 +255,10 @@ namespace CavaSystem {
 			this->panHuman->Controls->Add(this->lblGender);
 			this->panHuman->Controls->Add(this->lblTemp);
 			this->panHuman->Controls->Add(this->lblHeight);
-			this->panHuman->Location = System::Drawing::Point(377, 100);
+			this->panHuman->Location = System::Drawing::Point(566, 154);
+			this->panHuman->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->panHuman->Name = L"panHuman";
-			this->panHuman->Size = System::Drawing::Size(248, 352);
+			this->panHuman->Size = System::Drawing::Size(433, 542);
 			this->panHuman->TabIndex = 12;
 			// 
 			// chMale
@@ -252,9 +266,10 @@ namespace CavaSystem {
 			this->chMale->AutoSize = true;
 			this->chMale->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->chMale->Location = System::Drawing::Point(159, 309);
+			this->chMale->Location = System::Drawing::Point(238, 475);
+			this->chMale->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->chMale->Name = L"chMale";
-			this->chMale->Size = System::Drawing::Size(62, 23);
+			this->chMale->Size = System::Drawing::Size(92, 33);
 			this->chMale->TabIndex = 26;
 			this->chMale->Text = L"male";
 			this->chMale->UseVisualStyleBackColor = true;
@@ -267,9 +282,10 @@ namespace CavaSystem {
 			this->chFemale->CheckState = System::Windows::Forms::CheckState::Checked;
 			this->chFemale->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->chFemale->Location = System::Drawing::Point(159, 288);
+			this->chFemale->Location = System::Drawing::Point(238, 443);
+			this->chFemale->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->chFemale->Name = L"chFemale";
-			this->chFemale->Size = System::Drawing::Size(74, 23);
+			this->chFemale->Size = System::Drawing::Size(112, 33);
 			this->chFemale->TabIndex = 25;
 			this->chFemale->Text = L"female";
 			this->chFemale->UseVisualStyleBackColor = true;
@@ -284,9 +300,10 @@ namespace CavaSystem {
 				static_cast<System::Byte>(0)));
 			this->lblHuman->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(87)),
 				static_cast<System::Int32>(static_cast<System::Byte>(87)));
-			this->lblHuman->Location = System::Drawing::Point(13, 22);
+			this->lblHuman->Location = System::Drawing::Point(20, 34);
+			this->lblHuman->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblHuman->Name = L"lblHuman";
-			this->lblHuman->Size = System::Drawing::Size(212, 25);
+			this->lblHuman->Size = System::Drawing::Size(342, 37);
 			this->lblHuman->TabIndex = 20;
 			this->lblHuman->Text = L"Human Characteristics";
 			// 
@@ -298,9 +315,10 @@ namespace CavaSystem {
 			this->numWeight->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->numWeight->ForeColor = System::Drawing::Color::White;
-			this->numWeight->Location = System::Drawing::Point(159, 128);
+			this->numWeight->Location = System::Drawing::Point(238, 197);
+			this->numWeight->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->numWeight->Name = L"numWeight";
-			this->numWeight->Size = System::Drawing::Size(62, 26);
+			this->numWeight->Size = System::Drawing::Size(132, 33);
 			this->numWeight->TabIndex = 20;
 			this->numWeight->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 50, 0, 0, 0 });
 			this->numWeight->ValueChanged += gcnew System::EventHandler(this, &CavaForm::numWeight_ValueChanged);
@@ -312,10 +330,11 @@ namespace CavaSystem {
 			this->numAge->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->numAge->ForeColor = System::Drawing::Color::White;
-			this->numAge->Location = System::Drawing::Point(159, 75);
+			this->numAge->Location = System::Drawing::Point(238, 115);
+			this->numAge->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->numAge->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 200, 0, 0, 0 });
 			this->numAge->Name = L"numAge";
-			this->numAge->Size = System::Drawing::Size(62, 26);
+			this->numAge->Size = System::Drawing::Size(132, 33);
 			this->numAge->TabIndex = 19;
 			this->numAge->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 25, 0, 0, 0 });
 			this->numAge->ValueChanged += gcnew System::EventHandler(this, &CavaForm::numAge_ValueChanged);
@@ -328,10 +347,11 @@ namespace CavaSystem {
 			this->numHeight->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->numHeight->ForeColor = System::Drawing::Color::White;
-			this->numHeight->Location = System::Drawing::Point(159, 181);
+			this->numHeight->Location = System::Drawing::Point(238, 278);
+			this->numHeight->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->numHeight->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 250, 0, 0, 0 });
 			this->numHeight->Name = L"numHeight";
-			this->numHeight->Size = System::Drawing::Size(62, 26);
+			this->numHeight->Size = System::Drawing::Size(132, 33);
 			this->numHeight->TabIndex = 24;
 			this->numHeight->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 158, 0, 0, 0 });
 			this->numHeight->ValueChanged += gcnew System::EventHandler(this, &CavaForm::numHeight_ValueChanged);
@@ -343,9 +363,10 @@ namespace CavaSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(40)));
 			this->lblAge->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblAge->Location = System::Drawing::Point(13, 76);
+			this->lblAge->Location = System::Drawing::Point(20, 117);
+			this->lblAge->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblAge->Name = L"lblAge";
-			this->lblAge->Size = System::Drawing::Size(35, 19);
+			this->lblAge->Size = System::Drawing::Size(56, 29);
 			this->lblAge->TabIndex = 9;
 			this->lblAge->Text = L"Age";
 			// 
@@ -356,9 +377,10 @@ namespace CavaSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(40)));
 			this->lblWeight->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblWeight->Location = System::Drawing::Point(13, 129);
+			this->lblWeight->Location = System::Drawing::Point(20, 198);
+			this->lblWeight->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblWeight->Name = L"lblWeight";
-			this->lblWeight->Size = System::Drawing::Size(55, 19);
+			this->lblWeight->Size = System::Drawing::Size(88, 29);
 			this->lblWeight->TabIndex = 17;
 			this->lblWeight->Text = L"Weight";
 			// 
@@ -370,11 +392,12 @@ namespace CavaSystem {
 			this->numTemp->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->numTemp->ForeColor = System::Drawing::Color::White;
-			this->numTemp->Location = System::Drawing::Point(159, 236);
+			this->numTemp->Location = System::Drawing::Point(238, 363);
+			this->numTemp->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->numTemp->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 50, 0, 0, 0 });
 			this->numTemp->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 25, 0, 0, 0 });
 			this->numTemp->Name = L"numTemp";
-			this->numTemp->Size = System::Drawing::Size(62, 26);
+			this->numTemp->Size = System::Drawing::Size(132, 33);
 			this->numTemp->TabIndex = 23;
 			this->numTemp->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 37, 0, 0, 0 });
 			this->numTemp->ValueChanged += gcnew System::EventHandler(this, &CavaForm::numTemp_ValueChanged);
@@ -386,9 +409,10 @@ namespace CavaSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(40)));
 			this->lblGender->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblGender->Location = System::Drawing::Point(14, 292);
+			this->lblGender->Location = System::Drawing::Point(21, 449);
+			this->lblGender->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblGender->Name = L"lblGender";
-			this->lblGender->Size = System::Drawing::Size(60, 19);
+			this->lblGender->Size = System::Drawing::Size(94, 29);
 			this->lblGender->TabIndex = 15;
 			this->lblGender->Text = L"Gender";
 			// 
@@ -399,9 +423,10 @@ namespace CavaSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(40)));
 			this->lblTemp->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblTemp->Location = System::Drawing::Point(14, 237);
+			this->lblTemp->Location = System::Drawing::Point(21, 365);
+			this->lblTemp->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblTemp->Name = L"lblTemp";
-			this->lblTemp->Size = System::Drawing::Size(132, 19);
+			this->lblTemp->Size = System::Drawing::Size(204, 29);
 			this->lblTemp->TabIndex = 18;
 			this->lblTemp->Text = L"Body temperature";
 			// 
@@ -412,9 +437,10 @@ namespace CavaSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(40)));
 			this->lblHeight->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblHeight->Location = System::Drawing::Point(13, 182);
+			this->lblHeight->Location = System::Drawing::Point(20, 280);
+			this->lblHeight->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblHeight->Name = L"lblHeight";
-			this->lblHeight->Size = System::Drawing::Size(51, 19);
+			this->lblHeight->Size = System::Drawing::Size(83, 29);
 			this->lblHeight->TabIndex = 16;
 			this->lblHeight->Text = L"Height";
 			// 
@@ -424,16 +450,18 @@ namespace CavaSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(44)));
 			this->pnCVS->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->pnCVS->Location = System::Drawing::Point(0, 0);
+			this->pnCVS->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pnCVS->Name = L"pnCVS";
-			this->pnCVS->Size = System::Drawing::Size(944, 47);
+			this->pnCVS->Size = System::Drawing::Size(1439, 72);
 			this->pnCVS->TabIndex = 13;
 			// 
 			// pcVis
 			// 
 			this->pcVis->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pcVis.Image")));
-			this->pcVis->Location = System::Drawing::Point(12, 100);
+			this->pcVis->Location = System::Drawing::Point(18, 154);
+			this->pcVis->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pcVis->Name = L"pcVis";
-			this->pcVis->Size = System::Drawing::Size(130, 352);
+			this->pcVis->Size = System::Drawing::Size(195, 542);
 			this->pcVis->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pcVis->TabIndex = 14;
 			this->pcVis->TabStop = false;
@@ -445,9 +473,10 @@ namespace CavaSystem {
 			this->cmdExit->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->cmdExit->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->cmdExit->Location = System::Drawing::Point(845, 451);
+			this->cmdExit->Location = System::Drawing::Point(1309, 667);
+			this->cmdExit->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->cmdExit->Name = L"cmdExit";
-			this->cmdExit->Size = System::Drawing::Size(87, 38);
+			this->cmdExit->Size = System::Drawing::Size(130, 58);
 			this->cmdExit->TabIndex = 15;
 			this->cmdExit->Text = L"EXIT";
 			this->cmdExit->UseVisualStyleBackColor = false;
@@ -480,7 +509,8 @@ namespace CavaSystem {
 			legend1->TitleFont = (gcnew System::Drawing::Font(L"Louis George Café Light", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->chData->Legends->Add(legend1);
-			this->chData->Location = System::Drawing::Point(644, 100);
+			this->chData->Location = System::Drawing::Point(1007, 154);
+			this->chData->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->chData->Name = L"chData";
 			this->chData->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::None;
 			this->chData->PaletteCustomColors = gcnew cli::array< System::Drawing::Color >(3) {
@@ -504,18 +534,18 @@ namespace CavaSystem {
 			series1->Points->Add(dataPoint4);
 			series1->Points->Add(dataPoint5);
 			this->chData->Series->Add(series1);
-			this->chData->Size = System::Drawing::Size(288, 300);
+			this->chData->Size = System::Drawing::Size(432, 462);
 			this->chData->TabIndex = 16;
 			this->chData->Text = L"chData";
 			// 
 			// CavaForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScroll = true;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(33)), static_cast<System::Int32>(static_cast<System::Byte>(33)),
 				static_cast<System::Int32>(static_cast<System::Byte>(33)));
-			this->ClientSize = System::Drawing::Size(944, 501);
+			this->ClientSize = System::Drawing::Size(1481, 760);
 			this->Controls->Add(this->chData);
 			this->Controls->Add(this->cmdExit);
 			this->Controls->Add(this->pcVis);
@@ -530,6 +560,7 @@ namespace CavaSystem {
 			this->Controls->Add(this->panHuman);
 			this->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(224)),
 				static_cast<System::Int32>(static_cast<System::Byte>(224)));
+			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->Name = L"CavaForm";
 			this->Text = L"Form1";
 			this->panHuman->ResumeLayout(false);
@@ -547,6 +578,7 @@ namespace CavaSystem {
 #pragma endregion
 
 		public: Human* human_ptr = nullptr;
+
 		public: TracheaForm^ trachea_form = nullptr;
 		public: LungForm^ lung_form = nullptr;
 		public: HeartForm^ heart_form = nullptr;
@@ -609,68 +641,25 @@ private: System::Void cmdExit_Click(System::Object^ sender, System::EventArgs^ e
 	Application::Exit();
 }
 
+
 private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 	timer_intern++;
 	if (timer_intern >= 1000)
 		timer_intern = 0;
 
-	double time_since_frame = cavaTimer->Interval / 1000.0;
+	double time_since_frame = cavaTimer->Interval / 1000.0; //ms to s
 	double oxygen = 100.0;
+
 	human_ptr->CardiovascularSystem(time_since_frame, &oxygen);
 	//Update trachea
-	human_ptr->trachea->TrachealDiameter((double)trachea_form->GetTrachealDiameter());
-	human_ptr->trachea->ViscosityOfAir((double)trachea_form->GetViscosityOfAir());
-	human_ptr->trachea->MeanFlowSpeed((double)trachea_form->GetMeanFlowSpeed());
-	human_ptr->trachea->RespiratoryRate((double)trachea_form->GetRespiratoryRate());
-	human_ptr->trachea->LengthFemale((double)trachea_form->GetFemaleLength());
-	human_ptr->trachea->LengthMale((double)trachea_form->GetMaleLength());
-	human_ptr->trachea->RespiratoryRate((double)trachea_form->GetRespiratoryRate());
-	human_ptr->trachea->block_percentage = ((double)trachea_form->GetBlockPercentage());
 	trachea_form->UpdateFlowRate(std::ceil(human_ptr->trachea->flow_rate * 100.0) / 100.0);
 	trachea_form->UpdateOxygen(std::ceil(human_ptr->trachea->oxygen * 100.0) / 100.0);
 	//Update lung
-	human_ptr->lung->AreaOfThrottle((double)lung_form->GetAreaOfThrottle());
-	human_ptr->lung->UpstreamPressure((double)lung_form->GetUpstreamPressure());
-	human_ptr->lung->DownstreamPressure((double)lung_form->GetDownstreamPressure());
-	human_ptr->lung->CriticalPressureRatio((double)lung_form->GetCriticalPressureRatio());
-	human_ptr->lung->GasConstant((double)lung_form->GetGasConstant());
-	human_ptr->lung->Volume((double)lung_form->GetLungVolume());
-	human_ptr->lung->MassOfAir((double)lung_form->GetMassOfAir());
-	human_ptr->lung->AirMassFlow((double)lung_form->GetAirMassFlow());
-	human_ptr->lung->AtmosphericDensity((double)lung_form->GetAtmosphericDensity());
-	human_ptr->lung->RespiratoryComplianceInflow((double)lung_form->GetRespiratoryComplianceInflow());
-	human_ptr->lung->RespiratoryComplianceOutflow((double)lung_form->GetRespiratoryComplianceOutflow());
-	human_ptr->lung->PressureSummand((double)lung_form->GetCoefficient());
-	//lung_form->UpdateOxygenFlow(std::ceil(human_ptr->lung->oxygen * 100.0) / 100.0);
+	lung_form->UpdateOxygenFlow(std::ceil(human_ptr->lung->oxygen_flow * 100.0) / 100.0);
 	lung_form->UpdatePressure(std::ceil(human_ptr->lung->pressure * 100.0) / 100.0);
 	//Update heart
-	human_ptr->heart->AorticValveFlowRate((double)heart_form->GetAortic());
-	human_ptr->heart->MitralValveFlowRate((double)heart_form->GetMitral());
-	human_ptr->heart->PulmonaryValveFlowRate((double)heart_form->GetPulmonary());
-	human_ptr->heart->TricuspidValveFlowRate((double)heart_form->GetTriscupid());
-	human_ptr->heart->HeartRate((double)heart_form->GetHeartRate());
-	human_ptr->heart->StrokeVolume((double)heart_form->GetStrokeVolume());
-	human_ptr->heart->CycleDuration((double)heart_form->GetDuration());
-	human_ptr->heart->VolumeAtriumLeft((double)heart_form->GetLAVolume());
-	human_ptr->heart->VolumeAtriumRight((double)heart_form->GetRAVolume());
-	human_ptr->heart->VolumeVentricleLeft((double)heart_form->GetLVVolume());
-	human_ptr->heart->VolumeVentricleLeft((double)heart_form->GetRVVolume());
-	human_ptr->heart->left_atrium->MinimumElastance((double)heart_form->GetMinElastance());
-	human_ptr->heart->left_atrium->MaximumElastance((double)heart_form->GetMaxElastance());
-	human_ptr->heart->right_atrium->MinimumElastance((double)heart_form->GetMinElastance());
-	human_ptr->heart->right_atrium->MaximumElastance((double)heart_form->GetMaxElastance());
-	human_ptr->heart->left_atrium->ZeroPressureVolume((double)heart_form->GetVolumeAtZeroPressure());
-	human_ptr->heart->right_atrium->ZeroPressureVolume((double)heart_form->GetVolumeAtZeroPressure());
-	human_ptr->heart->left_atrium->KeytimeInCycle((double)heart_form->GetAtrialKeytime());
-	human_ptr->heart->right_atrium->KeytimeInCycle((double)heart_form->GetAtrialKeytime());
-	human_ptr->heart->left_ventricle->EndSystolicElastance((double)heart_form->GetLVEndSystolicElastance());
-	human_ptr->heart->right_ventricle->EndSystolicElastance((double)heart_form->GetRVEndSystolicElastance());
-	human_ptr->heart->left_ventricle->BloodDensity((double)heart_form->GetDensity());
-	human_ptr->heart->right_ventricle->BloodDensity((double)heart_form->GetDensity());
-	human_ptr->heart->RadiusSummandLV((double)heart_form->GetCoefficient1());
-	human_ptr->heart->RadiusSummandRV((double)heart_form->GetCoefficient2());
-	//heart_form->UpdateOxygen(std::ceil(human_ptr->heart->oxygen * 100.0) / 100.0);
-	heart_form->UpdateFlowRate(std::ceil(human_ptr->heart->flow_rate * 100.0) / 100.0);
+	heart_form->UpdateOxygen(std::ceil(human_ptr->heart->oxygen * 100.0) / 100.0);
+    heart_form->UpdateFlowRate(std::ceil(human_ptr->heart->flow_rate * 100.0) / 100.0);
 	heart_form->UpdateLAElastance(std::ceil(human_ptr->heart->left_atrium->elastance * 100.0) / 100.0);
 	heart_form->UpdateLAPressure(std::ceil(human_ptr->heart->left_atrium->pressure * 100.0) / 100.0);
 	heart_form->UpdateLARadius(std::ceil(human_ptr->heart->left_atrium->radius * 100.0) / 100.0);
@@ -683,23 +672,7 @@ private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) 
 	heart_form->UpdateRVInertance(std::ceil(human_ptr->heart->right_ventricle->inflow_inertance * 100.0) / 100.0);
 	heart_form->UpdateRVPressureTotal(std::ceil(human_ptr->heart->right_ventricle->pressure * 100.0) / 100.0);
 	heart_form->UpdateRVRadius(std::ceil(human_ptr->heart->right_ventricle->radius * 100.0) / 100.0);
-	//Update blood vessel
-	human_ptr->blood_vessel->StartVelocity((double)blood_form->GetStartVelocity());
-	human_ptr->blood_vessel->NumberOfVessels((double)blood_form->GetNumberOfVessels());
-	human_ptr->blood_vessel->VesselLength((double)blood_form->GetVesselLength());
-	human_ptr->blood_vessel->VesselThickness((double)blood_form->GetVesselThickness());
-	human_ptr->blood_vessel->BloodDensity((double)blood_form->GetBloodDensity());
-	human_ptr->blood_vessel->InitialSystolicPressure((double)blood_form->GetInitialSystolicPressure());
-	human_ptr->blood_vessel->InitialDiastolicPressure((double)blood_form->GetInitialDiastolicPressure());
-	human_ptr->blood_vessel->OxygenBindingCapacity((double)blood_form->GetOxygenBindingCapacity());
-	human_ptr->blood_vessel->HemoglobinConcentration((double)blood_form->GetHemoglobinConcentration());
-	human_ptr->blood_vessel->HemoglobinOxygenSaturation((double)blood_form->GetOxygenHemoglobinSaturation() * 0.01); //from % to comma number
-	human_ptr->blood_vessel->RBCVelocity((double)blood_form->GetRBCVelocity());
-	human_ptr->blood_vessel->TissueRadius((double)blood_form->GetTissueRadius());
-	human_ptr->blood_vessel->VesselRadius((double)blood_form->GetVesselRadius());
-	human_ptr->blood_vessel->MetabolicRate((double)blood_form->GetMetabolicRate());
-	human_ptr->blood_vessel->MaxConsumption((double)blood_form->GetMaxConsumption());
-	//blood_form->UpdateOxygen(std::ceil(human_ptr->blood_vessel->oxygen * 100.0) / 100.0);
+	blood_form->UpdateOxygen(std::ceil(human_ptr->blood_vessel->oxygen * 100.0) / 100.0);
 	blood_form->UpdateDiastolicPressure(std::ceil(human_ptr->blood_vessel->diastolic_pressure * 100.0) / 100.0);
 	blood_form->UpdateSystolicPressure(std::ceil(human_ptr->blood_vessel->systolic_pressure * 100.0) / 100.00);
 	blood_form->UpdatePartialPressureVessel(std::ceil(human_ptr->blood_vessel->partial_pressure * 100.0) / 100.0);
@@ -710,7 +683,15 @@ private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) 
 	blood_form->UpdateCompliance(std::ceil(human_ptr->blood_vessel->compliance * 100.0) / 100.0);
 	blood_form->UpdatePartialPressureTissue(std::ceil(human_ptr->blood_vessel->partial_pressure_tissue * 100.0) / 100.0);
 	blood_form->UpdateConsumptionRate(std::ceil(human_ptr->blood_vessel->oxygen_consumption_tissue * 100.0) / 100.0);
+
+
+	/*fstream file;
+	file.open("ven_left_inertance.txt", ios::out | ios::app);
+	string message = to_string(human_ptr->heart->left_ventricle->inflow_inertance);
+	file << message << endl;
+	file.close();*/
 }
 
 };
+
 }

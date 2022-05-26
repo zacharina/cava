@@ -38,26 +38,6 @@ Decimal CavaSystem::HeartForm::GetDuration()
     return numDuration->Value;
 }
 
-Decimal CavaSystem::HeartForm::GetLAVolume()
-{
-    return numLAVolume->Value;
-}
-
-Decimal CavaSystem::HeartForm::GetRAVolume()
-{
-    return numRAVolume->Value;
-}
-
-Decimal CavaSystem::HeartForm::GetLVVolume()
-{
-    return numLVVolume->Value;
-}
-
-Decimal CavaSystem::HeartForm::GetRVVolume()
-{
-    return numRVVolume->Value;
-}
-
 Decimal CavaSystem::HeartForm::GetMinElastance()
 {
     return numMinElas->Value;

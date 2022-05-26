@@ -3,15 +3,16 @@
 #include "atrium.h"
 #include "bodypart.h"
 #include "ventricle.h"
+#include <vector>
 
 class __declspec(dllexport) Heart : public BodyPart
 {
 public:
 	Heart() : BodyPart() {
-		left_atrium = new Atrium(_cycle_duration, _volume_atrium_left);
-		right_atrium = new Atrium(_cycle_duration, _volume_atrium_right);
-		left_ventricle = new Ventricle(_volume_ventricle_left, 2.5, 1.15, _cycle_duration, _keytime_1, _keytime_2, 15);
-		right_ventricle = new Ventricle(_volume_ventricle_right, 1, 1.75, _cycle_duration, _keytime_1, _keytime_2, 40);
+		left_atrium = new Atrium(_cycle_duration, _volume_atrium_left, _left_atrial_volume_over_time);
+		right_atrium = new Atrium(_cycle_duration, _volume_atrium_right, _right_atrial_volume_over_time);
+		left_ventricle = new Ventricle(_volume_ventricle_left, 2.5, 1.15, _cycle_duration, _keytime_1, _keytime_2, _volume_ventricle_left_zero_pressure, _left_ventricular_volume_over_time);
+		right_ventricle = new Ventricle(_volume_ventricle_right, 1, 1.75, _cycle_duration, _keytime_1, _keytime_2, _volume_ventricle_right_zero_pressure, _right_ventricular_volume_over_time);
 	};
 	~Heart() {
 		delete left_atrium;
@@ -75,13 +76,13 @@ private:
 	void FlowRate();
 	void Volume();
 	
-	double _aortic_valve_flow_rate = 182; //kg/s
-	double _mitral_valve_flow_rate = 221; //kg/s
-	double _pulmonary_valve_flow_rate = 320; //kg/s
-	double _tricuspid_valve_flow_rate = 126; //kg/s
+	double _aortic_valve_flow_rate = 242; //ml/s
+	double _mitral_valve_flow_rate = 450; //ml/s
+	double _pulmonary_valve_flow_rate = 150; //ml/s
+	double _tricuspid_valve_flow_rate = 260; //ml/s
 	
-	double _heart_rate = 70; //bpm
-	double _stroke_volume = 0.08; //ml
+	double _heart_rate = 70; //bpm // 1/min
+	double _stroke_volume = 0.08; //L
 	
 	double _cycle_duration = 0.8; //s
 	double _keytime_1 = 0.33 * _cycle_duration; //s
@@ -91,10 +92,17 @@ private:
 	double _volume_atrium_right = 30.0; //cm3
 	double _volume_ventricle_left = 60.0; //cm3
 	double _volume_ventricle_right = 75.0; //cm3
+	double _volume_ventricle_left_zero_pressure = 15.0; //ml
+	double _volume_ventricle_right_zero_pressure = 40.0; //ml
 	double _volume = _volume_atrium_left + _volume_atrium_right + _volume_ventricle_left + _volume_ventricle_right; //cm3
 
 	//Addends of by Mathematica solved equations
 	double _radius_addend_lv = 1; //left ventricle
 	double _radius_addend_rv = 1; //right ventricle
+
+	double _left_ventricular_volume_over_time[9] = {126.0, 120.0, 69.0, 59.0, 97.0, 105.0, 110.0, 115.0, 126.0};
+	double _right_ventricular_volume_over_time[9] = {135.0, 108.0, 73.0, 68.0, 109.0, 115.0, 119.0, 125.0, 135.0};
+	double _left_atrial_volume_over_time[9] = {45.0, 51.0, 58.0, 62.0, 36.0, 40.0, 45.0, 49.0, 45.0};
+	double _right_atrial_volume_over_time[9] = {52.0, 58.0, 65.0, 69.0, 43.0, 47.0, 52.0, 56.0, 52.0 };
 };
 

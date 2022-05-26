@@ -5,12 +5,18 @@
 
 void Ventricle::Radius(double time, double addend, double valve_flow_rate_1, double valve_flow_rate_2)
 {
-	double coefficients = _coefficient * _scaling_coefficient * PI;
-	radius = sqrt(3.0) * time * (valve_flow_rate_1 - valve_flow_rate_2) / (4.0 * coefficients * sqrt(_volume / coefficients)) + addend;
+	VolumeAtTime(time);
+	if (time == 0) {
+		radius = pow(3 * _volume_at_zero_pressure / (4 * PI), 1.0 / 3.0);
+	}
+	else {
+		double coefficients = _coefficient * _scaling_coefficient * PI;
+		radius = (3 * (valve_flow_rate_1 - valve_flow_rate_2) * time) / (2 * coefficients * sqrt((3 * _volume) / coefficients)) + addend;
+	}
 	_inflow_length = 2 * radius;
 }
 
-void Ventricle::Radius(double addend)
+void Ventricle::RadiusConstant()
 {
 	radius_constant = pow((3 * _volume) / (PI * _coefficient * _scaling_coefficient), 0.5);
 }
@@ -92,7 +98,7 @@ void Ventricle::ResetBloodDensity()
 
 void Ventricle::ResetInflowLength()
 {
-	_inflow_length = 2 * radius_constant;
+	_inflow_length = 2 * radius;
 }
 
 void Ventricle::ResetScalingCoefficient()
@@ -102,8 +108,8 @@ void Ventricle::ResetScalingCoefficient()
 
 void Ventricle::PressureActive(double time, double factor)
 {
-	double radius_at_zero_pressure = pow((3 * _volume_at_zero_pressure) / (PI * _coefficient * _scaling_coefficient), 0.5);
-	pressure_active = _end_systolic_elastance * factor * PI * _coefficient * _scaling_coefficient * (pow(radius_constant, 2) - pow(radius_at_zero_pressure, 2)) * ActivationFunction(time);
+	double radius_at_zero_pressure = pow(3 * _volume_at_zero_pressure / (4 * PI), 1.0 / 3.0);
+	pressure_active = _end_systolic_elastance * factor * PI * _coefficient * _scaling_coefficient * abs(pow(radius, 2) - pow(radius_at_zero_pressure, 2)) * ActivationFunction(time);
 }
 
 void Ventricle::PressurePassive(double time, double factor)
@@ -122,8 +128,32 @@ double Ventricle::ActivationFunction(double time)
 {
 	double result = 0;
 	if (time < _keytime_1)
-		result = (1 - cos(time / _keytime_1 * PI)) / 2;
+		result = (1 - cos((time / _keytime_1) * PI)) / 2;
 	else if (time < _keytime_2)
 		result = (1 + cos((time - _keytime_1) / (_keytime_2 - _keytime_1) * PI)) / 2;
 	return result;
+}
+
+void Ventricle::VolumeAtTime(double time)
+{
+	//note: inefficient //to be changed with volume calculation
+	double cycle_time_percentage = time / _cycle_duration;
+	if (cycle_time_percentage == 0)
+		_volume = _volume_over_time[0];
+	else if (cycle_time_percentage <= ((1.0 / 8.0) * _cycle_duration))
+		_volume = _volume_over_time[1];
+	else if (cycle_time_percentage <= ((2.0 / 8.0) * _cycle_duration))
+		_volume = _volume_over_time[2];
+	else if (cycle_time_percentage <= ((3.0 / 8.0) * _cycle_duration))
+		_volume = _volume_over_time[3];
+	else if (cycle_time_percentage <= ((4.0 / 8.0) * _cycle_duration))
+		_volume = _volume_over_time[4];
+	else if (cycle_time_percentage <= ((5.0 / 8.0) * _cycle_duration))
+		_volume = _volume_over_time[5];
+	else if (cycle_time_percentage <= ((6.0 / 8.0) * _cycle_duration))
+		_volume = _volume_over_time[6];
+	else if (cycle_time_percentage <= ((7.0 / 8.0) * _cycle_duration))
+		_volume = _volume_over_time[7];
+	else
+		_volume = _volume_over_time[8];
 }

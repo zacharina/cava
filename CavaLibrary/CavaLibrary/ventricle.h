@@ -1,10 +1,11 @@
 #pragma once
+#include <vector>
 
 
 class __declspec(dllexport) Ventricle 
 {
 public:
-	Ventricle(double volume, double end_systolic_elastance, double coefficient, double cycle_duration, double keytime_1, double keytime_2, double volume_at_zero_pressure) {
+	Ventricle(double volume, double end_systolic_elastance, double coefficient, double cycle_duration, double keytime_1, double keytime_2, double volume_at_zero_pressure, double volume_over_time[9]) {
 		_cycle_duration = cycle_duration;
 		_keytime_1 = keytime_1;
 		_keytime_2 = keytime_2;
@@ -12,6 +13,8 @@ public:
 		_end_systolic_elastance = end_systolic_elastance;
 		_coefficient = coefficient;
 		_volume_at_zero_pressure = volume_at_zero_pressure;
+		for (int i = 0; i < 9; i++)
+			_volume_over_time[i] = volume_over_time[i];
 	};
 	~Ventricle() = default;
 
@@ -23,7 +26,7 @@ public:
 	double radius_constant = 0.0; //cm
 
 	void Radius(double time, double addend, double valve_flow_rate_1, double valve_flow_rate_2);
-	void Radius(double addend);
+	void RadiusConstant();
 	void Pressure(double time, double factor);
 	void InflowInertance();
 
@@ -50,11 +53,13 @@ private:
 	void PressureActive(double time, double factor);
 	void PressurePassive(double time, double factor);
 	double ActivationFunction(double time);
+	void VolumeAtTime(double time);
 
 	double _volume = 0.0; //cm3
 	double _volume_at_zero_pressure = 0.0; //cm3
 	double _end_systolic_elastance = 0.0; //mmHg/ml
 	double _coefficient = 0.0;
+	double _volume_over_time[9] = { 0 }; //ml
 
 	double _blood_density = 1.060; //g/cm3
 	double _inflow_length = 2;

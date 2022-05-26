@@ -1,13 +1,16 @@
 #pragma once
+#include <vector>
 
 
 class __declspec(dllexport) Atrium
 {
 public:
-	Atrium(double cycle_duration, double volume) {
+	Atrium(double cycle_duration, double volume, double volume_over_time[9]) {
 		_cycle_duration = cycle_duration;
 		_atrial_duration = 0.8 * cycle_duration;
 		_volume = volume;
+		for (int i = 0; i < 9; i++)
+			_volume_over_time[i] = volume_over_time[i];
 	};
 	~Atrium() = default;
 
@@ -15,7 +18,7 @@ public:
 	double pressure = 0.0; //mmHg
 	double radius = 0.0; //cm
 
-	void Radius();
+	void Radius(double time);
 	double Elastance(double time);
 	void Pressure(double time, double factor);
 
@@ -48,6 +51,7 @@ public:
 
 private:
 	double ActivationFunction(double time);
+	void VolumeAtTime(double time);
 
 	double _cycle_duration = 0.0; //s
 	double _atrial_duration = 0.0; //s
@@ -56,6 +60,7 @@ private:
 	double _volume_at_zero_pressure = 5.0; //cm3
 	double _radius_at_zero_pressure = 0; //cm
 	double _volume = 0.0; //cm3
+	double _volume_over_time[9] = { 0 }; //ml
 	
 	double _keytime_1 = 0.04; //s
 	double _scaling_coefficient = 5.5;
