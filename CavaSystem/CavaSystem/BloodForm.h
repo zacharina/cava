@@ -109,7 +109,7 @@ namespace CavaSystem {
 	private: System::Windows::Forms::Label^ lblUnitIner2;
 	private: System::Windows::Forms::Label^ lblUnitIner3;
 	private: System::Windows::Forms::Label^ lblUnitResis1;
-	private: System::Windows::Forms::Label^ lblUnitResis2;
+
 	private: System::Windows::Forms::Label^ lblUnitResis3;
 	private: System::Windows::Forms::Label^ lblUnitInitSysPress;
 	private: System::Windows::Forms::Label^ lblUnitSysPressure;
@@ -121,7 +121,7 @@ namespace CavaSystem {
 	private: System::Windows::Forms::Label^ lblUnitConcentration;
 	private: System::Windows::Forms::Label^ lblUnitBinding;
 	private: System::Windows::Forms::Label^ lblUnitInitDiaPress;
-	private: System::Windows::Forms::Label^ lblUnitConsumption;
+
 	private: System::Windows::Forms::NumericUpDown^ numDensity;
 	private: System::Windows::Forms::NumericUpDown^ numLength;
 	private: System::Windows::Forms::NumericUpDown^ numThick;
@@ -153,6 +153,16 @@ namespace CavaSystem {
 	private: System::Windows::Forms::Button^ cmdTRadius;
 	private: System::Windows::Forms::Button^ cmdRBC;
 	private: System::Windows::Forms::Button^ cmdSaturation;
+private: System::Windows::Forms::Label^ lblUnitConsumption2;
+private: System::Windows::Forms::Label^ lblUnitConsumption3;
+private: System::Windows::Forms::Label^ lblUnitConsumption4;
+
+
+
+private: System::Windows::Forms::Label^ lblUnitConsumption1;
+
+
+
 	private: System::Windows::Forms::PictureBox^ picVis;
 
 #pragma region Windows Form Designer generated code
@@ -179,7 +189,6 @@ namespace CavaSystem {
 			   this->lblUnitIner2 = (gcnew System::Windows::Forms::Label());
 			   this->lblUnitIner1 = (gcnew System::Windows::Forms::Label());
 			   this->lblUnitIner3 = (gcnew System::Windows::Forms::Label());
-			   this->lblUnitResis2 = (gcnew System::Windows::Forms::Label());
 			   this->lblUnitResis1 = (gcnew System::Windows::Forms::Label());
 			   this->lblUnitResis3 = (gcnew System::Windows::Forms::Label());
 			   this->lblUnitCompliance = (gcnew System::Windows::Forms::Label());
@@ -271,7 +280,10 @@ namespace CavaSystem {
 			   this->lblNumStartVel = (gcnew System::Windows::Forms::Label());
 			   this->picVis = (gcnew System::Windows::Forms::PictureBox());
 			   this->pnTissue = (gcnew System::Windows::Forms::Panel());
-			   this->lblUnitConsumption = (gcnew System::Windows::Forms::Label());
+			   this->lblUnitConsumption2 = (gcnew System::Windows::Forms::Label());
+			   this->lblUnitConsumption3 = (gcnew System::Windows::Forms::Label());
+			   this->lblUnitConsumption4 = (gcnew System::Windows::Forms::Label());
+			   this->lblUnitConsumption1 = (gcnew System::Windows::Forms::Label());
 			   this->lblNumConsumption = (gcnew System::Windows::Forms::Label());
 			   this->lblConsumption = (gcnew System::Windows::Forms::Label());
 			   this->lblUnitTPartial = (gcnew System::Windows::Forms::Label());
@@ -441,7 +453,6 @@ namespace CavaSystem {
 			   this->pnBloodVessel->Controls->Add(this->lblUnitIner2);
 			   this->pnBloodVessel->Controls->Add(this->lblUnitIner1);
 			   this->pnBloodVessel->Controls->Add(this->lblUnitIner3);
-			   this->pnBloodVessel->Controls->Add(this->lblUnitResis2);
 			   this->pnBloodVessel->Controls->Add(this->lblUnitResis1);
 			   this->pnBloodVessel->Controls->Add(this->lblUnitResis3);
 			   this->pnBloodVessel->Controls->Add(this->lblUnitCompliance);
@@ -521,7 +532,7 @@ namespace CavaSystem {
 			   this->lblUnitIner2->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 4, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->lblUnitIner2->ForeColor = System::Drawing::Color::White;
-			   this->lblUnitIner2->Location = System::Drawing::Point(567, 42);
+			   this->lblUnitIner2->Location = System::Drawing::Point(575, 42);
 			   this->lblUnitIner2->Name = L"lblUnitIner2";
 			   this->lblUnitIner2->Size = System::Drawing::Size(7, 7);
 			   this->lblUnitIner2->TabIndex = 162;
@@ -535,11 +546,11 @@ namespace CavaSystem {
 			   this->lblUnitIner1->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->lblUnitIner1->ForeColor = System::Drawing::Color::White;
-			   this->lblUnitIner1->Location = System::Drawing::Point(540, 42);
+			   this->lblUnitIner1->Location = System::Drawing::Point(526, 42);
 			   this->lblUnitIner1->Name = L"lblUnitIner1";
-			   this->lblUnitIner1->Size = System::Drawing::Size(32, 13);
+			   this->lblUnitIner1->Size = System::Drawing::Size(50, 13);
 			   this->lblUnitIner1->TabIndex = 161;
-			   this->lblUnitIner1->Text = L"Pa · s";
+			   this->lblUnitIner1->Text = L"mmHg · s";
 			   // 
 			   // lblUnitIner3
 			   // 
@@ -549,25 +560,11 @@ namespace CavaSystem {
 			   this->lblUnitIner3->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->lblUnitIner3->ForeColor = System::Drawing::Color::White;
-			   this->lblUnitIner3->Location = System::Drawing::Point(574, 42);
+			   this->lblUnitIner3->Location = System::Drawing::Point(579, 42);
 			   this->lblUnitIner3->Name = L"lblUnitIner3";
-			   this->lblUnitIner3->Size = System::Drawing::Size(21, 13);
+			   this->lblUnitIner3->Size = System::Drawing::Size(24, 13);
 			   this->lblUnitIner3->TabIndex = 163;
-			   this->lblUnitIner3->Text = L"/ml";
-			   // 
-			   // lblUnitResis2
-			   // 
-			   this->lblUnitResis2->AutoSize = true;
-			   this->lblUnitResis2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
-				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
-			   this->lblUnitResis2->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 4, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->lblUnitResis2->ForeColor = System::Drawing::Color::White;
-			   this->lblUnitResis2->Location = System::Drawing::Point(569, 12);
-			   this->lblUnitResis2->Name = L"lblUnitResis2";
-			   this->lblUnitResis2->Size = System::Drawing::Size(7, 7);
-			   this->lblUnitResis2->TabIndex = 159;
-			   this->lblUnitResis2->Text = L"2";
+			   this->lblUnitIner3->Text = L"/ ml";
 			   // 
 			   // lblUnitResis1
 			   // 
@@ -577,11 +574,11 @@ namespace CavaSystem {
 			   this->lblUnitResis1->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->lblUnitResis1->ForeColor = System::Drawing::Color::White;
-			   this->lblUnitResis1->Location = System::Drawing::Point(540, 14);
+			   this->lblUnitResis1->Location = System::Drawing::Point(526, 14);
 			   this->lblUnitResis1->Name = L"lblUnitResis1";
-			   this->lblUnitResis1->Size = System::Drawing::Size(32, 13);
+			   this->lblUnitResis1->Size = System::Drawing::Size(70, 13);
 			   this->lblUnitResis1->TabIndex = 158;
-			   this->lblUnitResis1->Text = L"Pa · s";
+			   this->lblUnitResis1->Text = L"mmHg · s / ml";
 			   // 
 			   // lblUnitResis3
 			   // 
@@ -605,11 +602,11 @@ namespace CavaSystem {
 			   this->lblUnitCompliance->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 8, System::Drawing::FontStyle::Regular,
 				   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->lblUnitCompliance->ForeColor = System::Drawing::Color::White;
-			   this->lblUnitCompliance->Location = System::Drawing::Point(532, 103);
+			   this->lblUnitCompliance->Location = System::Drawing::Point(527, 103);
 			   this->lblUnitCompliance->Name = L"lblUnitCompliance";
-			   this->lblUnitCompliance->Size = System::Drawing::Size(64, 13);
+			   this->lblUnitCompliance->Size = System::Drawing::Size(57, 13);
 			   this->lblUnitCompliance->TabIndex = 125;
-			   this->lblUnitCompliance->Text = L"ml/mmHg/kg";
+			   this->lblUnitCompliance->Text = L"ml / mmHg";
 			   // 
 			   // lblUnitFlowRate
 			   // 
@@ -633,11 +630,11 @@ namespace CavaSystem {
 			   this->lblUnitElastance->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->lblUnitElastance->ForeColor = System::Drawing::Color::White;
-			   this->lblUnitElastance->Location = System::Drawing::Point(545, 71);
+			   this->lblUnitElastance->Location = System::Drawing::Point(526, 71);
 			   this->lblUnitElastance->Name = L"lblUnitElastance";
-			   this->lblUnitElastance->Size = System::Drawing::Size(51, 13);
+			   this->lblUnitElastance->Size = System::Drawing::Size(57, 13);
 			   this->lblUnitElastance->TabIndex = 122;
-			   this->lblUnitElastance->Text = L"mmHg/ml";
+			   this->lblUnitElastance->Text = L"mmHg / ml";
 			   // 
 			   // lblUnitVelocity
 			   // 
@@ -999,9 +996,9 @@ namespace CavaSystem {
 			   this->lblRate->ForeColor = System::Drawing::Color::White;
 			   this->lblRate->Location = System::Drawing::Point(11, 216);
 			   this->lblRate->Name = L"lblRate";
-			   this->lblRate->Size = System::Drawing::Size(176, 19);
+			   this->lblRate->Size = System::Drawing::Size(185, 19);
 			   this->lblRate->TabIndex = 167;
-			   this->lblRate->Text = L"Max. O2 consumtion rate";
+			   this->lblRate->Text = L"Max. O2 consumption rate";
 			   // 
 			   // lblConcentration
 			   // 
@@ -1970,7 +1967,10 @@ namespace CavaSystem {
 			   this->pnTissue->AutoScroll = true;
 			   this->pnTissue->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
-			   this->pnTissue->Controls->Add(this->lblUnitConsumption);
+			   this->pnTissue->Controls->Add(this->lblUnitConsumption2);
+			   this->pnTissue->Controls->Add(this->lblUnitConsumption3);
+			   this->pnTissue->Controls->Add(this->lblUnitConsumption4);
+			   this->pnTissue->Controls->Add(this->lblUnitConsumption1);
 			   this->pnTissue->Controls->Add(this->lblNumConsumption);
 			   this->pnTissue->Controls->Add(this->lblConsumption);
 			   this->pnTissue->Controls->Add(this->lblUnitTPartial);
@@ -1981,19 +1981,61 @@ namespace CavaSystem {
 			   this->pnTissue->Size = System::Drawing::Size(347, 161);
 			   this->pnTissue->TabIndex = 101;
 			   // 
-			   // lblUnitConsumption
+			   // lblUnitConsumption2
 			   // 
-			   this->lblUnitConsumption->AutoSize = true;
-			   this->lblUnitConsumption->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)),
+			   this->lblUnitConsumption2->AutoSize = true;
+			   this->lblUnitConsumption2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)));
-			   this->lblUnitConsumption->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular,
+			   this->lblUnitConsumption2->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 8, System::Drawing::FontStyle::Regular,
 				   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->lblUnitConsumption->ForeColor = System::Drawing::Color::White;
-			   this->lblUnitConsumption->Location = System::Drawing::Point(239, 37);
-			   this->lblUnitConsumption->Name = L"lblUnitConsumption";
-			   this->lblUnitConsumption->Size = System::Drawing::Size(55, 19);
-			   this->lblUnitConsumption->TabIndex = 171;
-			   this->lblUnitConsumption->Text = L"mmHg";
+			   this->lblUnitConsumption2->ForeColor = System::Drawing::Color::White;
+			   this->lblUnitConsumption2->Location = System::Drawing::Point(258, 47);
+			   this->lblUnitConsumption2->Name = L"lblUnitConsumption2";
+			   this->lblUnitConsumption2->Size = System::Drawing::Size(20, 13);
+			   this->lblUnitConsumption2->TabIndex = 290;
+			   this->lblUnitConsumption2->Text = L"O2";
+			   // 
+			   // lblUnitConsumption3
+			   // 
+			   this->lblUnitConsumption3->AutoSize = true;
+			   this->lblUnitConsumption3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)));
+			   this->lblUnitConsumption3->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular,
+				   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->lblUnitConsumption3->ForeColor = System::Drawing::Color::White;
+			   this->lblUnitConsumption3->Location = System::Drawing::Point(274, 37);
+			   this->lblUnitConsumption3->Name = L"lblUnitConsumption3";
+			   this->lblUnitConsumption3->Size = System::Drawing::Size(45, 19);
+			   this->lblUnitConsumption3->TabIndex = 289;
+			   this->lblUnitConsumption3->Text = L"/ (cm";
+			   // 
+			   // lblUnitConsumption4
+			   // 
+			   this->lblUnitConsumption4->AutoSize = true;
+			   this->lblUnitConsumption4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)));
+			   this->lblUnitConsumption4->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular,
+				   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->lblUnitConsumption4->ForeColor = System::Drawing::Color::White;
+			   this->lblUnitConsumption4->Location = System::Drawing::Point(313, 37);
+			   this->lblUnitConsumption4->Name = L"lblUnitConsumption4";
+			   this->lblUnitConsumption4->Size = System::Drawing::Size(31, 19);
+			   this->lblUnitConsumption4->TabIndex = 288;
+			   this->lblUnitConsumption4->Text = L"· s)";
+			   // 
+			   // lblUnitConsumption1
+			   // 
+			   this->lblUnitConsumption1->AutoSize = true;
+			   this->lblUnitConsumption1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)));
+			   this->lblUnitConsumption1->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular,
+				   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->lblUnitConsumption1->ForeColor = System::Drawing::Color::White;
+			   this->lblUnitConsumption1->Location = System::Drawing::Point(237, 37);
+			   this->lblUnitConsumption1->Name = L"lblUnitConsumption1";
+			   this->lblUnitConsumption1->Size = System::Drawing::Size(30, 19);
+			   this->lblUnitConsumption1->TabIndex = 287;
+			   this->lblUnitConsumption1->Text = L"ml ";
 			   // 
 			   // lblNumConsumption
 			   // 
@@ -2019,9 +2061,9 @@ namespace CavaSystem {
 			   this->lblConsumption->ForeColor = System::Drawing::Color::White;
 			   this->lblConsumption->Location = System::Drawing::Point(15, 37);
 			   this->lblConsumption->Name = L"lblConsumption";
-			   this->lblConsumption->Size = System::Drawing::Size(117, 19);
+			   this->lblConsumption->Size = System::Drawing::Size(149, 19);
 			   this->lblConsumption->TabIndex = 169;
-			   this->lblConsumption->Text = L"O2 consumption";
+			   this->lblConsumption->Text = L"O2 consumption rate";
 			   // 
 			   // lblUnitTPartial
 			   // 

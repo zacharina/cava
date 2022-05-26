@@ -95,10 +95,10 @@ private:
 	double _start_velocity = 424.4; //microm/s
 	double _velocity_coefficient = 1;
 	void Windkessel(double time); 
-	double _viscosity = 0.01 * 10000; //microm/s
+	double _viscosity = 6.65; //mPa*s
 	double _number_of_vessels = 1; 
 	double _vessel_length = 66.8; //microm
-	double _young_modulus = 400; //kPa
+	double _young_modulus = 3000; //mmHg
 	double _vessel_thickness = 200; //microm
 	double _blood_density = 1.060; //g/cm3
 	double _initial_systolic_pressure = 80; //mmHg

@@ -74,9 +74,9 @@ void BloodVessel::Windkessel(double time)
 		coefficient_1 = 0.2057;
 		coefficient_2 = 0.0392;
 	}
-	resistance = (coefficient_1 / coefficient_2 - 1) * (8 * _viscosity * _vessel_length / (PI * pow(_vessel_radius, 4)));
-	inertance = (coefficient_1 - coefficient_2) * (8 * _blood_density * _vessel_length) / (PI * pow(_vessel_radius, 2));
-	compliance = (3.0 * PI * pow(_vessel_radius, 3) * _vessel_length) / (2.0 * _young_modulus * _vessel_thickness);
+	resistance = (7500.617 / 1000) * (coefficient_1 / coefficient_2 - 1) * (8 * _viscosity * _vessel_length / (PI * pow(_vessel_radius, 4) * _number_of_vessels));
+	inertance = (101325.0 / (760.0 * 1000)) * (coefficient_1 - coefficient_2) * (8 * _blood_density * _vessel_length) / (PI * pow(_vessel_radius, 2) * _number_of_vessels);
+	compliance = pow(10, -12) * (3.0 * PI * pow(_vessel_radius, 3) * _vessel_length) / (2.0 * _young_modulus * _vessel_thickness * _number_of_vessels);
 	elastance = (_young_modulus * _vessel_thickness) / (2 * PI * pow(_vessel_radius, 3) * _vessel_length * _number_of_vessels);
 
 	double subtotal = exp(-time / (resistance * compliance));
