@@ -7,7 +7,7 @@
 
 #include<iostream>
 #include<fstream>
-
+#include <regex>
 
 namespace CavaSystem {
 
@@ -681,14 +681,9 @@ private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) 
 	blood_form->UpdateResistance(std::ceil(human_ptr->blood_vessel->resistance * 100.0) / 100.0);
 	blood_form->UpdateInertance(std::ceil(human_ptr->blood_vessel->inertance * 100.0) / 100.0);
 	blood_form->UpdateCompliance(std::ceil(human_ptr->blood_vessel->compliance * 100.0) / 100.0);
+	blood_form->UpdateElastance(std::ceil(human_ptr->blood_vessel->elastance * 100.0) / 100.0);
 	blood_form->UpdatePartialPressureTissue(std::ceil(human_ptr->blood_vessel->partial_pressure_tissue * 100.0) / 100.0);
 	blood_form->UpdateConsumptionRate(std::ceil(human_ptr->blood_vessel->oxygen_consumption_tissue * 100.0) / 100.0);
-	
-	/*fstream file;
-	file.open("systolic_pressure.txt", ios::out | ios::app);
-	string message = to_string(human_ptr->blood_vessel->systolic_pressure);
-	file << message << endl;
-	file.close();*/
 }
 
 };

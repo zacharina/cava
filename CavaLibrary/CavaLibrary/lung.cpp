@@ -200,7 +200,7 @@ void Lung::ResetAirMassFlow()
 void Lung::Airflow(double temperature, int inflow)
 {
 	double flow_coefficient = -1;
-	if (!inflow)
+	if (inflow == 1)
 		flow_coefficient = 1;
 
 	double kelvin_temperature = 274.15 + temperature;

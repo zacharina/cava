@@ -50,8 +50,6 @@ namespace CavaSystem {
 	private: System::Windows::Forms::Label^ lblPreset;
     private: System::Windows::Forms::Label^ lblResRate;
     private: System::Windows::Forms::Label^ lblFlowRate;
-    private: System::Windows::Forms::Label^ lblMaleLength;
-    private: System::Windows::Forms::Label^ lblFemaleLength;
     private: System::Windows::Forms::Label^ lblBlock;
     private: System::Windows::Forms::Label^ lblMeanFlow;
     private: System::Windows::Forms::Label^ lblVis;
@@ -67,8 +65,6 @@ namespace CavaSystem {
     private: System::Windows::Forms::Label^ lblNumFlowRate;
     private: System::Windows::Forms::Label^ lblNumOxygen;
     private: System::Windows::Forms::Label^ lblUnitFlowRate;
-    private: System::Windows::Forms::Label^ lblUnitMaleLength;
-    private: System::Windows::Forms::Label^ lblUnitFemaleLength;
     private: System::Windows::Forms::Label^ lblUnitBlock;
     private: System::Windows::Forms::Label^ lbUnitOxygen;
     private: System::Windows::Forms::Label^ lblUnitOxygen;
@@ -76,27 +72,17 @@ namespace CavaSystem {
     private: System::Windows::Forms::NumericUpDown^ numVis;
     private: System::Windows::Forms::NumericUpDown^ numSpeed;
     private: System::Windows::Forms::NumericUpDown^ numDiameter;
-    private: System::Windows::Forms::NumericUpDown^ numMaleLength;
-    private: System::Windows::Forms::NumericUpDown^ numFemaleLength;
     private: System::Windows::Forms::NumericUpDown^ numBlock;
     private: System::Windows::Forms::Button^ cmdBack;
 	private: System::Windows::Forms::Button^ cmdResetVis;
 	private: System::Windows::Forms::Button^ cmdResetFlow;
 	private: System::Windows::Forms::Button^ cmdResetDiameter;
-    private: System::Windows::Forms::Button^ cmdMaleLength;
-    private: System::Windows::Forms::Button^ cmdFemaleLength;
     private: System::Windows::Forms::Button^ cmdBlock;
     private: System::Windows::Forms::Button^ cmdResetResRate;
     private: System::Windows::Forms::NumericUpDown^ numThickness;
-
     private: System::Windows::Forms::Button^ cmdThickness;
     private: System::Windows::Forms::Label^ lblUnitThickness;
     private: System::Windows::Forms::Label^ lblThickness;
-
-
-
-
-
     private: System::Windows::Forms::PictureBox^ picVis;
 
 #pragma region Windows Form Designer generated code
@@ -117,14 +103,6 @@ namespace CavaSystem {
                this->cmdThickness = (gcnew System::Windows::Forms::Button());
                this->lblUnitThickness = (gcnew System::Windows::Forms::Label());
                this->lblThickness = (gcnew System::Windows::Forms::Label());
-               this->numMaleLength = (gcnew System::Windows::Forms::NumericUpDown());
-               this->cmdMaleLength = (gcnew System::Windows::Forms::Button());
-               this->lblUnitMaleLength = (gcnew System::Windows::Forms::Label());
-               this->lblMaleLength = (gcnew System::Windows::Forms::Label());
-               this->numFemaleLength = (gcnew System::Windows::Forms::NumericUpDown());
-               this->cmdFemaleLength = (gcnew System::Windows::Forms::Button());
-               this->lblUnitFemaleLength = (gcnew System::Windows::Forms::Label());
-               this->lblFemaleLength = (gcnew System::Windows::Forms::Label());
                this->numBlock = (gcnew System::Windows::Forms::NumericUpDown());
                this->cmdBlock = (gcnew System::Windows::Forms::Button());
                this->lblUnitBlock = (gcnew System::Windows::Forms::Label());
@@ -159,8 +137,6 @@ namespace CavaSystem {
                this->pnPreset->SuspendLayout();
                this->pnParameters->SuspendLayout();
                (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numThickness))->BeginInit();
-               (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numMaleLength))->BeginInit();
-               (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numFemaleLength))->BeginInit();
                (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numBlock))->BeginInit();
                (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numResRate))->BeginInit();
                (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numVis))->BeginInit();
@@ -302,14 +278,6 @@ namespace CavaSystem {
                this->pnParameters->Controls->Add(this->cmdThickness);
                this->pnParameters->Controls->Add(this->lblUnitThickness);
                this->pnParameters->Controls->Add(this->lblThickness);
-               this->pnParameters->Controls->Add(this->numMaleLength);
-               this->pnParameters->Controls->Add(this->cmdMaleLength);
-               this->pnParameters->Controls->Add(this->lblUnitMaleLength);
-               this->pnParameters->Controls->Add(this->lblMaleLength);
-               this->pnParameters->Controls->Add(this->numFemaleLength);
-               this->pnParameters->Controls->Add(this->cmdFemaleLength);
-               this->pnParameters->Controls->Add(this->lblUnitFemaleLength);
-               this->pnParameters->Controls->Add(this->lblFemaleLength);
                this->pnParameters->Controls->Add(this->numBlock);
                this->pnParameters->Controls->Add(this->cmdBlock);
                this->pnParameters->Controls->Add(this->lblUnitBlock);
@@ -336,7 +304,7 @@ namespace CavaSystem {
                this->pnParameters->Controls->Add(this->lblTracheal);
                this->pnParameters->Location = System::Drawing::Point(144, 248);
                this->pnParameters->Name = L"pnParameters";
-               this->pnParameters->Size = System::Drawing::Size(799, 266);
+               this->pnParameters->Size = System::Drawing::Size(799, 204);
                this->pnParameters->TabIndex = 45;
                // 
                // numThickness
@@ -347,7 +315,7 @@ namespace CavaSystem {
                this->numThickness->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 11.25F, System::Drawing::FontStyle::Regular,
                    System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
                this->numThickness->ForeColor = System::Drawing::Color::White;
-               this->numThickness->Location = System::Drawing::Point(177, 237);
+               this->numThickness->Location = System::Drawing::Point(177, 174);
                this->numThickness->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 200, 0, 0, 0 });
                this->numThickness->Name = L"numThickness";
                this->numThickness->Size = System::Drawing::Size(134, 26);
@@ -366,7 +334,7 @@ namespace CavaSystem {
                    static_cast<System::Byte>(0)));
                this->cmdThickness->ForeColor = System::Drawing::Color::White;
                this->cmdThickness->ImageAlign = System::Drawing::ContentAlignment::BottomCenter;
-               this->cmdThickness->Location = System::Drawing::Point(403, 238);
+               this->cmdThickness->Location = System::Drawing::Point(403, 175);
                this->cmdThickness->Name = L"cmdThickness";
                this->cmdThickness->Size = System::Drawing::Size(59, 22);
                this->cmdThickness->TabIndex = 92;
@@ -381,7 +349,7 @@ namespace CavaSystem {
                this->lblUnitThickness->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular,
                    System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
                this->lblUnitThickness->ForeColor = System::Drawing::Color::White;
-               this->lblUnitThickness->Location = System::Drawing::Point(324, 238);
+               this->lblUnitThickness->Location = System::Drawing::Point(324, 175);
                this->lblUnitThickness->Name = L"lblUnitThickness";
                this->lblUnitThickness->Size = System::Drawing::Size(37, 19);
                this->lblUnitThickness->TabIndex = 91;
@@ -395,135 +363,11 @@ namespace CavaSystem {
                this->lblThickness->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                    static_cast<System::Byte>(0)));
                this->lblThickness->ForeColor = System::Drawing::Color::White;
-               this->lblThickness->Location = System::Drawing::Point(12, 238);
+               this->lblThickness->Location = System::Drawing::Point(12, 175);
                this->lblThickness->Name = L"lblThickness";
                this->lblThickness->Size = System::Drawing::Size(114, 19);
                this->lblThickness->TabIndex = 90;
                this->lblThickness->Text = L"Outer Thickness";
-               // 
-               // numMaleLength
-               // 
-               this->numMaleLength->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(33)), static_cast<System::Int32>(static_cast<System::Byte>(33)),
-                   static_cast<System::Int32>(static_cast<System::Byte>(33)));
-               this->numMaleLength->DecimalPlaces = 2;
-               this->numMaleLength->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 11.25F, System::Drawing::FontStyle::Regular,
-                   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-               this->numMaleLength->ForeColor = System::Drawing::Color::White;
-               this->numMaleLength->Location = System::Drawing::Point(177, 205);
-               this->numMaleLength->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 200, 0, 0, 0 });
-               this->numMaleLength->Name = L"numMaleLength";
-               this->numMaleLength->Size = System::Drawing::Size(134, 26);
-               this->numMaleLength->TabIndex = 89;
-               this->numMaleLength->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
-               this->numMaleLength->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1051, 0, 0, 131072 });
-               this->numMaleLength->ValueChanged += gcnew System::EventHandler(this, &TracheaForm::numMaleLength_ValueChanged);
-               // 
-               // cmdMaleLength
-               // 
-               this->cmdMaleLength->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(33)), static_cast<System::Int32>(static_cast<System::Byte>(33)),
-                   static_cast<System::Int32>(static_cast<System::Byte>(33)));
-               this->cmdMaleLength->Cursor = System::Windows::Forms::Cursors::Default;
-               this->cmdMaleLength->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-               this->cmdMaleLength->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-                   static_cast<System::Byte>(0)));
-               this->cmdMaleLength->ForeColor = System::Drawing::Color::White;
-               this->cmdMaleLength->Location = System::Drawing::Point(403, 206);
-               this->cmdMaleLength->Name = L"cmdMaleLength";
-               this->cmdMaleLength->Size = System::Drawing::Size(59, 22);
-               this->cmdMaleLength->TabIndex = 88;
-               this->cmdMaleLength->Text = L"Reset";
-               this->cmdMaleLength->UseVisualStyleBackColor = false;
-               this->cmdMaleLength->Click += gcnew System::EventHandler(this, &TracheaForm::cmdMaleLength_Click);
-               // 
-               // lblUnitMaleLength
-               // 
-               this->lblUnitMaleLength->AutoSize = true;
-               this->lblUnitMaleLength->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)),
-                   static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)));
-               this->lblUnitMaleLength->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular,
-                   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-               this->lblUnitMaleLength->ForeColor = System::Drawing::Color::White;
-               this->lblUnitMaleLength->Location = System::Drawing::Point(324, 206);
-               this->lblUnitMaleLength->Name = L"lblUnitMaleLength";
-               this->lblUnitMaleLength->Size = System::Drawing::Size(30, 19);
-               this->lblUnitMaleLength->TabIndex = 87;
-               this->lblUnitMaleLength->Text = L"cm";
-               // 
-               // lblMaleLength
-               // 
-               this->lblMaleLength->AutoSize = true;
-               this->lblMaleLength->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
-                   static_cast<System::Int32>(static_cast<System::Byte>(40)));
-               this->lblMaleLength->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-                   static_cast<System::Byte>(0)));
-               this->lblMaleLength->ForeColor = System::Drawing::Color::White;
-               this->lblMaleLength->Location = System::Drawing::Point(12, 206);
-               this->lblMaleLength->Name = L"lblMaleLength";
-               this->lblMaleLength->Size = System::Drawing::Size(103, 19);
-               this->lblMaleLength->TabIndex = 86;
-               this->lblMaleLength->Text = L"Length (male)";
-               // 
-               // numFemaleLength
-               // 
-               this->numFemaleLength->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(33)), static_cast<System::Int32>(static_cast<System::Byte>(33)),
-                   static_cast<System::Int32>(static_cast<System::Byte>(33)));
-               this->numFemaleLength->DecimalPlaces = 2;
-               this->numFemaleLength->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 11.25F, System::Drawing::FontStyle::Regular,
-                   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-               this->numFemaleLength->ForeColor = System::Drawing::Color::White;
-               this->numFemaleLength->Location = System::Drawing::Point(177, 173);
-               this->numFemaleLength->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 200, 0, 0, 0 });
-               this->numFemaleLength->Name = L"numFemaleLength";
-               this->numFemaleLength->Size = System::Drawing::Size(134, 26);
-               this->numFemaleLength->TabIndex = 85;
-               this->numFemaleLength->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
-               this->numFemaleLength->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 983, 0, 0, 131072 });
-               this->numFemaleLength->ValueChanged += gcnew System::EventHandler(this, &TracheaForm::numFemaleLength_ValueChanged);
-               // 
-               // cmdFemaleLength
-               // 
-               this->cmdFemaleLength->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(33)), static_cast<System::Int32>(static_cast<System::Byte>(33)),
-                   static_cast<System::Int32>(static_cast<System::Byte>(33)));
-               this->cmdFemaleLength->Cursor = System::Windows::Forms::Cursors::Default;
-               this->cmdFemaleLength->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-               this->cmdFemaleLength->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-                   static_cast<System::Byte>(0)));
-               this->cmdFemaleLength->ForeColor = System::Drawing::Color::White;
-               this->cmdFemaleLength->Location = System::Drawing::Point(403, 174);
-               this->cmdFemaleLength->Name = L"cmdFemaleLength";
-               this->cmdFemaleLength->Size = System::Drawing::Size(59, 22);
-               this->cmdFemaleLength->TabIndex = 84;
-               this->cmdFemaleLength->Text = L"Reset";
-               this->cmdFemaleLength->UseVisualStyleBackColor = false;
-               this->cmdFemaleLength->Click += gcnew System::EventHandler(this, &TracheaForm::cmdFemaleLength_Click);
-               // 
-               // lblUnitFemaleLength
-               // 
-               this->lblUnitFemaleLength->AutoSize = true;
-               this->lblUnitFemaleLength->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)),
-                   static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)));
-               this->lblUnitFemaleLength->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular,
-                   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-               this->lblUnitFemaleLength->ForeColor = System::Drawing::Color::White;
-               this->lblUnitFemaleLength->Location = System::Drawing::Point(324, 174);
-               this->lblUnitFemaleLength->Name = L"lblUnitFemaleLength";
-               this->lblUnitFemaleLength->Size = System::Drawing::Size(30, 19);
-               this->lblUnitFemaleLength->TabIndex = 83;
-               this->lblUnitFemaleLength->Text = L"cm";
-               // 
-               // lblFemaleLength
-               // 
-               this->lblFemaleLength->AutoSize = true;
-               this->lblFemaleLength->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
-                   static_cast<System::Int32>(static_cast<System::Byte>(40)));
-               this->lblFemaleLength->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-                   static_cast<System::Byte>(0)));
-               this->lblFemaleLength->ForeColor = System::Drawing::Color::White;
-               this->lblFemaleLength->Location = System::Drawing::Point(12, 174);
-               this->lblFemaleLength->Name = L"lblFemaleLength";
-               this->lblFemaleLength->Size = System::Drawing::Size(115, 19);
-               this->lblFemaleLength->TabIndex = 82;
-               this->lblFemaleLength->Text = L"Length (female)";
                // 
                // numBlock
                // 
@@ -962,7 +806,7 @@ namespace CavaSystem {
                this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
                this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(33)), static_cast<System::Int32>(static_cast<System::Byte>(33)),
                    static_cast<System::Int32>(static_cast<System::Byte>(33)));
-               this->ClientSize = System::Drawing::Size(1153, 522);
+               this->ClientSize = System::Drawing::Size(1153, 473);
                this->Controls->Add(this->pnOxValues);
                this->Controls->Add(this->picVis);
                this->Controls->Add(this->pnParameters);
@@ -981,8 +825,6 @@ namespace CavaSystem {
                this->pnParameters->ResumeLayout(false);
                this->pnParameters->PerformLayout();
                (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numThickness))->EndInit();
-               (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numMaleLength))->EndInit();
-               (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numFemaleLength))->EndInit();
                (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numBlock))->EndInit();
                (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numResRate))->EndInit();
                (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numVis))->EndInit();
@@ -1003,8 +845,6 @@ namespace CavaSystem {
 		Decimal GetViscosityOfAir();
 		Decimal GetRespiratoryRate();
 		Decimal GetBlockPercentage();
-        Decimal GetFemaleLength();
-        Decimal GetMaleLength();
         Decimal GetOuterThickness();
 		System::Void UpdateFlowRate(double new_flow_rate);
 		System::Void UpdateOxygen(double oxygen);
@@ -1033,14 +873,6 @@ private: System::Void cmdResetVis_Click(System::Object^ sender, System::EventArg
 private: System::Void cmdResetResRate_Click(System::Object^ sender, System::EventArgs^ e) {
 	numResRate->Value = 16;
 }
-private: System::Void cmdFemaleLength_Click(System::Object^ sender, System::EventArgs^ e) {
-    double tmp_value = 9.83;
-    numFemaleLength->Value = (Decimal)tmp_value;
-}
-private: System::Void cmdMaleLength_Click(System::Object^ sender, System::EventArgs^ e) {
-    double tmp_value = 10.51;
-    numMaleLength->Value = (Decimal)tmp_value;
-}
 private: System::Void cmdThickness_Click(System::Object^ sender, System::EventArgs^ e) {
     numThickness->Value = 3;
 }
@@ -1058,12 +890,6 @@ private: System::Void numVis_ValueChanged(System::Object^ sender, System::EventA
 }
 private: System::Void numResRate_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
     human_parent_ptr->trachea->RespiratoryRate((double)numResRate->Value);
-}
-private: System::Void numFemaleLength_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-    human_parent_ptr->trachea->LengthFemale((double)numFemaleLength->Value);
-}
-private: System::Void numMaleLength_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-    human_parent_ptr->trachea->LengthMale((double)numMaleLength->Value);
 }
 private: System::Void numThickness_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
     human_parent_ptr->trachea->OuterThickness((double)numThickness->Value);

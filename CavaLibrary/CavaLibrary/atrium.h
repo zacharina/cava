@@ -5,10 +5,9 @@
 class __declspec(dllexport) Atrium
 {
 public:
-	Atrium(double cycle_duration, double volume, double volume_over_time[9]) {
+	Atrium(double cycle_duration, double volume_over_time[9]) {
 		_cycle_duration = cycle_duration;
 		_atrial_duration = 0.8 * cycle_duration;
-		_volume = volume;
 		for (int i = 0; i < 9; i++)
 			_volume_over_time[i] = volume_over_time[i];
 	};
@@ -58,7 +57,7 @@ private:
 	double _minimum_elastance = 0.2; //mmHg/ml
 	double _maximum_elastance = 0.3; //mmHg/ml
 	double _volume_at_zero_pressure = 5.0; //cm3
-	double _radius_at_zero_pressure = 0; //cm
+	double _radius_at_zero_pressure = 0.0; //cm
 	double _volume = 0.0; //cm3
 	double _volume_over_time[9] = { 0 }; //ml
 	

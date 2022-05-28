@@ -9,10 +9,10 @@ class __declspec(dllexport) Heart : public BodyPart
 {
 public:
 	Heart() : BodyPart() {
-		left_atrium = new Atrium(_cycle_duration, _volume_atrium_left, _left_atrial_volume_over_time);
-		right_atrium = new Atrium(_cycle_duration, _volume_atrium_right, _right_atrial_volume_over_time);
-		left_ventricle = new Ventricle(_volume_ventricle_left, 2.5, 1.15, _cycle_duration, _keytime_1, _keytime_2, _volume_ventricle_left_zero_pressure, _left_ventricular_volume_over_time);
-		right_ventricle = new Ventricle(_volume_ventricle_right, 1, 1.75, _cycle_duration, _keytime_1, _keytime_2, _volume_ventricle_right_zero_pressure, _right_ventricular_volume_over_time);
+		left_atrium = new Atrium(_cycle_duration, _left_atrial_volume_over_time);
+		right_atrium = new Atrium(_cycle_duration, _right_atrial_volume_over_time);
+		left_ventricle = new Ventricle(2.5, 1.15, _cycle_duration, _keytime_1, _keytime_2, _volume_ventricle_left_zero_pressure, _left_ventricular_volume_over_time);
+		right_ventricle = new Ventricle(1, 1.75, _cycle_duration, _keytime_1, _keytime_2, _volume_ventricle_right_zero_pressure, _right_ventricular_volume_over_time);
 	};
 	~Heart() {
 		delete left_atrium;
@@ -37,10 +37,6 @@ public:
 	double HeartRate();
 	double StrokeVolume();
 	double CycleDuration();
-	double VolumeAtriumLeft();
-	double VolumeAtriumRight();
-	double VolumeVentricleLeft();
-	double VolumeVentricleRight();
 	double RadiusSummandLV();
 	double RadiusSummandRV();
 
@@ -51,10 +47,6 @@ public:
 	void HeartRate(double new_heart_rate);
 	void StrokeVolume(double new_stroke_volume);
 	void CycleDuration(double new_cycle_duration);
-	void VolumeAtriumLeft(double new_volume_atrium_left);
-	void VolumeAtriumRight(double new_volume_atrium_right);
-	void VolumeVentricleLeft(double new_volume_ventricle_left);
-	void VolumeVentricleRight(double new_volume_ventricle_right);
 	void RadiusSummandLV(double new_radius_summand);
 	void RadiusSummandRV(double new_radius_summand);
 
@@ -65,10 +57,6 @@ public:
 	void ResetHeartRate();
 	void ResetStrokeVolume();
 	void ResetCycleDuration();
-	void ResetVolumeAtriumLeft();
-	void ResetVolumeAtriumRight();
-	void ResetVolumeVentricleLeft();
-	void ResetVolumeVentricleRight();
 	void ResetRadiusSummandLV();
 	void ResetRadiusSummandRV();
 	
@@ -78,25 +66,20 @@ private:
 	
 	double _aortic_valve_flow_rate = 242; //ml/s
 	double _mitral_valve_flow_rate = 450; //ml/s
-	double _pulmonary_valve_flow_rate = 150; //ml/s
+	double _pulmonary_valve_flow_rate = 100; //ml/s
 	double _tricuspid_valve_flow_rate = 260; //ml/s
 	
-	double _heart_rate = 70; //bpm // 1/min
+	double _heart_rate = 70; //bpm
 	double _stroke_volume = 0.08; //L
 	
 	double _cycle_duration = 0.8; //s
 	double _keytime_1 = 0.33 * _cycle_duration; //s
-	double _keytime_2 = 0.45 * _cycle_duration;//s
+	double _keytime_2 = 0.45 * _cycle_duration; //s
 	
-	double _volume_atrium_left = 30.0; //cm3
-	double _volume_atrium_right = 30.0; //cm3
-	double _volume_ventricle_left = 60.0; //cm3
-	double _volume_ventricle_right = 75.0; //cm3
 	double _volume_ventricle_left_zero_pressure = 15.0; //ml
 	double _volume_ventricle_right_zero_pressure = 40.0; //ml
-	double _volume = _volume_atrium_left + _volume_atrium_right + _volume_ventricle_left + _volume_ventricle_right; //cm3
+	double _volume = 0; //cm3
 
-	//Addends of by Mathematica solved equations
 	double _radius_addend_lv = 1; //left ventricle
 	double _radius_addend_rv = 1; //right ventricle
 

@@ -811,7 +811,7 @@ namespace CavaSystem {
                this->lblCoeff2->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                    static_cast<System::Byte>(0)));
                this->lblCoeff2->ForeColor = System::Drawing::Color::White;
-               this->lblCoeff2->Location = System::Drawing::Point(22, 490);
+               this->lblCoeff2->Location = System::Drawing::Point(15, 490);
                this->lblCoeff2->Name = L"lblCoeff2";
                this->lblCoeff2->Size = System::Drawing::Size(89, 19);
                this->lblCoeff2->TabIndex = 195;
@@ -825,7 +825,7 @@ namespace CavaSystem {
                this->lblCoeff1->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                    static_cast<System::Byte>(0)));
                this->lblCoeff1->ForeColor = System::Drawing::Color::White;
-               this->lblCoeff1->Location = System::Drawing::Point(22, 458);
+               this->lblCoeff1->Location = System::Drawing::Point(14, 458);
                this->lblCoeff1->Name = L"lblCoeff1";
                this->lblCoeff1->Size = System::Drawing::Size(87, 19);
                this->lblCoeff1->TabIndex = 194;
@@ -869,7 +869,7 @@ namespace CavaSystem {
                // 
                this->numDensity->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(33)), static_cast<System::Int32>(static_cast<System::Byte>(33)),
                    static_cast<System::Int32>(static_cast<System::Byte>(33)));
-               this->numDensity->DecimalPlaces = 4;
+               this->numDensity->DecimalPlaces = 2;
                this->numDensity->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                    static_cast<System::Byte>(0)));
                this->numDensity->ForeColor = System::Drawing::Color::White;
@@ -879,7 +879,7 @@ namespace CavaSystem {
                this->numDensity->Size = System::Drawing::Size(134, 26);
                this->numDensity->TabIndex = 186;
                this->numDensity->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
-               this->numDensity->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 10319, 0, 0, 262144 });
+               this->numDensity->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 106, 0, 0, 131072 });
                this->numDensity->ValueChanged += gcnew System::EventHandler(this, &HeartForm::numDensity_ValueChanged);
                // 
                // cmdDensity
@@ -921,7 +921,7 @@ namespace CavaSystem {
                this->lblDensity->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                    static_cast<System::Byte>(0)));
                this->lblDensity->ForeColor = System::Drawing::Color::White;
-               this->lblDensity->Location = System::Drawing::Point(22, 426);
+               this->lblDensity->Location = System::Drawing::Point(15, 426);
                this->lblDensity->Name = L"lblDensity";
                this->lblDensity->Size = System::Drawing::Size(159, 19);
                this->lblDensity->TabIndex = 180;
@@ -935,7 +935,7 @@ namespace CavaSystem {
                this->lblRVEnd->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                    static_cast<System::Byte>(0)));
                this->lblRVEnd->ForeColor = System::Drawing::Color::White;
-               this->lblRVEnd->Location = System::Drawing::Point(21, 394);
+               this->lblRVEnd->Location = System::Drawing::Point(14, 393);
                this->lblRVEnd->Name = L"lblRVEnd";
                this->lblRVEnd->Size = System::Drawing::Size(176, 19);
                this->lblRVEnd->TabIndex = 174;
@@ -1421,7 +1421,7 @@ namespace CavaSystem {
                this->lblLVEnd->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                    static_cast<System::Byte>(0)));
                this->lblLVEnd->ForeColor = System::Drawing::Color::White;
-               this->lblLVEnd->Location = System::Drawing::Point(20, 362);
+               this->lblLVEnd->Location = System::Drawing::Point(15, 362);
                this->lblLVEnd->Name = L"lblLVEnd";
                this->lblLVEnd->Size = System::Drawing::Size(174, 19);
                this->lblLVEnd->TabIndex = 119;
@@ -1435,7 +1435,7 @@ namespace CavaSystem {
                this->lblAtrialKey->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                    static_cast<System::Byte>(0)));
                this->lblAtrialKey->ForeColor = System::Drawing::Color::White;
-               this->lblAtrialKey->Location = System::Drawing::Point(21, 329);
+               this->lblAtrialKey->Location = System::Drawing::Point(15, 330);
                this->lblAtrialKey->Name = L"lblAtrialKey";
                this->lblAtrialKey->Size = System::Drawing::Size(107, 19);
                this->lblAtrialKey->TabIndex = 118;
@@ -1449,11 +1449,11 @@ namespace CavaSystem {
                this->lblVolume0->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                    static_cast<System::Byte>(0)));
                this->lblVolume0->ForeColor = System::Drawing::Color::White;
-               this->lblVolume0->Location = System::Drawing::Point(21, 298);
+               this->lblVolume0->Location = System::Drawing::Point(14, 297);
                this->lblVolume0->Name = L"lblVolume0";
-               this->lblVolume0->Size = System::Drawing::Size(151, 19);
+               this->lblVolume0->Size = System::Drawing::Size(179, 19);
                this->lblVolume0->TabIndex = 117;
-               this->lblVolume0->Text = L"Atrial volume at 0 Pa";
+               this->lblVolume0->Text = L"Atrial volume at 0 mmHg";
                // 
                // lblMaxElas
                // 
@@ -1463,7 +1463,7 @@ namespace CavaSystem {
                this->lblMaxElas->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                    static_cast<System::Byte>(0)));
                this->lblMaxElas->ForeColor = System::Drawing::Color::White;
-               this->lblMaxElas->Location = System::Drawing::Point(19, 266);
+               this->lblMaxElas->Location = System::Drawing::Point(13, 266);
                this->lblMaxElas->Name = L"lblMaxElas";
                this->lblMaxElas->Size = System::Drawing::Size(186, 19);
                this->lblMaxElas->TabIndex = 115;
@@ -1477,7 +1477,7 @@ namespace CavaSystem {
                this->lblMinElas->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                    static_cast<System::Byte>(0)));
                this->lblMinElas->ForeColor = System::Drawing::Color::White;
-               this->lblMinElas->Location = System::Drawing::Point(19, 234);
+               this->lblMinElas->Location = System::Drawing::Point(13, 234);
                this->lblMinElas->Name = L"lblMinElas";
                this->lblMinElas->Size = System::Drawing::Size(181, 19);
                this->lblMinElas->TabIndex = 114;
@@ -1491,7 +1491,7 @@ namespace CavaSystem {
                this->lblDuration->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                    static_cast<System::Byte>(0)));
                this->lblDuration->ForeColor = System::Drawing::Color::White;
-               this->lblDuration->Location = System::Drawing::Point(17, 202);
+               this->lblDuration->Location = System::Drawing::Point(13, 202);
                this->lblDuration->Name = L"lblDuration";
                this->lblDuration->Size = System::Drawing::Size(148, 19);
                this->lblDuration->TabIndex = 106;
@@ -2463,7 +2463,7 @@ namespace CavaSystem {
 		numRVEnd->Value = 1;
 	}
 	private: System::Void cmdDensity_Click(System::Object^ sender, System::EventArgs^ e) {
-		double tmp_value = 1.0319;
+		double tmp_value = 1.06;
 		numDensity->Value = (Decimal)tmp_value;
 	}
 	private: System::Void cmdCoeff1_Click(System::Object^ sender, System::EventArgs^ e) {

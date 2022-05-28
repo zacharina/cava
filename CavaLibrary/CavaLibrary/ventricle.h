@@ -5,11 +5,10 @@
 class __declspec(dllexport) Ventricle 
 {
 public:
-	Ventricle(double volume, double end_systolic_elastance, double coefficient, double cycle_duration, double keytime_1, double keytime_2, double volume_at_zero_pressure, double volume_over_time[9]) {
+	Ventricle(double end_systolic_elastance, double coefficient, double cycle_duration, double keytime_1, double keytime_2, double volume_at_zero_pressure, double volume_over_time[9]) {
 		_cycle_duration = cycle_duration;
 		_keytime_1 = keytime_1;
 		_keytime_2 = keytime_2;
-		_volume = volume;
 		_end_systolic_elastance = end_systolic_elastance;
 		_coefficient = coefficient;
 		_volume_at_zero_pressure = volume_at_zero_pressure;
@@ -23,10 +22,8 @@ public:
 	double pressure_passive = 0.0; //mmHg
 	double pressure = 0.0; //mmHg
 	double radius = 0.0; //cm
-	double radius_constant = 0.0; //cm
 
 	void Radius(double time, double addend, double valve_flow_rate_1, double valve_flow_rate_2);
-	void RadiusConstant();
 	void Pressure(double time, double factor);
 	void InflowInertance();
 
@@ -61,8 +58,8 @@ private:
 	double _coefficient = 0.0;
 	double _volume_over_time[9] = { 0 }; //ml
 
-	double _blood_density = 1.060; //g/cm3
-	double _inflow_length = 2;
+	double _blood_density = 1.06; //g/cm3
+	double _inflow_length = 0;
 	
 	double _scaling_coefficient = 8; 
 	double _cycle_duration = 0.0; //s

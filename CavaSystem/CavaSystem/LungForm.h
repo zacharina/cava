@@ -74,11 +74,11 @@ namespace CavaSystem {
 	private: System::Windows::Forms::Label^ lblNumOxygen;
 	private: System::Windows::Forms::Label^ lblUnitOxygen;
 	private: System::Windows::Forms::Label^ lblUnitOutflow1;
-	private: System::Windows::Forms::Label^ lblUnitOutflow2;
-	private: System::Windows::Forms::Label^ lblUnitOutflow3;
+
+
 	private: System::Windows::Forms::Label^ lblUnitInflow1;
-	private: System::Windows::Forms::Label^ lblUnitInflow2;
-	private: System::Windows::Forms::Label^ lblUnitInflow3;
+
+
 	private: System::Windows::Forms::Label^ lblUnitMassFlow;
 	private: System::Windows::Forms::Label^ lblUnitOxygenFlow1;
 	private: System::Windows::Forms::Label^ lblUnitOxygenFlow2;
@@ -144,15 +144,11 @@ namespace CavaSystem {
 			   this->lblMassFlow = (gcnew System::Windows::Forms::Label());
 			   this->numMassFlow = (gcnew System::Windows::Forms::NumericUpDown());
 			   this->cmdMassFlow = (gcnew System::Windows::Forms::Button());
-			   this->lblUnitOutflow2 = (gcnew System::Windows::Forms::Label());
-			   this->lblUnitOutflow3 = (gcnew System::Windows::Forms::Label());
 			   this->lblUnitOutflow1 = (gcnew System::Windows::Forms::Label());
-			   this->lblUnitInflow2 = (gcnew System::Windows::Forms::Label());
 			   this->lblOutflow = (gcnew System::Windows::Forms::Label());
 			   this->lblInflow = (gcnew System::Windows::Forms::Label());
 			   this->numOutflow = (gcnew System::Windows::Forms::NumericUpDown());
 			   this->cmdOutflow = (gcnew System::Windows::Forms::Button());
-			   this->lblUnitInflow3 = (gcnew System::Windows::Forms::Label());
 			   this->numInflow = (gcnew System::Windows::Forms::NumericUpDown());
 			   this->cmdInflow = (gcnew System::Windows::Forms::Button());
 			   this->lblUnitInflow1 = (gcnew System::Windows::Forms::Label());
@@ -369,15 +365,11 @@ namespace CavaSystem {
 			   this->pnParameters->Controls->Add(this->lblMassFlow);
 			   this->pnParameters->Controls->Add(this->numMassFlow);
 			   this->pnParameters->Controls->Add(this->cmdMassFlow);
-			   this->pnParameters->Controls->Add(this->lblUnitOutflow2);
-			   this->pnParameters->Controls->Add(this->lblUnitOutflow3);
 			   this->pnParameters->Controls->Add(this->lblUnitOutflow1);
-			   this->pnParameters->Controls->Add(this->lblUnitInflow2);
 			   this->pnParameters->Controls->Add(this->lblOutflow);
 			   this->pnParameters->Controls->Add(this->lblInflow);
 			   this->pnParameters->Controls->Add(this->numOutflow);
 			   this->pnParameters->Controls->Add(this->cmdOutflow);
-			   this->pnParameters->Controls->Add(this->lblUnitInflow3);
 			   this->pnParameters->Controls->Add(this->numInflow);
 			   this->pnParameters->Controls->Add(this->cmdInflow);
 			   this->pnParameters->Controls->Add(this->lblUnitInflow1);
@@ -533,61 +525,19 @@ namespace CavaSystem {
 			   this->cmdMassFlow->UseVisualStyleBackColor = false;
 			   this->cmdMassFlow->Click += gcnew System::EventHandler(this, &LungForm::cmdMassFlow_Click);
 			   // 
-			   // lblUnitOutflow2
-			   // 
-			   this->lblUnitOutflow2->AutoSize = true;
-			   this->lblUnitOutflow2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
-				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
-			   this->lblUnitOutflow2->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->lblUnitOutflow2->ForeColor = System::Drawing::Color::White;
-			   this->lblUnitOutflow2->Location = System::Drawing::Point(357, 327);
-			   this->lblUnitOutflow2->Name = L"lblUnitOutflow2";
-			   this->lblUnitOutflow2->Size = System::Drawing::Size(12, 13);
-			   this->lblUnitOutflow2->TabIndex = 122;
-			   this->lblUnitOutflow2->Text = L"3";
-			   // 
-			   // lblUnitOutflow3
-			   // 
-			   this->lblUnitOutflow3->AutoSize = true;
-			   this->lblUnitOutflow3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
-				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
-			   this->lblUnitOutflow3->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->lblUnitOutflow3->ForeColor = System::Drawing::Color::White;
-			   this->lblUnitOutflow3->Location = System::Drawing::Point(364, 329);
-			   this->lblUnitOutflow3->Name = L"lblUnitOutflow3";
-			   this->lblUnitOutflow3->Size = System::Drawing::Size(32, 19);
-			   this->lblUnitOutflow3->TabIndex = 121;
-			   this->lblUnitOutflow3->Text = L"/Pa";
-			   // 
 			   // lblUnitOutflow1
 			   // 
 			   this->lblUnitOutflow1->AutoSize = true;
 			   this->lblUnitOutflow1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
-			   this->lblUnitOutflow1->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->lblUnitOutflow1->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 11, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->lblUnitOutflow1->ForeColor = System::Drawing::Color::White;
 			   this->lblUnitOutflow1->Location = System::Drawing::Point(339, 329);
 			   this->lblUnitOutflow1->Name = L"lblUnitOutflow1";
-			   this->lblUnitOutflow1->Size = System::Drawing::Size(23, 19);
+			   this->lblUnitOutflow1->Size = System::Drawing::Size(75, 18);
 			   this->lblUnitOutflow1->TabIndex = 120;
-			   this->lblUnitOutflow1->Text = L"m";
-			   // 
-			   // lblUnitInflow2
-			   // 
-			   this->lblUnitInflow2->AutoSize = true;
-			   this->lblUnitInflow2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
-				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
-			   this->lblUnitInflow2->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->lblUnitInflow2->ForeColor = System::Drawing::Color::White;
-			   this->lblUnitInflow2->Location = System::Drawing::Point(357, 297);
-			   this->lblUnitInflow2->Name = L"lblUnitInflow2";
-			   this->lblUnitInflow2->Size = System::Drawing::Size(12, 13);
-			   this->lblUnitInflow2->TabIndex = 119;
-			   this->lblUnitInflow2->Text = L"3";
+			   this->lblUnitOutflow1->Text = L"ml/cmH2O";
 			   // 
 			   // lblOutflow
 			   // 
@@ -653,20 +603,6 @@ namespace CavaSystem {
 			   this->cmdOutflow->UseVisualStyleBackColor = false;
 			   this->cmdOutflow->Click += gcnew System::EventHandler(this, &LungForm::cmdOutflow_Click);
 			   // 
-			   // lblUnitInflow3
-			   // 
-			   this->lblUnitInflow3->AutoSize = true;
-			   this->lblUnitInflow3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
-				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
-			   this->lblUnitInflow3->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->lblUnitInflow3->ForeColor = System::Drawing::Color::White;
-			   this->lblUnitInflow3->Location = System::Drawing::Point(364, 299);
-			   this->lblUnitInflow3->Name = L"lblUnitInflow3";
-			   this->lblUnitInflow3->Size = System::Drawing::Size(32, 19);
-			   this->lblUnitInflow3->TabIndex = 113;
-			   this->lblUnitInflow3->Text = L"/Pa";
-			   // 
 			   // numInflow
 			   // 
 			   this->numInflow->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(33)), static_cast<System::Int32>(static_cast<System::Byte>(33)),
@@ -706,14 +642,14 @@ namespace CavaSystem {
 			   this->lblUnitInflow1->AutoSize = true;
 			   this->lblUnitInflow1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
-			   this->lblUnitInflow1->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->lblUnitInflow1->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 11, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->lblUnitInflow1->ForeColor = System::Drawing::Color::White;
 			   this->lblUnitInflow1->Location = System::Drawing::Point(339, 299);
 			   this->lblUnitInflow1->Name = L"lblUnitInflow1";
-			   this->lblUnitInflow1->Size = System::Drawing::Size(23, 19);
+			   this->lblUnitInflow1->Size = System::Drawing::Size(75, 18);
 			   this->lblUnitInflow1->TabIndex = 110;
-			   this->lblUnitInflow1->Text = L"m";
+			   this->lblUnitInflow1->Text = L"ml/cmH2O";
 			   // 
 			   // lblRespComp
 			   // 
@@ -724,7 +660,7 @@ namespace CavaSystem {
 			   this->lblRespComp->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->lblRespComp->ForeColor = System::Drawing::Color::White;
-			   this->lblRespComp->Location = System::Drawing::Point(29, 267);
+			   this->lblRespComp->Location = System::Drawing::Point(11, 271);
 			   this->lblRespComp->Name = L"lblRespComp";
 			   this->lblRespComp->Size = System::Drawing::Size(181, 19);
 			   this->lblRespComp->TabIndex = 109;
@@ -752,7 +688,7 @@ namespace CavaSystem {
 			   this->lblNumThrottle2->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->lblNumThrottle2->ForeColor = System::Drawing::Color::White;
-			   this->lblNumThrottle2->Location = System::Drawing::Point(374, 10);
+			   this->lblNumThrottle2->Location = System::Drawing::Point(371, 10);
 			   this->lblNumThrottle2->Name = L"lblNumThrottle2";
 			   this->lblNumThrottle2->Size = System::Drawing::Size(12, 13);
 			   this->lblNumThrottle2->TabIndex = 105;
@@ -986,7 +922,7 @@ namespace CavaSystem {
 			   this->lblNumGas->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->lblNumGas->ForeColor = System::Drawing::Color::White;
-			   this->lblNumGas->Location = System::Drawing::Point(339, 107);
+			   this->lblNumGas->Location = System::Drawing::Point(339, 140);
 			   this->lblNumGas->Name = L"lblNumGas";
 			   this->lblNumGas->Size = System::Drawing::Size(71, 19);
 			   this->lblNumGas->TabIndex = 90;
@@ -1152,9 +1088,9 @@ namespace CavaSystem {
 			   this->lblNumDownPress->ForeColor = System::Drawing::Color::White;
 			   this->lblNumDownPress->Location = System::Drawing::Point(339, 75);
 			   this->lblNumDownPress->Name = L"lblNumDownPress";
-			   this->lblNumDownPress->Size = System::Drawing::Size(55, 19);
+			   this->lblNumDownPress->Size = System::Drawing::Size(57, 19);
 			   this->lblNumDownPress->TabIndex = 79;
-			   this->lblNumDownPress->Text = L"mmHg";
+			   this->lblNumDownPress->Text = L"cmH20";
 			   // 
 			   // lblNumUpPress
 			   // 
@@ -1166,9 +1102,9 @@ namespace CavaSystem {
 			   this->lblNumUpPress->ForeColor = System::Drawing::Color::White;
 			   this->lblNumUpPress->Location = System::Drawing::Point(339, 43);
 			   this->lblNumUpPress->Name = L"lblNumUpPress";
-			   this->lblNumUpPress->Size = System::Drawing::Size(55, 19);
+			   this->lblNumUpPress->Size = System::Drawing::Size(59, 19);
 			   this->lblNumUpPress->TabIndex = 78;
-			   this->lblNumUpPress->Text = L"mmHg";
+			   this->lblNumUpPress->Text = L"cmH2O";
 			   // 
 			   // lblNumThrottle1
 			   // 
@@ -1550,7 +1486,7 @@ namespace CavaSystem {
 		numOutflow->Value = 44;
 	}
 	private: System::Void cmdMassFlow_Click(System::Object^ sender, System::EventArgs^ e) {
-		double tmp_value = 1.2;
+		double tmp_value = 12;
 		numMassFlow->Value = (Decimal)tmp_value;
 	}
 	private: System::Void cmdCoefficient_Click(System::Object^ sender, System::EventArgs^ e) {

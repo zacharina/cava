@@ -29,6 +29,7 @@ void Heart::OxygenTransport(double time, int inflow, double& oxygen, HumanCharac
 
 	OxygenSaturation(human_characteristic);
 	Hemoglobin(human_characteristic);
+	Volume();
 	this->oxygen = OxygenContent(oxygen_saturation, hemoglobin_level, _volume);
 }
 
@@ -39,7 +40,7 @@ void Heart::FlowRate()
 
 void Heart::Volume()
 {
-	_volume = _volume_atrium_left + _volume_atrium_right + _volume_ventricle_left + _volume_ventricle_right;
+	_volume = right_atrium->Volume() + left_atrium->Volume() + right_ventricle->Volume() + left_ventricle->Volume();
 }
 
 void Heart::AorticValveFlowRate(double new_aortic_valve_flow_rate)
@@ -75,30 +76,6 @@ void Heart::StrokeVolume(double new_stroke_volume)
 void Heart::CycleDuration(double new_cycle_duration)
 {
 	_cycle_duration = new_cycle_duration;
-}
-
-void Heart::VolumeAtriumLeft(double new_volume_atrium_left)
-{
-	_volume_atrium_left = new_volume_atrium_left;
-	Volume();
-}
-
-void Heart::VolumeAtriumRight(double new_volume_atrium_right)
-{
-	_volume_atrium_right = new_volume_atrium_right;
-	Volume();
-}
-
-void Heart::VolumeVentricleLeft(double new_volume_ventricle_left)
-{
-	_volume_ventricle_left = new_volume_ventricle_left;
-	Volume();
-}
-
-void Heart::VolumeVentricleRight(double new_volume_ventricle_right)
-{
-	_volume_ventricle_right = new_volume_ventricle_right;
-	Volume();
 }
 
 void Heart::RadiusSummandLV(double new_radius_addend)
@@ -146,30 +123,6 @@ void Heart::ResetCycleDuration()
 	_cycle_duration = 0.8;
 }
 
-void Heart::ResetVolumeAtriumLeft()
-{
-	_volume_atrium_left = 5.0;
-	Volume();
-}
-
-void Heart::ResetVolumeAtriumRight()
-{
-	_volume_atrium_right = 5.0;
-	Volume();
-}
-
-void Heart::ResetVolumeVentricleLeft()
-{
-	_volume_ventricle_left = 15.0;
-	Volume();
-}
-
-void Heart::ResetVolumeVentricleRight()
-{
-	_volume_ventricle_right = 40.0;
-	Volume();
-}
-
 void Heart::ResetRadiusSummandLV()
 {
 	_radius_addend_lv = 1;
@@ -213,26 +166,6 @@ double Heart::StrokeVolume()
 double Heart::CycleDuration()
 {
 	return _cycle_duration;
-}
-
-double Heart::VolumeAtriumLeft()
-{
-	return _volume_atrium_left;
-}
-
-double Heart::VolumeAtriumRight()
-{
-	return _volume_atrium_right;
-}
-
-double Heart::VolumeVentricleLeft()
-{
-	return _volume_ventricle_left;
-}
-
-double Heart::VolumeVentricleRight()
-{
-	return _volume_ventricle_right;
 }
 
 double Heart::RadiusSummandLV()

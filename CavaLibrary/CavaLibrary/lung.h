@@ -59,18 +59,18 @@ private:
 	void Airflow(double temperature, int inflow);
 	void Pressure(double time, double temperature, int inflow, double summand);
 
-	double _air_mass_flow = 0.12; //kg/s
+	double _air_mass_flow = 0.12; //l/min
 	double _area_of_throttle = 32; //mm2
 	double _upstream_pressure = 55.74; //cmH20
-	double _downstream_pressure = 14; //cmH20
+	double _downstream_pressure = 14.0; //cmH20
 	double _critical_pressure_ratio = 0.528;  
 	double _atmospheric_density = 1.2; //kg/m3
 	double _gas_constant = 287; //J/(kg*K)
 	double _volume = 3.251; //l
 	double _mass_of_air = 0.00003; //kg
-	double _respiratory_compliance = 0.0; //m3/Pa
-	double _respiratory_compliance_inflow = 58;  //m3/Pa
-	double _respiratory_compliance_outflow = 44; //m3/Pa 
+	double _respiratory_compliance = 0.0; //ml/cmH2O
+	double _respiratory_compliance_inflow = 58;  //ml/cmH2O
+	double _respiratory_compliance_outflow = 44; //ml/cmH2O 
 	double _pressure_summand = 10;
 };
 

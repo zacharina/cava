@@ -18,23 +18,18 @@ public:
 	double ViscosityOfAir();
 	double MeanFlowSpeed();
 	double RespiratoryRate();
-	double Length();
 	double OuterThickness();
 
 	void TrachealDiameter(double new_tracheal_diameter);
 	void ViscosityOfAir(double new_viscosity_of_air);
 	void MeanFlowSpeed(double new_mean_flow_speed);
 	void RespiratoryRate(double new_respiratory_rate);
-	void LengthFemale(double new_length);
-	void LengthMale(double new_length);
 	void OuterThickness(double new_thickness);
 
 	void ResetTrachealDiameter();
 	void ResetViscosityOfAir();
 	void ResetMeanFlowSpeed();
 	void ResetBreathingTime();
-	void ResetLengthFemale();
-	void ResetLengthMale();
 	void ResetOuterThickness();
 
 private:
@@ -44,16 +39,13 @@ private:
 	void CrossSectionalArea();
 
 	double _tracheal_diameter = 18; //mm
-	double _length = 9.83; //cm
-	double _length_female = 9.83; //cm  
-	double _length_male = 10.51; //cm 
 	double _cross_sectional_area = 0; //mm2 
 	double _viscosity_of_air = 1.46 * 0.00001; //m2/s
 	double _reynolds_number = 0.0;
 	double _mean_flow_speed = 3.4; //m/s
 	double _respiratory_rate = 16; //bpm
 	double _breathing_time = 60 / _respiratory_rate; //s
-	double _inhalation_time = 0.5 * _breathing_time; //s
+	double _inhalation_time = 0.45 * _breathing_time; //s
 	double _womersley = 0.0;
 	double _outer_thickness = 3; //mm
 };

@@ -132,3 +132,8 @@ System::Void CavaSystem::BloodForm::UpdateConsumptionRate(double new_consumption
 {
     lblNumConsumption->Text = new_consumption.ToString();
 }
+
+System::Void CavaSystem::BloodForm::UpdateElastance(double new_elastance)
+{
+    lblElastance->Text = new_elastance.ToString();
+}

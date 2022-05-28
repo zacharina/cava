@@ -66,8 +66,6 @@ namespace CavaSystem {
 	private: System::Windows::Forms::Label^ lblRate;
 	private: System::Windows::Forms::Label^ lblFlowRate;
 	private: System::Windows::Forms::Label^ lblDensity;
-	private: System::Windows::Forms::Label^ lblThick;
-	private: System::Windows::Forms::Label^ lblLength;
 	private: System::Windows::Forms::Label^ lblNumber;
 	private: System::Windows::Forms::Label^ lblStartVel;
 	private: System::Windows::Forms::Label^ lblVelocity;
@@ -75,7 +73,6 @@ namespace CavaSystem {
 	private: System::Windows::Forms::Label^ lblDiaPressure;
 	private: System::Windows::Forms::Label^ lblConsumption;
 	private: System::Windows::Forms::Label^ lblTPartial;
-	private: System::Windows::Forms::Label^ lblNumLength;
 	private: System::Windows::Forms::Label^ lblNumBPartial;
 	private: System::Windows::Forms::Label^ lblNumDiaPressure;
 	private: System::Windows::Forms::Label^ lblNumOxygen;
@@ -109,7 +106,6 @@ namespace CavaSystem {
 	private: System::Windows::Forms::Label^ lblUnitIner2;
 	private: System::Windows::Forms::Label^ lblUnitIner3;
 	private: System::Windows::Forms::Label^ lblUnitResis1;
-
 	private: System::Windows::Forms::Label^ lblUnitResis3;
 	private: System::Windows::Forms::Label^ lblUnitInitSysPress;
 	private: System::Windows::Forms::Label^ lblUnitSysPressure;
@@ -121,9 +117,7 @@ namespace CavaSystem {
 	private: System::Windows::Forms::Label^ lblUnitConcentration;
 	private: System::Windows::Forms::Label^ lblUnitBinding;
 	private: System::Windows::Forms::Label^ lblUnitInitDiaPress;
-
 	private: System::Windows::Forms::NumericUpDown^ numDensity;
-	private: System::Windows::Forms::NumericUpDown^ numLength;
 	private: System::Windows::Forms::NumericUpDown^ numThick;
 	private: System::Windows::Forms::NumericUpDown^ numNumber;
 	private: System::Windows::Forms::NumericUpDown^ numStartVel;
@@ -141,7 +135,6 @@ namespace CavaSystem {
 	private: System::Windows::Forms::Button^ cmdDensity;
 	private: System::Windows::Forms::Button^ cmdThick;
 	private: System::Windows::Forms::Button^ cmdNumber;
-	private: System::Windows::Forms::Button^ cmdLength;
 	private: System::Windows::Forms::Button^ cmdStartVel;
 	private: System::Windows::Forms::Button^ cmdBinding;
 	private: System::Windows::Forms::Button^ cmdConcentration;
@@ -156,11 +149,18 @@ namespace CavaSystem {
 private: System::Windows::Forms::Label^ lblUnitConsumption2;
 private: System::Windows::Forms::Label^ lblUnitConsumption3;
 private: System::Windows::Forms::Label^ lblUnitConsumption4;
-
-
-
 private: System::Windows::Forms::Label^ lblUnitConsumption1;
+private: System::Windows::Forms::Label^ lblUnitThickness;
+private: System::Windows::Forms::NumericUpDown^ numThickness;
+private: System::Windows::Forms::Button^ cmdThickness;
+private: System::Windows::Forms::Label^ lblThickness;
+private: System::Windows::Forms::Label^ lblUnitLength;
+private: System::Windows::Forms::NumericUpDown^ numLength;
+private: System::Windows::Forms::Button^ cmdLength;
 
+
+
+private: System::Windows::Forms::Label^ lblLength;
 
 
 	private: System::Windows::Forms::PictureBox^ picVis;
@@ -223,11 +223,17 @@ private: System::Windows::Forms::Label^ lblUnitConsumption1;
 			   this->lblConcentration = (gcnew System::Windows::Forms::Label());
 			   this->lblInitDiaPress = (gcnew System::Windows::Forms::Label());
 			   this->lblDensity = (gcnew System::Windows::Forms::Label());
-			   this->lblThick = (gcnew System::Windows::Forms::Label());
-			   this->lblLength = (gcnew System::Windows::Forms::Label());
 			   this->lblNumber = (gcnew System::Windows::Forms::Label());
 			   this->lblStartVel = (gcnew System::Windows::Forms::Label());
 			   this->pnParameters = (gcnew System::Windows::Forms::Panel());
+			   this->lblUnitLength = (gcnew System::Windows::Forms::Label());
+			   this->numLength = (gcnew System::Windows::Forms::NumericUpDown());
+			   this->cmdLength = (gcnew System::Windows::Forms::Button());
+			   this->lblLength = (gcnew System::Windows::Forms::Label());
+			   this->lblUnitThickness = (gcnew System::Windows::Forms::Label());
+			   this->numThickness = (gcnew System::Windows::Forms::NumericUpDown());
+			   this->cmdThickness = (gcnew System::Windows::Forms::Button());
+			   this->lblThickness = (gcnew System::Windows::Forms::Label());
 			   this->lblUnitRate2 = (gcnew System::Windows::Forms::Label());
 			   this->numInitSysPress = (gcnew System::Windows::Forms::NumericUpDown());
 			   this->cmdInitSysPress = (gcnew System::Windows::Forms::Button());
@@ -270,9 +276,6 @@ private: System::Windows::Forms::Label^ lblUnitConsumption1;
 			   this->numThick = (gcnew System::Windows::Forms::NumericUpDown());
 			   this->cmdThick = (gcnew System::Windows::Forms::Button());
 			   this->lblUnitThick = (gcnew System::Windows::Forms::Label());
-			   this->numLength = (gcnew System::Windows::Forms::NumericUpDown());
-			   this->cmdLength = (gcnew System::Windows::Forms::Button());
-			   this->lblNumLength = (gcnew System::Windows::Forms::Label());
 			   this->numNumber = (gcnew System::Windows::Forms::NumericUpDown());
 			   this->cmdNumber = (gcnew System::Windows::Forms::Button());
 			   this->numStartVel = (gcnew System::Windows::Forms::NumericUpDown());
@@ -298,6 +301,8 @@ private: System::Windows::Forms::Label^ lblUnitConsumption1;
 			   this->pnOxygen->SuspendLayout();
 			   this->pnBloodVessel->SuspendLayout();
 			   this->pnParameters->SuspendLayout();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numLength))->BeginInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numThickness))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numInitSysPress))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numRate))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numMetabolic))->BeginInit();
@@ -310,7 +315,6 @@ private: System::Windows::Forms::Label^ lblUnitConsumption1;
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numInitDiaPress))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numDensity))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numThick))->BeginInit();
-			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numLength))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numNumber))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numStartVel))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picVis))->BeginInit();
@@ -325,9 +329,9 @@ private: System::Windows::Forms::Label^ lblUnitConsumption1;
 				   static_cast<System::Int32>(static_cast<System::Byte>(47)));
 			   this->pnPreset->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			   this->pnPreset->Controls->Add(this->lblParameters);
-			   this->pnPreset->Location = System::Drawing::Point(161, 354);
+			   this->pnPreset->Location = System::Drawing::Point(153, 354);
 			   this->pnPreset->Name = L"pnPreset";
-			   this->pnPreset->Size = System::Drawing::Size(964, 28);
+			   this->pnPreset->Size = System::Drawing::Size(972, 28);
 			   this->pnPreset->TabIndex = 96;
 			   // 
 			   // lblParameters
@@ -477,9 +481,9 @@ private: System::Windows::Forms::Label^ lblUnitConsumption1;
 			   this->pnBloodVessel->Controls->Add(this->lblNumDiaPressure);
 			   this->pnBloodVessel->Controls->Add(this->lblBPartial);
 			   this->pnBloodVessel->Controls->Add(this->lblDiaPressure);
-			   this->pnBloodVessel->Location = System::Drawing::Point(157, 170);
+			   this->pnBloodVessel->Location = System::Drawing::Point(153, 170);
 			   this->pnBloodVessel->Name = L"pnBloodVessel";
-			   this->pnBloodVessel->Size = System::Drawing::Size(607, 161);
+			   this->pnBloodVessel->Size = System::Drawing::Size(611, 161);
 			   this->pnBloodVessel->TabIndex = 100;
 			   // 
 			   // lblUnitSysPressure
@@ -686,7 +690,7 @@ private: System::Windows::Forms::Label^ lblUnitConsumption1;
 			   this->lblNumCompliance->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular,
 				   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->lblNumCompliance->ForeColor = System::Drawing::Color::White;
-			   this->lblNumCompliance->Location = System::Drawing::Point(449, 98);
+			   this->lblNumCompliance->Location = System::Drawing::Point(405, 98);
 			   this->lblNumCompliance->Name = L"lblNumCompliance";
 			   this->lblNumCompliance->Size = System::Drawing::Size(62, 19);
 			   this->lblNumCompliance->TabIndex = 116;
@@ -742,7 +746,7 @@ private: System::Windows::Forms::Label^ lblUnitConsumption1;
 			   this->lblNumElastance->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->lblNumElastance->ForeColor = System::Drawing::Color::White;
-			   this->lblNumElastance->Location = System::Drawing::Point(449, 67);
+			   this->lblNumElastance->Location = System::Drawing::Point(405, 65);
 			   this->lblNumElastance->Name = L"lblNumElastance";
 			   this->lblNumElastance->Size = System::Drawing::Size(62, 19);
 			   this->lblNumElastance->TabIndex = 110;
@@ -770,7 +774,7 @@ private: System::Windows::Forms::Label^ lblUnitConsumption1;
 			   this->lblNumIner->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->lblNumIner->ForeColor = System::Drawing::Color::White;
-			   this->lblNumIner->Location = System::Drawing::Point(449, 37);
+			   this->lblNumIner->Location = System::Drawing::Point(405, 37);
 			   this->lblNumIner->Name = L"lblNumIner";
 			   this->lblNumIner->Size = System::Drawing::Size(62, 19);
 			   this->lblNumIner->TabIndex = 108;
@@ -784,7 +788,7 @@ private: System::Windows::Forms::Label^ lblUnitConsumption1;
 			   this->lblNumResis->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->lblNumResis->ForeColor = System::Drawing::Color::White;
-			   this->lblNumResis->Location = System::Drawing::Point(449, 11);
+			   this->lblNumResis->Location = System::Drawing::Point(405, 9);
 			   this->lblNumResis->Name = L"lblNumResis";
 			   this->lblNumResis->Size = System::Drawing::Size(62, 19);
 			   this->lblNumResis->TabIndex = 107;
@@ -1042,34 +1046,6 @@ private: System::Windows::Forms::Label^ lblUnitConsumption1;
 			   this->lblDensity->TabIndex = 209;
 			   this->lblDensity->Text = L"Blood Density";
 			   // 
-			   // lblThick
-			   // 
-			   this->lblThick->AutoSize = true;
-			   this->lblThick->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
-				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
-			   this->lblThick->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->lblThick->ForeColor = System::Drawing::Color::White;
-			   this->lblThick->Location = System::Drawing::Point(11, -199);
-			   this->lblThick->Name = L"lblThick";
-			   this->lblThick->Size = System::Drawing::Size(118, 19);
-			   this->lblThick->TabIndex = 214;
-			   this->lblThick->Text = L"Vessel Thickness";
-			   // 
-			   // lblLength
-			   // 
-			   this->lblLength->AutoSize = true;
-			   this->lblLength->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
-				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
-			   this->lblLength->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->lblLength->ForeColor = System::Drawing::Color::White;
-			   this->lblLength->Location = System::Drawing::Point(11, -229);
-			   this->lblLength->Name = L"lblLength";
-			   this->lblLength->Size = System::Drawing::Size(100, 19);
-			   this->lblLength->TabIndex = 219;
-			   this->lblLength->Text = L"Vessel Length";
-			   // 
 			   // lblNumber
 			   // 
 			   this->lblNumber->AutoSize = true;
@@ -1104,6 +1080,14 @@ private: System::Windows::Forms::Label^ lblUnitConsumption1;
 			   this->pnParameters->AutoSize = true;
 			   this->pnParameters->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
+			   this->pnParameters->Controls->Add(this->lblUnitLength);
+			   this->pnParameters->Controls->Add(this->numLength);
+			   this->pnParameters->Controls->Add(this->cmdLength);
+			   this->pnParameters->Controls->Add(this->lblLength);
+			   this->pnParameters->Controls->Add(this->lblUnitThickness);
+			   this->pnParameters->Controls->Add(this->numThickness);
+			   this->pnParameters->Controls->Add(this->cmdThickness);
+			   this->pnParameters->Controls->Add(this->lblThickness);
 			   this->pnParameters->Controls->Add(this->lblUnitRate2);
 			   this->pnParameters->Controls->Add(this->numInitSysPress);
 			   this->pnParameters->Controls->Add(this->cmdInitSysPress);
@@ -1146,9 +1130,6 @@ private: System::Windows::Forms::Label^ lblUnitConsumption1;
 			   this->pnParameters->Controls->Add(this->numThick);
 			   this->pnParameters->Controls->Add(this->cmdThick);
 			   this->pnParameters->Controls->Add(this->lblUnitThick);
-			   this->pnParameters->Controls->Add(this->numLength);
-			   this->pnParameters->Controls->Add(this->cmdLength);
-			   this->pnParameters->Controls->Add(this->lblNumLength);
 			   this->pnParameters->Controls->Add(this->numNumber);
 			   this->pnParameters->Controls->Add(this->cmdNumber);
 			   this->pnParameters->Controls->Add(this->numStartVel);
@@ -1156,8 +1137,6 @@ private: System::Windows::Forms::Label^ lblUnitConsumption1;
 			   this->pnParameters->Controls->Add(this->lblNumStartVel);
 			   this->pnParameters->Controls->Add(this->lblStartVel);
 			   this->pnParameters->Controls->Add(this->lblNumber);
-			   this->pnParameters->Controls->Add(this->lblLength);
-			   this->pnParameters->Controls->Add(this->lblThick);
 			   this->pnParameters->Controls->Add(this->lblDensity);
 			   this->pnParameters->Controls->Add(this->lblInitDiaPress);
 			   this->pnParameters->Controls->Add(this->lblConcentration);
@@ -1168,10 +1147,134 @@ private: System::Windows::Forms::Label^ lblUnitConsumption1;
 			   this->pnParameters->Controls->Add(this->lblTRadius);
 			   this->pnParameters->Controls->Add(this->lblSaturation);
 			   this->pnParameters->Controls->Add(this->lblRBC);
-			   this->pnParameters->Location = System::Drawing::Point(161, 399);
+			   this->pnParameters->Location = System::Drawing::Point(153, 399);
 			   this->pnParameters->Name = L"pnParameters";
-			   this->pnParameters->Size = System::Drawing::Size(964, 250);
+			   this->pnParameters->Size = System::Drawing::Size(972, 307);
 			   this->pnParameters->TabIndex = 99;
+			   // 
+			   // lblUnitLength
+			   // 
+			   this->lblUnitLength->AutoSize = true;
+			   this->lblUnitLength->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
+			   this->lblUnitLength->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->lblUnitLength->ForeColor = System::Drawing::Color::White;
+			   this->lblUnitLength->Location = System::Drawing::Point(383, 281);
+			   this->lblUnitLength->Name = L"lblUnitLength";
+			   this->lblUnitLength->Size = System::Drawing::Size(30, 19);
+			   this->lblUnitLength->TabIndex = 294;
+			   this->lblUnitLength->Text = L"cm";
+			   // 
+			   // numLength
+			   // 
+			   this->numLength->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(33)), static_cast<System::Int32>(static_cast<System::Byte>(33)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(33)));
+			   this->numLength->DecimalPlaces = 5;
+			   this->numLength->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->numLength->ForeColor = System::Drawing::Color::White;
+			   this->numLength->Location = System::Drawing::Point(200, 278);
+			   this->numLength->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 20, 0, 0, 0 });
+			   this->numLength->Name = L"numLength";
+			   this->numLength->Size = System::Drawing::Size(155, 26);
+			   this->numLength->TabIndex = 293;
+			   this->numLength->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
+			   this->numLength->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 617, 0, 0, 458752 });
+			   this->numLength->ValueChanged += gcnew System::EventHandler(this, &BloodForm::numLength_ValueChanged);
+			   // 
+			   // cmdLength
+			   // 
+			   this->cmdLength->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(33)), static_cast<System::Int32>(static_cast<System::Byte>(33)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(33)));
+			   this->cmdLength->Cursor = System::Windows::Forms::Cursors::Default;
+			   this->cmdLength->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			   this->cmdLength->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->cmdLength->ForeColor = System::Drawing::Color::White;
+			   this->cmdLength->Location = System::Drawing::Point(530, 281);
+			   this->cmdLength->Name = L"cmdLength";
+			   this->cmdLength->Size = System::Drawing::Size(59, 23);
+			   this->cmdLength->TabIndex = 292;
+			   this->cmdLength->Text = L"Reset";
+			   this->cmdLength->UseVisualStyleBackColor = false;
+			   this->cmdLength->Click += gcnew System::EventHandler(this, &BloodForm::cmdLength_Click);
+			   // 
+			   // lblLength
+			   // 
+			   this->lblLength->AutoSize = true;
+			   this->lblLength->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
+			   this->lblLength->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->lblLength->ForeColor = System::Drawing::Color::White;
+			   this->lblLength->Location = System::Drawing::Point(10, 281);
+			   this->lblLength->Name = L"lblLength";
+			   this->lblLength->Size = System::Drawing::Size(100, 19);
+			   this->lblLength->TabIndex = 291;
+			   this->lblLength->Text = L"Vessel Length";
+			   // 
+			   // lblUnitThickness
+			   // 
+			   this->lblUnitThickness->AutoSize = true;
+			   this->lblUnitThickness->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
+			   this->lblUnitThickness->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular,
+				   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->lblUnitThickness->ForeColor = System::Drawing::Color::White;
+			   this->lblUnitThickness->Location = System::Drawing::Point(383, 249);
+			   this->lblUnitThickness->Name = L"lblUnitThickness";
+			   this->lblUnitThickness->Size = System::Drawing::Size(30, 19);
+			   this->lblUnitThickness->TabIndex = 290;
+			   this->lblUnitThickness->Text = L"cm";
+			   // 
+			   // numThickness
+			   // 
+			   this->numThickness->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(33)), static_cast<System::Int32>(static_cast<System::Byte>(33)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(33)));
+			   this->numThickness->DecimalPlaces = 5;
+			   this->numThickness->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 11.25F, System::Drawing::FontStyle::Regular,
+				   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->numThickness->ForeColor = System::Drawing::Color::White;
+			   this->numThickness->Location = System::Drawing::Point(200, 246);
+			   this->numThickness->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 20, 0, 0, 0 });
+			   this->numThickness->Name = L"numThickness";
+			   this->numThickness->Size = System::Drawing::Size(155, 26);
+			   this->numThickness->TabIndex = 289;
+			   this->numThickness->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
+			   this->numThickness->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 617, 0, 0, 458752 });
+			   this->numThickness->ValueChanged += gcnew System::EventHandler(this, &BloodForm::numThickness_ValueChanged);
+			   // 
+			   // cmdThickness
+			   // 
+			   this->cmdThickness->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(33)), static_cast<System::Int32>(static_cast<System::Byte>(33)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(33)));
+			   this->cmdThickness->Cursor = System::Windows::Forms::Cursors::Default;
+			   this->cmdThickness->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			   this->cmdThickness->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->cmdThickness->ForeColor = System::Drawing::Color::White;
+			   this->cmdThickness->Location = System::Drawing::Point(530, 249);
+			   this->cmdThickness->Name = L"cmdThickness";
+			   this->cmdThickness->Size = System::Drawing::Size(59, 23);
+			   this->cmdThickness->TabIndex = 288;
+			   this->cmdThickness->Text = L"Reset";
+			   this->cmdThickness->UseVisualStyleBackColor = false;
+			   this->cmdThickness->Click += gcnew System::EventHandler(this, &BloodForm::cmdThickness_Click);
+			   // 
+			   // lblThickness
+			   // 
+			   this->lblThickness->AutoSize = true;
+			   this->lblThickness->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
+			   this->lblThickness->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->lblThickness->ForeColor = System::Drawing::Color::White;
+			   this->lblThickness->Location = System::Drawing::Point(10, 249);
+			   this->lblThickness->Name = L"lblThickness";
+			   this->lblThickness->Size = System::Drawing::Size(118, 19);
+			   this->lblThickness->TabIndex = 287;
+			   this->lblThickness->Text = L"Vessel Thickness";
 			   // 
 			   // lblUnitRate2
 			   // 
@@ -1825,53 +1928,6 @@ private: System::Windows::Forms::Label^ lblUnitConsumption1;
 			   this->lblUnitThick->TabIndex = 239;
 			   this->lblUnitThick->Text = L"cm";
 			   // 
-			   // numLength
-			   // 
-			   this->numLength->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(33)), static_cast<System::Int32>(static_cast<System::Byte>(33)),
-				   static_cast<System::Int32>(static_cast<System::Byte>(33)));
-			   this->numLength->DecimalPlaces = 2;
-			   this->numLength->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->numLength->ForeColor = System::Drawing::Color::White;
-			   this->numLength->Location = System::Drawing::Point(208, -232);
-			   this->numLength->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 200, 0, 0, 0 });
-			   this->numLength->Name = L"numLength";
-			   this->numLength->Size = System::Drawing::Size(134, 26);
-			   this->numLength->TabIndex = 238;
-			   this->numLength->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
-			   this->numLength->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 4, 0, 0, 0 });
-			   // 
-			   // cmdLength
-			   // 
-			   this->cmdLength->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(33)), static_cast<System::Int32>(static_cast<System::Byte>(33)),
-				   static_cast<System::Int32>(static_cast<System::Byte>(33)));
-			   this->cmdLength->Cursor = System::Windows::Forms::Cursors::Default;
-			   this->cmdLength->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			   this->cmdLength->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->cmdLength->ForeColor = System::Drawing::Color::White;
-			   this->cmdLength->Location = System::Drawing::Point(525, -229);
-			   this->cmdLength->Name = L"cmdLength";
-			   this->cmdLength->Size = System::Drawing::Size(59, 23);
-			   this->cmdLength->TabIndex = 237;
-			   this->cmdLength->Text = L"Reset";
-			   this->cmdLength->UseVisualStyleBackColor = false;
-			   this->cmdLength->Click += gcnew System::EventHandler(this, &BloodForm::cmdLength_Click);
-			   // 
-			   // lblNumLength
-			   // 
-			   this->lblNumLength->AutoSize = true;
-			   this->lblNumLength->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
-				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
-			   this->lblNumLength->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->lblNumLength->ForeColor = System::Drawing::Color::White;
-			   this->lblNumLength->Location = System::Drawing::Point(352, -229);
-			   this->lblNumLength->Name = L"lblNumLength";
-			   this->lblNumLength->Size = System::Drawing::Size(30, 19);
-			   this->lblNumLength->TabIndex = 236;
-			   this->lblNumLength->Text = L"cm";
-			   // 
 			   // numNumber
 			   // 
 			   this->numNumber->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(33)), static_cast<System::Int32>(static_cast<System::Byte>(33)),
@@ -2112,9 +2168,9 @@ private: System::Windows::Forms::Label^ lblUnitConsumption1;
 			   this->pnBloodTop->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
 			   this->pnBloodTop->Controls->Add(this->lblBloodVessel);
-			   this->pnBloodTop->Location = System::Drawing::Point(157, 139);
+			   this->pnBloodTop->Location = System::Drawing::Point(153, 139);
 			   this->pnBloodTop->Name = L"pnBloodTop";
-			   this->pnBloodTop->Size = System::Drawing::Size(607, 35);
+			   this->pnBloodTop->Size = System::Drawing::Size(611, 35);
 			   this->pnBloodTop->TabIndex = 166;
 			   // 
 			   // lblBloodVessel
@@ -2161,7 +2217,7 @@ private: System::Windows::Forms::Label^ lblUnitConsumption1;
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(33)), static_cast<System::Int32>(static_cast<System::Byte>(33)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(33)));
-			   this->ClientSize = System::Drawing::Size(1161, 671);
+			   this->ClientSize = System::Drawing::Size(1161, 713);
 			   this->Controls->Add(this->pnTissue);
 			   this->Controls->Add(this->pnParameters);
 			   this->Controls->Add(this->pnPreset);
@@ -2184,6 +2240,8 @@ private: System::Windows::Forms::Label^ lblUnitConsumption1;
 			   this->pnBloodVessel->PerformLayout();
 			   this->pnParameters->ResumeLayout(false);
 			   this->pnParameters->PerformLayout();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numLength))->EndInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numThickness))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numInitSysPress))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numRate))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numMetabolic))->EndInit();
@@ -2196,7 +2254,6 @@ private: System::Windows::Forms::Label^ lblUnitConsumption1;
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numInitDiaPress))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numDensity))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numThick))->EndInit();
-			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numLength))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numNumber))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numStartVel))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picVis))->EndInit();
@@ -2239,6 +2296,7 @@ private: System::Windows::Forms::Label^ lblUnitConsumption1;
 		System::Void UpdateCompliance(double new_compliance);
 		System::Void UpdatePartialPressureTissue(double new_pressure);
 		System::Void UpdateConsumptionRate(double new_consumption);
+		System::Void UpdateElastance(double new_elastance);
 
 	private: System::Void cmdBack_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Hide();
@@ -2252,9 +2310,6 @@ private: System::Windows::Forms::Label^ lblUnitConsumption1;
 	}
 	private: System::Void cmdNumber_Click(System::Object^ sender, System::EventArgs^ e) {
 		numNumber->Value = 1;
-	}
-	private: System::Void cmdLength_Click(System::Object^ sender, System::EventArgs^ e) {
-		numLength->Value = 4;
 	}
 	private: System::Void cmdThick_Click(System::Object^ sender, System::EventArgs^ e) {
 		double tmp_value = 0.201;
@@ -2300,6 +2355,13 @@ private: System::Windows::Forms::Label^ lblUnitConsumption1;
 		double tmp_value = 0.0000617;
 		numRate->Value = (Decimal)tmp_value;
 	}
+private: System::Void cmdThickness_Click(System::Object^ sender, System::EventArgs^ e) {
+	double tmp_value = 0.02;
+	numThickness->Value = (Decimal)tmp_value;
+}
+private: System::Void cmdLength_Click(System::Object^ sender, System::EventArgs^ e) {
+	numThickness->Value = 1;
+}
 private: System::Void numSaturation_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
 	human_parent_ptr->blood_vessel->HemoglobinOxygenSaturation((double)numSaturation->Value);
 }
@@ -2320,6 +2382,12 @@ private: System::Void numInitSysPress_ValueChanged(System::Object^ sender, Syste
 }
 private: System::Void numRate_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
 	human_parent_ptr->blood_vessel->MaxConsumption((double)numRate->Value);
+}
+private: System::Void numThickness_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
+	human_parent_ptr->blood_vessel->VesselThickness((double)numThickness->Value);
+}
+private: System::Void numLength_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
+	human_parent_ptr->blood_vessel->VesselLength((double)numLength->Value);
 }
 };
 }

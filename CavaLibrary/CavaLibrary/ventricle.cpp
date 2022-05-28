@@ -16,11 +16,6 @@ void Ventricle::Radius(double time, double addend, double valve_flow_rate_1, dou
 	_inflow_length = 2 * radius;
 }
 
-void Ventricle::RadiusConstant()
-{
-	radius_constant = pow((3 * _volume) / (PI * _coefficient * _scaling_coefficient), 0.5);
-}
-
 void Ventricle::InflowInertance()
 {
 	inflow_inertance = _blood_density * _inflow_length / (PI * radius);

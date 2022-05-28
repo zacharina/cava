@@ -13,8 +13,8 @@ public:
 	void OxygenTransport(double time, int inflow, double& oxygen, HumanCharacteristic human_characteristic);
 	
 	double partial_pressure = 0.0; //mmHg
-	double diastolic_pressure = 0.0; //mmHg
-	double systolic_pressure = 0.0; //mmHg
+	double diastolic_pressure = 80.0; //mmHg
+	double systolic_pressure = 120.0; //mmHg
 	double velocity = 0.0; //microm/s
 	double resistance = 0.0; //mmHg
 	double inertance = 0.0; //mmHg*s2/ml
@@ -95,17 +95,17 @@ private:
 	double _start_velocity = 424.4; //microm/s
 	double _velocity_coefficient = 1;
 	void Windkessel(double time); 
-	double _viscosity = 6.65; //mPa*s
+	double _viscosity = 6.72; //mPa*s
 	double _number_of_vessels = 1; 
-	double _vessel_length = 66.8; //microm
+	double _vessel_length = 13.34545455;// 5.8; // 66.8; //microm
 	double _young_modulus = 3000; //mmHg
-	double _vessel_thickness = 200; //microm
+	double _vessel_thickness = 0.058535714;// 0.060; // 200; //microm
 	double _blood_density = 1.060; //g/cm3
 	double _initial_systolic_pressure = 80; //mmHg
 	double _initial_diastolic_pressure = 80; //mmHg
 	double _initial_inertance = 0.013; //mmHg*s2/ml
-	double _systolic_time = 0.33; //s
-	double _diastolic_time = 0.67;//s
+	double _systolic_time = 0.25 * _cycle_duration; //s
+	double _diastolic_time = 0.67 * _cycle_duration;//s
 	double _cycle_duration = 0.8; //s
 	
 	void OxygenFlow();
@@ -125,10 +125,10 @@ private:
 	double _bunsen_solubility_coefficient = 3 * 0.00001; //ml
 	
 	void PartialPressureTissue();
-	double _tissue_radius = 28.21; //microm
-	double _metabolic_rate = 0.4 * 0.0001; //kcal/(kg*d)
-	double _krogh_diffusion_coefficient = 2.41 * 0.000000001;
-	double _vessel_radius = 5.25; //microm
+	double _tissue_radius = _vessel_radius + _vessel_thickness;//28.21; //microm
+	double _metabolic_rate = 0.4 * 0.0001; //ml/ml/s
+	double _krogh_diffusion_coefficient = 3.5 * 0.0000000001; //cm2/s/atm 2.41 * 0.000000001;
+	double _vessel_radius = 0.481214286;//0.470;//5.25; //microm
 
 	void OxygenConsumptionTissue();
 	double _max_consumption_rate = 6.17 * 0.00001; //O2/(cm3*s)

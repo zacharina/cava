@@ -23,14 +23,6 @@ Decimal CavaSystem::TracheaForm::GetBlockPercentage() {
 	return numBlock->Value;
 }
 
-Decimal CavaSystem::TracheaForm::GetFemaleLength() {
-	return numFemaleLength->Value;
-}
-
-Decimal CavaSystem::TracheaForm::GetMaleLength() {
-	return numMaleLength->Value;
-}
-
 Decimal CavaSystem::TracheaForm::GetOuterThickness(){
 	return numThickness->Value;
 }

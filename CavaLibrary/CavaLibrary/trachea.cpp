@@ -55,11 +55,6 @@ double Trachea::RespiratoryRate()
 	return _respiratory_rate;
 }
 
-double Trachea::Length()
-{
-	return _length;
-}
-
 double Trachea::OuterThickness()
 {
 	return _outer_thickness;
@@ -85,16 +80,6 @@ void Trachea::RespiratoryRate(double new_respiratory_rate)
 	_respiratory_rate = new_respiratory_rate;
 }
 
-void Trachea::LengthFemale(double new_length)
-{
-	_length_female = new_length;
-}
-
-void Trachea::LengthMale(double new_length)
-{
-	_length_male = new_length;
-}
-
 void Trachea::OuterThickness(double new_thickness)
 {
 	_outer_thickness = new_thickness;
@@ -118,16 +103,6 @@ void Trachea::ResetMeanFlowSpeed()
 void Trachea::ResetBreathingTime()
 {
 	_breathing_time = 60;
-}
-
-void Trachea::ResetLengthFemale()
-{
-	_length_female = 9.83;
-}
-
-void Trachea::ResetLengthMale()
-{
-	_length_male = 10.51;
 }
 
 void Trachea::ResetOuterThickness()
