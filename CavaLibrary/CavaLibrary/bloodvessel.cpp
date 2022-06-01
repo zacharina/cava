@@ -63,7 +63,7 @@ void BloodVessel::PartialPressure()
 
 void BloodVessel::Velocity()
 {
-	velocity = 2 * _start_velocity * (_velocity_coefficient - pow(_tissue_radius, 2) / pow(_vessel_radius, 2));
+	velocity = 2 * _start_velocity * (_velocity_coefficient - pow(_vessel_thickness, 2) / pow(_vessel_radius, 2));
 }
 
 void BloodVessel::Windkessel(double time)
@@ -80,8 +80,19 @@ void BloodVessel::Windkessel(double time)
 	compliance = (3.0 * PI * pow(_vessel_radius, 3) * _vessel_length) / (2.0 * _young_modulus * _vessel_thickness);
 	elastance = (_young_modulus * _vessel_thickness) / (2 * PI * pow(_vessel_radius, 3) * _vessel_length * _number_of_vessels);
 
-	systolic_pressure = 120;
-	diastolic_pressure = 80;
+	double subtotal = exp(-time / (resistance * compliance));
+
+	if (time <= _systolic_time) {
+		double tmp_flow = _flow * _cycle_duration / (60 * (-_systolic_time * cos(time * PI / _systolic_time) / PI + _flow_addend));
+		systolic_pressure =  _initial_systolic_pressure * subtotal + (500.0)*(tmp_flow * time * compliance * PI * pow(resistance, 2)) / (pow(_systolic_time, 2) + pow(compliance, 2) * pow(PI, 2) * pow(resistance, 2)) * (1 + subtotal);
+		diastolic_pressure = 0;
+		//_initial_diastolic_pressure = systolic_pressure;
+	}
+	else {
+		diastolic_pressure = _diastolic_multiplier * _initial_diastolic_pressure * subtotal;
+		systolic_pressure = 0;
+		//_initial_systolic_pressure = diastolic_pressure;
+	}
 }
 
 void BloodVessel::OxygenFlow()
@@ -207,6 +218,16 @@ void BloodVessel::Viscosity(double new_viscosity)
 	_viscosity = new_viscosity;
 }
 
+void BloodVessel::Flow(double new_flow)
+{
+	_flow = new_flow;
+}
+
+void BloodVessel::FlowAddend(double new_addend)
+{
+	_flow_addend = new_addend;
+}
+
 void BloodVessel::ResetStartVelocity()
 {
 	_start_velocity = 424.4;
@@ -279,7 +300,7 @@ void BloodVessel::ResetRBCVelocity()
 
 void BloodVessel::ResetTissueRadius()
 {
-	_tissue_radius = 25;
+	_tissue_radius = _vessel_radius + _vessel_thickness;
 }
 
 void BloodVessel::ResetMetabolicRate()
@@ -305,6 +326,16 @@ void BloodVessel::ResetInitialInertance()
 void BloodVessel::ResetViscosity()
 {
 	_viscosity = 0.01 * 10000;
+}
+
+void BloodVessel::ResetFlow()
+{
+	_flow = 5;
+}
+
+void BloodVessel::ResetFlowAddend()
+{
+	_flow_addend = 0.0855;
 }
 
 double BloodVessel::StartVelocity()
@@ -405,4 +436,9 @@ double BloodVessel::InitialInertance()
 double BloodVessel::Viscosity()
 {
 	return _viscosity;
+}
+
+double BloodVessel::Flow()
+{
+	return _flow;
 }

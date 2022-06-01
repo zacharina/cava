@@ -47,6 +47,7 @@ public:
 	double MaxConsumption();
 	double InitialInertance();
 	double Viscosity();
+	double Flow();
 
 	void StartVelocity(double new_start_velocity);
 	void VelocityCoefficient(double new_velocity_coefficient);
@@ -68,6 +69,8 @@ public:
 	void MaxConsumption(double new_max_consumption);
 	void InitialInertance(double new_initial_inertance);
 	void Viscosity(double new_viscosity);
+	void Flow(double new_flow);
+	void FlowAddend(double new_addend);
 
 	void ResetStartVelocity();
 	void ResetVelocityCoefficient();
@@ -89,6 +92,8 @@ public:
 	void ResetMaxConsumption();
 	void ResetInitialInertance();
 	void ResetViscosity();
+	void ResetFlow();
+	void ResetFlowAddend();
 	
 private:
 	void Velocity();
@@ -97,16 +102,19 @@ private:
 	void Windkessel(double time); 
 	double _viscosity = 6.72; //mPa*s
 	double _number_of_vessels = 1; 
-	double _vessel_length = 13.34545455;// 5.8; // 66.8; //microm
+	double _vessel_length = 13.34545455; //cm
 	double _young_modulus = 3000; //mmHg
-	double _vessel_thickness = 0.058535714;// 0.060; // 200; //microm
+	double _vessel_thickness = 0.058535714; //cm
 	double _blood_density = 1.060; //g/cm3
-	double _initial_systolic_pressure = 80; //mmHg
+	double _initial_systolic_pressure = 120; //mmHg
 	double _initial_diastolic_pressure = 80; //mmHg
 	double _initial_inertance = 0.013; //mmHg*s2/ml
-	double _systolic_time = 0.25 * _cycle_duration; //s
-	double _diastolic_time = 0.67 * _cycle_duration;//s
 	double _cycle_duration = 0.8; //s
+	double _systolic_time = 0.25 * _cycle_duration; //s
+	double _diastolic_time =0.75* _cycle_duration; //s
+	double _flow = 5; //L/min
+	double _flow_addend = 0.0855;
+	double _diastolic_multiplier = 1000.0;
 	
 	void OxygenFlow();
 	double _oxygen_binding_capacity = 1.34; //ml
@@ -125,10 +133,10 @@ private:
 	double _bunsen_solubility_coefficient = 3 * 0.00001; //ml
 	
 	void PartialPressureTissue();
-	double _tissue_radius = _vessel_radius + _vessel_thickness;//28.21; //microm
+	double _vessel_radius = 0.481214286; //cm
+	double _tissue_radius = _vessel_radius + _vessel_thickness; //cm
 	double _metabolic_rate = 0.4 * 0.0001; //ml/ml/s
-	double _krogh_diffusion_coefficient = 3.5 * 0.0000000001; //cm2/s/atm 2.41 * 0.000000001;
-	double _vessel_radius = 0.481214286;//0.470;//5.25; //microm
+	double _krogh_diffusion_coefficient = 3.5 * 0.0000000001; //cm2/s/atm 
 
 	void OxygenConsumptionTissue();
 	double _max_consumption_rate = 6.17 * 0.00001; //O2/(cm3*s)
