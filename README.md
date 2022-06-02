@@ -6,6 +6,7 @@
 | Engine 1 | Unreal Engine 4.25.4 |
 | Engine 2 | Unity 3D 2020.3.9f1 |
 | Target Device | PC |
+| License | Apache 2.0|
 | Contact | Sarah Hofmann sarah.hofmann@uni-wuerzburg.de|
 
 ### Abstract
