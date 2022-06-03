@@ -12,13 +12,13 @@ using namespace std;
 * @param oxygen					provided amount of oxygen to the in percent
 * @param human_characteristic
 */
-void Trachea::OxygenTransport(double time, int inflow, double& oxygen, HumanCharacteristic human_characteristic)
+void Trachea::OxygenTransport(double time, double& oxygen, HumanCharacteristic human_characteristic)
 {
 	oxygen -= block_percentage;
 	this->oxygen = oxygen;
 	ReynoldsNumber();
 	Womersley();
-	FlowRate(inflow);
+	FlowRate();
 }
 
 void Trachea::ReynoldsNumber()
@@ -33,6 +33,14 @@ double Trachea::Womersley()
 	_breathing_time = 60 / _respiratory_rate;
 	_womersley = tmp_tracheal_diameter / 2.0 * sqrt((2 * PI / _breathing_time) / _viscosity_of_air);
 	return _womersley;
+}
+
+void Trachea::SwitchFlow()
+{
+	if (_inflow == 1)
+		_inflow = 0;
+	else
+		_inflow = 1;
 }
 
 double Trachea::TrachealDiameter()
@@ -58,6 +66,11 @@ double Trachea::RespiratoryRate()
 double Trachea::OuterThickness()
 {
 	return _outer_thickness;
+}
+
+int Trachea::Inflow()
+{
+	return _inflow;
 }
 
 void Trachea::TrachealDiameter(double new_tracheal_diameter)
@@ -110,13 +123,13 @@ void Trachea::ResetOuterThickness()
 	_outer_thickness = 3;
 }
 
-void Trachea::FlowRate(int inflow)
+void Trachea::FlowRate()
 {
 	CrossSectionalArea();
 	double tmp_tracheal_diameter = _tracheal_diameter * 0.001; //unit adjustment to m
 	flow_rate = _reynolds_number * _viscosity_of_air  * _cross_sectional_area / tmp_tracheal_diameter;
 	flow_rate *= 60000; //unit adjustment from m3/s in l/min
-	if (!inflow) {
+	if (_inflow == -1) {
 		_breathing_time = 60 / _respiratory_rate;
 		double tmp_breathing_time = _breathing_time * 0.01667; //unit adjustment to min
 		double tmp_inhalation_time = _inhalation_time * 0.01667; //unit adjustment to min

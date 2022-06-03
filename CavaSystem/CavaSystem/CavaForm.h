@@ -672,6 +672,7 @@ private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) 
 	heart_form->UpdateRVInertance(std::ceil(human_ptr->heart->right_ventricle->inflow_inertance * 100.0) / 100.0);
 	heart_form->UpdateRVPressureTotal(std::ceil(human_ptr->heart->right_ventricle->pressure * 100.0) / 100.0);
 	heart_form->UpdateRVRadius(std::ceil(human_ptr->heart->right_ventricle->radius * 100.0) / 100.0);
+	//Update vascular system
 	blood_form->UpdateOxygen(std::ceil(human_ptr->blood_vessel->oxygen * 100.0) / 100.0);
 	blood_form->UpdateDiastolicPressure(std::ceil(human_ptr->blood_vessel->diastolic_pressure * 100.0) / 100.0);
 	blood_form->UpdateSystolicPressure(std::ceil(human_ptr->blood_vessel->systolic_pressure * 100.0) / 100.00);

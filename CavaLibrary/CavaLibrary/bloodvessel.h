@@ -10,7 +10,7 @@ public:
 	};
 	~BloodVessel() = default;
 
-	void OxygenTransport(double time, int inflow, double& oxygen, HumanCharacteristic human_characteristic);
+	void OxygenTransport(double time, double& oxygen, HumanCharacteristic human_characteristic);
 	
 	double partial_pressure = 0.0; //mmHg
 	double diastolic_pressure = 80.0; //mmHg

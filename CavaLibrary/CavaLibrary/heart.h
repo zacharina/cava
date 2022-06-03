@@ -21,7 +21,7 @@ public:
 		delete right_ventricle;
 	}
 
-	void OxygenTransport(double time, int inflow, double& oxygen, HumanCharacteristic human_characteristic);
+	void OxygenTransport(double time, double& oxygen, HumanCharacteristic human_characteristic);
 	
 	Atrium* left_atrium;
 	Atrium* right_atrium;

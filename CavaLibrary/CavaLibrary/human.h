@@ -54,16 +54,9 @@ public:
 	
 	HumanCharacteristic _characteristics;
 private:
-
-	double _respiratory_rate = 16;
-
-	double _cycle_time_breath = 60.0 / _respiratory_rate;
-	double _cycle_time_heart = 0.8;
+	//Time variables
 	double _simulation_time = 0.0;
-	
 	double _last_heart_cycle = 0.0;
 	double _last_breath_cycle = 0.0;
-	
-	int inflow = -1;
 };
 

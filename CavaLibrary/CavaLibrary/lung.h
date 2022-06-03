@@ -10,11 +10,13 @@ public:
 	};
 	~Lung() = default;
 
-	void OxygenTransport(double time, int inflow, double& oxygen, HumanCharacteristic human_characteristic);
+	void OxygenTransport(double time, double& oxygen, HumanCharacteristic human_characteristic);
 	
 	bool inflow = true;
 	double oxygen_flow = 0.0; //l/min
 	double pressure = 0.0; //mmHg  
+
+	void SwitchFlow();
 
 	double MassOfAir();
 	double Volume();
@@ -27,6 +29,9 @@ public:
 	double AtmosphericDensity();
 	double PressureSummand();
 	double AirMassFlow();
+	double RespiratoryRate();
+	double CycleDuration();
+	int Inflow();
 
 	void MassOfAir(double new_mass_of_air);
 	void Volume(double new_volume);
@@ -40,6 +45,7 @@ public:
 	void RespiratoryComplianceOutflow(double new_compliance);
 	void PressureSummand(double new_pressure_summand);
 	void AirMassFlow(double new_air_mass_flow);
+	void RespiratoryRate(double new_respiratory_rate);
 
 	void ResetMassOfAir();
 	void ResetVolume();
@@ -53,12 +59,16 @@ public:
 	void ResetRespiratoryComplianceOutflow();
 	void ResetPressureSummand();
 	void ResetAirMassFlow();
+	void ResetRespiratoryRate();
 
 private:
 
-	void Airflow(double temperature, int inflow);
+	void Airflow(double temperature);
 	void Pressure(double time, double temperature, int inflow, double summand);
 
+	int	_inflow = -1;
+	double _respiratory_rate = 16;
+	double _cycle_time_breath = 60.0 / _respiratory_rate;
 	double _air_mass_flow = 0.12; //l/min
 	double _area_of_throttle = 32; //mm2
 	double _upstream_pressure = 55.74; //cmH20

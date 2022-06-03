@@ -10,7 +10,7 @@ public:
 	}
 	~Tissue() = default;
 
-	void OxygenTransport(double time, int inflow, double& oxygen, HumanCharacteristic human_characteristic);
+	void OxygenTransport(double time, double& oxygen, HumanCharacteristic human_characteristic);
 
 	//Set by blood circulation
 	double partial_pressure = 0.0;

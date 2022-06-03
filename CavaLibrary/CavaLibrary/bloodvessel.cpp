@@ -13,7 +13,7 @@ using namespace std;
 * @param oxygen					provided amount of oxygen to the in percent
 * @param human_characteristic
 */
-void BloodVessel::OxygenTransport(double time, int inflow, double& oxygen, HumanCharacteristic human_characteristic)
+void BloodVessel::OxygenTransport(double time, double& oxygen, HumanCharacteristic human_characteristic)
 {
 	_hemoglobin_oxygen_saturation *= (oxygen / 100);
 	

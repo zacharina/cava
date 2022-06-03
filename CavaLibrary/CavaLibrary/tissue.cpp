@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void Tissue::OxygenTransport(double time, int inflow, double& oxygen, HumanCharacteristic human_characteristic)
+void Tissue::OxygenTransport(double time, double& oxygen, HumanCharacteristic human_characteristic)
 {
 	
 }

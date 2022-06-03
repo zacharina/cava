@@ -8,17 +8,20 @@ public:
 	Trachea() : BodyPart() {};
 	~Trachea() = default;
 
-	void OxygenTransport(double time, int inflow, double& oxygen, HumanCharacteristic human_characteristic);
+	void OxygenTransport(double time, double& oxygen, HumanCharacteristic human_characteristic);
 	double Womersley();
 	
 	double block_percentage = 0;
 	double flow_rate = 0.0; //l/min
+
+	void SwitchFlow();
 
 	double TrachealDiameter();
 	double ViscosityOfAir();
 	double MeanFlowSpeed();
 	double RespiratoryRate();
 	double OuterThickness();
+	int Inflow();
 
 	void TrachealDiameter(double new_tracheal_diameter);
 	void ViscosityOfAir(double new_viscosity_of_air);
@@ -35,9 +38,10 @@ public:
 private:
 
 	void ReynoldsNumber();
-	void FlowRate(int inflow);
+	void FlowRate();
 	void CrossSectionalArea();
 
+	int	_inflow = -1;
 	double _tracheal_diameter = 18; //mm
 	double _cross_sectional_area = 0; //mm2 
 	double _viscosity_of_air = 1.46 * 0.00001; //m2/s

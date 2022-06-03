@@ -13,13 +13,21 @@ using namespace std;
 * @param oxygen					provided amount of oxygen to the in percent
 * @param human_characteristic
 */
-void Lung::OxygenTransport(double time, int inflow, double& oxygen, HumanCharacteristic human_characteristic)
+void Lung::OxygenTransport(double time, double& oxygen, HumanCharacteristic human_characteristic)
 {
-	Airflow(human_characteristic.temperature, inflow);
+	Airflow(human_characteristic.temperature);
 	Pressure(time, human_characteristic.temperature, inflow, _pressure_summand);
 	OxygenSaturation(human_characteristic);
 	Hemoglobin(human_characteristic);
 	this->oxygen = OxygenContent(oxygen_saturation, _volume, hemoglobin_level);
+}
+
+void Lung::SwitchFlow()
+{
+	if(_inflow == 1)
+		_inflow = 0;
+	else
+		_inflow = 1;
 }
 
 double Lung::MassOfAir()
@@ -75,6 +83,21 @@ double Lung::PressureSummand()
 double Lung::AirMassFlow()
 {
 	return _air_mass_flow;
+}
+
+double Lung::RespiratoryRate()
+{
+	return _respiratory_rate;
+}
+
+double Lung::CycleDuration()
+{
+	return _cycle_time_breath;
+}
+
+int Lung::Inflow()
+{
+	return _inflow;
 }
 
 void Lung::MassOfAir(double new_mass_of_air)
@@ -137,6 +160,12 @@ void Lung::AirMassFlow(double new_air_mass_flow)
 	_air_mass_flow = new_air_mass_flow;
 }
 
+void Lung::RespiratoryRate(double new_respiratory_rate)
+{
+	_respiratory_rate = new_respiratory_rate;
+	_cycle_time_breath = 60 / _respiratory_rate;
+}
+
 void Lung::ResetMassOfAir()
 {
 	_mass_of_air = 0.00003;
@@ -197,10 +226,15 @@ void Lung::ResetAirMassFlow()
 	_air_mass_flow = 1.2;
 }
 
-void Lung::Airflow(double temperature, int inflow)
+void Lung::ResetRespiratoryRate()
+{
+	_respiratory_rate = 16;
+}
+
+void Lung::Airflow(double temperature)
 {
 	double flow_coefficient = -1;
-	if (inflow == 1)
+	if (_inflow == 1)
 		flow_coefficient = 1;
 
 	double kelvin_temperature = 274.15 + temperature;

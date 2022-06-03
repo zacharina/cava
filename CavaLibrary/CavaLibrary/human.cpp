@@ -11,26 +11,24 @@ void Human::CardiovascularSystem(double time, double* oxygen)
 	if (!alive)
 		return;
 
-	if ((_simulation_time + time) - _last_breath_cycle > _cycle_time_breath)
+	if ((_simulation_time + time) - _last_breath_cycle > lung->CycleDuration())
 	{
 		_last_breath_cycle = _simulation_time + time;
-		if (inflow == 1)
-			inflow = 0;
-		else
-			inflow = 1;
+		lung->SwitchFlow();
+		trachea->SwitchFlow();
 	}
 	
-	if ((_simulation_time + time) - _last_heart_cycle > _cycle_time_heart)
+	if ((_simulation_time + time) - _last_heart_cycle > heart->CycleDuration())
 		_last_heart_cycle = _simulation_time + time;
 
 	double breath_difference = _simulation_time - _last_breath_cycle;
 	double heart_difference = _simulation_time - _last_heart_cycle;
 
 
-	trachea->OxygenTransport(breath_difference, inflow, *oxygen, _characteristics);
-	lung->OxygenTransport(heart_difference, inflow, *oxygen, _characteristics);
-	heart->OxygenTransport(heart_difference, inflow, *oxygen, _characteristics);
-	blood_vessel->OxygenTransport(heart_difference, inflow, *oxygen, _characteristics);
+	trachea->OxygenTransport(breath_difference, *oxygen, _characteristics);
+	lung->OxygenTransport(heart_difference, *oxygen, _characteristics);
+	heart->OxygenTransport(heart_difference, *oxygen, _characteristics);
+	blood_vessel->OxygenTransport(heart_difference, *oxygen, _characteristics);
 	tissue->partial_pressure = blood_vessel->partial_pressure_tissue;
 	tissue->oxygen = blood_vessel->oxygen_consumption_tissue;
 	

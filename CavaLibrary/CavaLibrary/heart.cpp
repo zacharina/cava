@@ -11,7 +11,7 @@ using namespace std;
 * @param oxygen					provided amount of oxygen to the in percent
 * @param human_characteristic
 */
-void Heart::OxygenTransport(double time, int inflow, double& oxygen, HumanCharacteristic human_characteristic)
+void Heart::OxygenTransport(double time, double& oxygen, HumanCharacteristic human_characteristic)
 {
 	FlowRate();
 	left_atrium->Radius(time);
@@ -66,6 +66,7 @@ void Heart::TricuspidValveFlowRate(double new_tricuspid_valve_flow_rate)
 void Heart::HeartRate(double new_heart_rate)
 {
 	_heart_rate = new_heart_rate;
+	_cycle_duration = (new_heart_rate / 70) * 0.8;
 }
 
 void Heart::StrokeVolume(double new_stroke_volume)
@@ -76,6 +77,7 @@ void Heart::StrokeVolume(double new_stroke_volume)
 void Heart::CycleDuration(double new_cycle_duration)
 {
 	_cycle_duration = new_cycle_duration;
+	_heart_rate = (new_cycle_duration / 0.8) * 70;
 }
 
 void Heart::RadiusSummandLV(double new_radius_addend)
@@ -111,6 +113,7 @@ void Heart::ResetTricuspidValveFlowRate()
 void Heart::ResetHeartRate()
 {
 	_heart_rate = 70;
+	_cycle_duration = 0.8;
 }
 
 void Heart::ResetStrokeVolume()
@@ -121,6 +124,7 @@ void Heart::ResetStrokeVolume()
 void Heart::ResetCycleDuration()
 {
 	_cycle_duration = 0.8;
+	_heart_rate = 70;
 }
 
 void Heart::ResetRadiusSummandLV()

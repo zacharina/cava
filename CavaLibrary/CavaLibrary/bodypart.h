@@ -9,7 +9,7 @@ public:
 	~BodyPart() = default;
 
 	double oxygen = 0;
-	void OxygenTransport(double time, int inflow, double& oxygen, HumanCharacteristic human_characteristic) {};
+	void OxygenTransport(double time, double& oxygen, HumanCharacteristic human_characteristic) {};
 
 protected:
 

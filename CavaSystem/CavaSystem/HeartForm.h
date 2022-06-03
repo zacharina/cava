@@ -2431,7 +2431,9 @@ namespace CavaSystem {
 		numTriscupid->Value = 260;
 	}
 	private: System::Void cmdHeartRate_Click(System::Object^ sender, System::EventArgs^ e) {
-		numHeartRate->Value = 19;
+		numHeartRate->Value = 70;
+        double tmp_value = 0.8;
+        numDuration->Value = (Decimal)tmp_value;
 	}
 	private: System::Void cmdStrokeVolume_Click(System::Object^ sender, System::EventArgs^ e) {
 		numStrokeVolume->Value = 70;
@@ -2439,6 +2441,7 @@ namespace CavaSystem {
 	private: System::Void cmdDuration_Click(System::Object^ sender, System::EventArgs^ e) {
 		double tmp_value = 0.8;
 		numDuration->Value = (Decimal)tmp_value;
+        numHeartRate->Value = 70;
 	}
 	private: System::Void cmdMinElas_Click(System::Object^ sender, System::EventArgs^ e) {
 		double tmp_value = 0.2;
@@ -2490,12 +2493,14 @@ private: System::Void numTriscupid_ValueChanged(System::Object^ sender, System::
 }
 private: System::Void numHeartRate_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
     human_parent_ptr->heart->HeartRate((double)numHeartRate->Value);
+    numDuration->Value = (Decimal)human_parent_ptr->heart->CycleDuration();
 }
 private: System::Void numStrokeVolume_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
     human_parent_ptr->heart->StrokeVolume((double)numStrokeVolume->Value);
 }
 private: System::Void numDuration_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
     human_parent_ptr->heart->CycleDuration((double)numDuration->Value);
+    numHeartRate->Value = (Decimal)human_parent_ptr->heart->HeartRate();
 }
 private: System::Void numMinElas_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
     human_parent_ptr->heart->left_atrium->MinimumElastance((double)numMinElas->Value);
