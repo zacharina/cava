@@ -104,7 +104,7 @@ void Ventricle::ResetScalingCoefficient()
 void Ventricle::PressureActive(double time, double factor)
 {
 	double radius_at_zero_pressure = pow(3 * _volume_at_zero_pressure / (4 * PI), 1.0 / 3.0);
-	pressure_active = _end_systolic_elastance * factor * PI * _coefficient * _scaling_coefficient * abs(pow(radius, 2) - pow(radius_at_zero_pressure, 2)) * ActivationFunction(time);
+	pressure_active = _end_systolic_elastance * factor * PI * _coefficient * _scaling_coefficient * (pow(radius, 2) - pow(radius_at_zero_pressure, 2)) * ActivationFunction(time);
 }
 
 void Ventricle::PressurePassive(double time, double factor)
