@@ -66,7 +66,11 @@ void Heart::TricuspidValveFlowRate(double new_tricuspid_valve_flow_rate)
 void Heart::HeartRate(double new_heart_rate)
 {
 	_heart_rate = new_heart_rate;
-	_cycle_duration = (new_heart_rate / 70) * 0.8;
+	_cycle_duration = 60 / _heart_rate;
+	left_ventricle->CycleDuration(_cycle_duration);
+	right_ventricle->CycleDuration(_cycle_duration);
+	left_atrium->CycleDuration(_cycle_duration);
+	right_atrium->CycleDuration(_cycle_duration);
 }
 
 void Heart::StrokeVolume(double new_stroke_volume)
@@ -77,7 +81,11 @@ void Heart::StrokeVolume(double new_stroke_volume)
 void Heart::CycleDuration(double new_cycle_duration)
 {
 	_cycle_duration = new_cycle_duration;
-	_heart_rate = (new_cycle_duration / 0.8) * 70;
+	_heart_rate = 60 / _cycle_duration;
+	left_ventricle->CycleDuration(_cycle_duration);
+	right_ventricle->CycleDuration(_cycle_duration);
+	left_atrium->CycleDuration(_cycle_duration);
+	right_atrium->CycleDuration(_cycle_duration);
 }
 
 void Heart::RadiusSummandLV(double new_radius_addend)

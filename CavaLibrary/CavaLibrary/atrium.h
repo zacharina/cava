@@ -61,7 +61,7 @@ private:
 	double _volume = 0.0; //cm3
 	double _volume_over_time[9] = { 0 }; //ml
 	
-	double _keytime_1 = 0.04; //s
+	double _keytime_1 = 0.05; //%
 	double _scaling_coefficient = 5.5;
 	double _coefficient = 1.2;
 };

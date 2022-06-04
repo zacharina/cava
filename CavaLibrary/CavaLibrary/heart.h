@@ -73,8 +73,8 @@ private:
 	double _stroke_volume = 0.08; //L
 	
 	double _cycle_duration = 0.8; //s
-	double _keytime_1 = 0.33 * _cycle_duration; //s
-	double _keytime_2 = 0.45 * _cycle_duration; //s
+	double _keytime_1 = 0.33; //%
+	double _keytime_2 = 0.45; //%
 	
 	double _volume_ventricle_left_zero_pressure = 15.0; //ml
 	double _volume_ventricle_right_zero_pressure = 40.0; //ml

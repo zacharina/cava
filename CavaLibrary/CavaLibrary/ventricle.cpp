@@ -122,10 +122,10 @@ void Ventricle::Pressure(double time, double factor)
 double Ventricle::ActivationFunction(double time)
 {
 	double result = 0;
-	if (time < _keytime_1)
+	if (time < _keytime_1 * _cycle_duration)
 		result = (1 - cos((time / _keytime_1) * PI)) / 2;
-	else if (time < _keytime_2)
-		result = (1 + cos((time - _keytime_1) / (_keytime_2 - _keytime_1) * PI)) / 2;
+	else if (time < _keytime_2 * _cycle_duration)
+		result = (1 + cos((time - _keytime_1 * _cycle_duration) / (_keytime_2 * _cycle_duration - _keytime_1 * _cycle_duration) * PI)) / 2;
 	return result;
 }
 

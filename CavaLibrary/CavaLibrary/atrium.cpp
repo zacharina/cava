@@ -38,7 +38,7 @@ void Atrium::VolumeAtTime(double time)
 
 double Atrium::Elastance(double time)
 {
-	elastance = _minimum_elastance + 0.5 * (_maximum_elastance - _minimum_elastance) * ActivationFunction(time - _keytime_1);
+	elastance = _minimum_elastance + 0.5 * (_maximum_elastance - _minimum_elastance) * ActivationFunction(time - _keytime_1 * _cycle_duration);
 	return elastance;
 }
 
@@ -166,7 +166,7 @@ void Atrium::ResetZeroPressureRadius()
 
 void Atrium::ResetKeytimeInCycle()
 {
-	_keytime_1 = 0.04;
+	_keytime_1 = 0.05;
 }
 
 void Atrium::ResetVolumeAtZeroPressure()
