@@ -33,9 +33,9 @@ void BloodVessel::OxygenTransport(double time, double& oxygen, HumanCharacterist
 
 void BloodVessel::HillCoefficient(double temperature)
 {
-	if (temperature < 37)
+	if (temperature < 37.0)
 		_hill_coefficient = 2.57;
-	else if (temperature <= 44)
+	else if (temperature <= 44.0)
 		_hill_coefficient = temperature * -0.017 + 3.199;
 	else
 		_hill_coefficient = 2.45;
@@ -43,9 +43,9 @@ void BloodVessel::HillCoefficient(double temperature)
 
 void BloodVessel::HalfPressure(double temperature)
 {
-	if (temperature < 37)
-		_half_pressure = 27;
-	else if (temperature <= 44)
+	if (temperature < 37.0)
+		_half_pressure = 27.0;
+	else if (temperature <= 44.0)
 		_half_pressure = temperature * 1.27 - 19.99;
 	else
 		_half_pressure = 35.9;
@@ -58,46 +58,46 @@ void BloodVessel::HemoglobinSaturation()
 
 void BloodVessel::PartialPressure()
 {
-	partial_pressure = _half_pressure * pow(_hemoglobin_oxygen_saturation / (1 - _hemoglobin_oxygen_saturation), 1 / _hill_coefficient);
+	partial_pressure = _half_pressure * pow(_hemoglobin_oxygen_saturation / (1.0 - _hemoglobin_oxygen_saturation), 1 / _hill_coefficient);
 }
 
 void BloodVessel::Velocity()
 {
-	velocity = 2 * _start_velocity * (_velocity_coefficient - pow(_vessel_thickness, 2) / pow(_vessel_radius, 2));
+	velocity = 2.0 * _start_velocity * (_velocity_coefficient - pow(_vessel_thickness, 2.0) / pow(_vessel_radius, 2.0));
 }
 
 void BloodVessel::Windkessel(double time)
 {
 	double coefficient_1 = 0.1729;
 	double coefficient_2 = 0.0075;
-	if (_vessel_radius < 0.2) { //2000) { //microm
+	if (_vessel_radius < 0.2) { //cm
 		coefficient_1 = 0.2057;
 		coefficient_2 = 0.0392;
 	}
 
-	resistance = (0.76/101325.0) * (coefficient_1 / coefficient_2 - 1) * (8 * _viscosity * _vessel_length / (PI * pow(_vessel_radius, 4)));
-	inertance = (760.0/1013250.0) * (coefficient_1 - coefficient_2) * (8 * _blood_density * _vessel_length) / (PI * pow(_vessel_radius, 2));
-	compliance = (3.0 * PI * pow(_vessel_radius, 3) * _vessel_length) / (2.0 * _young_modulus * _vessel_thickness);
-	elastance = (_young_modulus * _vessel_thickness) / (2 * PI * pow(_vessel_radius, 3) * _vessel_length * _number_of_vessels);
+	resistance = (0.76/101325.0) * (coefficient_1 / coefficient_2 - 1.0) * (8.0 * _viscosity * _vessel_length / (PI * pow(_vessel_radius, 4.0)));
+	inertance = (760.0/1013250.0) * (coefficient_1 - coefficient_2) * (8.0 * _blood_density * _vessel_length) / (PI * pow(_vessel_radius, 2.0));
+	compliance = (3.0 * PI * pow(_vessel_radius, 3.0) * _vessel_length) / (2.0 * _young_modulus * _vessel_thickness);
+	elastance = (_young_modulus * _vessel_thickness) / (2.0 * PI * pow(_vessel_radius, 3) * _vessel_length * _number_of_vessels);
 
-	double subtotal = exp(-time / (resistance * compliance));
+	double subtotal_systolic = exp(-_systolic_time / (resistance * compliance));
+	double subtotal_diastolic = exp(-_diastolic_time / (resistance * compliance));
+	
 
 	if (time <= _systolic_time) {
-		double tmp_flow = _flow * _cycle_duration / (60 * (-_systolic_time * cos(time * PI / _systolic_time) / PI + _flow_addend));
-		systolic_pressure =  _initial_systolic_pressure * subtotal + (500.0)*(tmp_flow * time * compliance * PI * pow(resistance, 2)) / (pow(_systolic_time, 2) + pow(compliance, 2) * pow(PI, 2) * pow(resistance, 2)) * (1 + subtotal);
-		diastolic_pressure = 0;
-		//_initial_diastolic_pressure = systolic_pressure;
+		double tmp_flow = _flow * _cycle_duration / (60.0 * (-_systolic_time * cos(time * PI / _systolic_time) / PI + _flow_addend));
+		systolic_pressure = _initial_systolic_pressure * subtotal_systolic + (500.0)*(tmp_flow * time * compliance * PI * pow(resistance, 2.0)) / (pow(_systolic_time, 2.0) + pow(compliance, 2.0) * pow(PI, 2.0) * pow(resistance, 2.0)) * (1.0 + subtotal_systolic);
+		_initial_diastolic_pressure = systolic_pressure;
 	}
 	else {
-		diastolic_pressure = _diastolic_multiplier * _initial_diastolic_pressure * subtotal;
-		systolic_pressure = 0;
-		//_initial_systolic_pressure = diastolic_pressure;
+		diastolic_pressure = /*_diastolic_multiplier **/ _initial_diastolic_pressure * subtotal_diastolic;
+		_initial_systolic_pressure = diastolic_pressure;
 	}
 }
 
 void BloodVessel::OxygenFlow()
 {
-	oxygen_flow = 0.001 *PI * pow(_vessel_radius * 2, 2) / 4.0 * _rbc_velocity * _oxygen_binding_capacity * _hemoglobin_concentration * _hemoglobin_oxygen_saturation;
+	oxygen_flow = 0.001 *PI * pow(_vessel_radius * 2.0, 2.0) / 4.0 * _rbc_velocity * _oxygen_binding_capacity * _hemoglobin_concentration * _hemoglobin_oxygen_saturation;
 }
 
 void BloodVessel::OxygenConcentration()
@@ -107,9 +107,9 @@ void BloodVessel::OxygenConcentration()
 
 void BloodVessel::PartialPressureTissue()
 {
-	double radius_difference = pow(_tissue_radius, 2) - pow(_vessel_radius, 2);
-	partial_pressure_tissue = partial_pressure + 760.0 * (_metabolic_rate / 2 * _krogh_diffusion_coefficient)
-		* ((3.0 * radius_difference) / 8.0 - (pow(_tissue_radius, 4) / (2.0 * radius_difference)) * log(_tissue_radius / _vessel_radius));
+	double radius_difference = pow(_tissue_radius, 2.0) - pow(_vessel_radius, 2.0);
+	partial_pressure_tissue = partial_pressure + 760.0 * (_metabolic_rate / 2.0 * _krogh_diffusion_coefficient)
+		* ((3.0 * radius_difference) / 8.0 - (pow(_tissue_radius, 4.0) / (2.0 * radius_difference)) * log(_tissue_radius / _vessel_radius));
 }
 
 void BloodVessel::OxygenConsumptionTissue()
@@ -226,6 +226,11 @@ void BloodVessel::Flow(double new_flow)
 void BloodVessel::FlowAddend(double new_addend)
 {
 	_flow_addend = new_addend;
+}
+
+void BloodVessel::CycleDuration(double new_cycle_duration)
+{
+	_cycle_duration = new_cycle_duration;
 }
 
 void BloodVessel::ResetStartVelocity()
@@ -441,4 +446,9 @@ double BloodVessel::Viscosity()
 double BloodVessel::Flow()
 {
 	return _flow;
+}
+
+double BloodVessel::CycleDuration()
+{
+	return _cycle_duration;
 }

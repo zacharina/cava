@@ -11,7 +11,7 @@ public:
 	void OxygenTransport(double time, double& oxygen, HumanCharacteristic human_characteristic);
 	double Womersley();
 	
-	double block_percentage = 0;
+	double block_percentage = 0.0;
 	double flow_rate = 0.0; //l/min
 
 	void SwitchFlow();
@@ -41,16 +41,16 @@ private:
 	void FlowRate();
 	void CrossSectionalArea();
 
-	int	_inflow = -1;
-	double _tracheal_diameter = 18; //mm
-	double _cross_sectional_area = 0; //mm2 
+	bool _inflow = true;
+	double _tracheal_diameter = 18.0; //mm
+	double _cross_sectional_area = 0.0; //mm2 
 	double _viscosity_of_air = 1.46 * 0.00001; //m2/s
 	double _reynolds_number = 0.0;
 	double _mean_flow_speed = 3.4; //m/s
-	double _respiratory_rate = 16; //bpm
-	double _breathing_time = 60 / _respiratory_rate; //s
+	double _respiratory_rate = 16.0; //bpm
+	double _breathing_time = 60.0 / _respiratory_rate; //s
 	double _inhalation_time = 0.45 * _breathing_time; //s
 	double _womersley = 0.0;
-	double _outer_thickness = 3; //mm
+	double _outer_thickness = 3.0; //mm
 };
 

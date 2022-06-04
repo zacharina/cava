@@ -5,15 +5,12 @@
 
 void Ventricle::Radius(double time, double addend, double valve_flow_rate_1, double valve_flow_rate_2)
 {
+	_radius_at_zero_pressure = addend;
 	VolumeAtTime(time);
-	if (time == 0) {
-		radius = pow(3 * _volume_at_zero_pressure / (4 * PI), 1.0 / 3.0);
-	}
-	else {
-		double coefficients = _coefficient * _scaling_coefficient * PI;
-		radius = (3 * (valve_flow_rate_1 - valve_flow_rate_2) * time) / (2 * coefficients * sqrt((3 * _volume) / coefficients)) + addend;
-	}
-	_inflow_length = 2 * radius;
+	double coefficients = _coefficient * _scaling_coefficient * PI;
+	radius = (3.0 * (valve_flow_rate_1 - valve_flow_rate_2) * time) / (2.0 * coefficients * sqrt((3.0 * _volume) / coefficients)) + addend;
+	
+	_inflow_length = 2.0 * radius;
 }
 
 void Ventricle::InflowInertance()
@@ -26,9 +23,9 @@ double Ventricle::Volume()
 	return _volume;
 }
 
-double Ventricle::VolumeAtZeroPressure()
+double Ventricle::RadiusAtZeroPressure()
 {
-	return _volume_at_zero_pressure;
+	return _radius_at_zero_pressure;
 }
 
 double Ventricle::EndSystolicElastance()
@@ -56,9 +53,9 @@ double Ventricle::CycleDuration()
 	return _cycle_duration;
 }
 
-void Ventricle::VolumeAtZeroPressure(double new_volume_at_zero_pressure)
+void Ventricle::RadiusAtZeroPressure(double new_radius_at_zero_pressure)
 {
-	_volume_at_zero_pressure = new_volume_at_zero_pressure;
+	_radius_at_zero_pressure = new_radius_at_zero_pressure;
 }
 
 void Ventricle::EndSystolicElastance(double new_end_systolic_elastance)
@@ -93,23 +90,22 @@ void Ventricle::ResetBloodDensity()
 
 void Ventricle::ResetInflowLength()
 {
-	_inflow_length = 2 * radius;
+	_inflow_length = 2.0 * radius;
 }
 
 void Ventricle::ResetScalingCoefficient()
 {
-	_scaling_coefficient = 8;
+	_scaling_coefficient = 8.0;
 }
 
 void Ventricle::PressureActive(double time, double factor)
-{
-	double radius_at_zero_pressure = pow(3 * _volume_at_zero_pressure / (4 * PI), 1.0 / 3.0);
-	pressure_active = _end_systolic_elastance * factor * PI * _coefficient * _scaling_coefficient * (pow(radius, 2) - pow(radius_at_zero_pressure, 2)) * ActivationFunction(time);
+{ 
+	pressure_active = _end_systolic_elastance * factor * PI * _coefficient * _scaling_coefficient * (pow(radius, 2.0) - pow(_radius_at_zero_pressure, 2.0)) * ActivationFunction(time);
 }
 
 void Ventricle::PressurePassive(double time, double factor)
 {
-	pressure_passive = exp(0.02 * factor * PI * _coefficient * pow(radius, 2) *_scaling_coefficient) - 1;
+	pressure_passive = exp(0.02 * factor * PI * _coefficient * pow(radius, 2.0) *_scaling_coefficient) - 1.0;
 }
 
 void Ventricle::Pressure(double time, double factor)
@@ -121,11 +117,11 @@ void Ventricle::Pressure(double time, double factor)
 
 double Ventricle::ActivationFunction(double time)
 {
-	double result = 0;
+	double result = 0.0;
 	if (time < _keytime_1 * _cycle_duration)
-		result = (1 - cos((time / _keytime_1) * PI)) / 2;
+		result = (1.0 - cos((time / _keytime_1) * PI)) / 2.0;
 	else if (time < _keytime_2 * _cycle_duration)
-		result = (1 + cos((time - _keytime_1 * _cycle_duration) / (_keytime_2 * _cycle_duration - _keytime_1 * _cycle_duration) * PI)) / 2;
+		result = (1.0 + cos((time - _keytime_1 * _cycle_duration) / (_keytime_2 * _cycle_duration - _keytime_1 * _cycle_duration) * PI)) / 2.0;
 	return result;
 }
 

@@ -48,6 +48,7 @@ public:
 	double InitialInertance();
 	double Viscosity();
 	double Flow();
+	double CycleDuration();
 
 	void StartVelocity(double new_start_velocity);
 	void VelocityCoefficient(double new_velocity_coefficient);
@@ -71,6 +72,7 @@ public:
 	void Viscosity(double new_viscosity);
 	void Flow(double new_flow);
 	void FlowAddend(double new_addend);
+	void CycleDuration(double new_cycle_duration);
 
 	void ResetStartVelocity();
 	void ResetVelocityCoefficient();
@@ -98,16 +100,16 @@ public:
 private:
 	void Velocity();
 	double _start_velocity = 424.4; //microm/s
-	double _velocity_coefficient = 1;
+	double _velocity_coefficient = 1.0;
 	void Windkessel(double time); 
 	double _viscosity = 6.72; //mPa*s
-	double _number_of_vessels = 1; 
+	double _number_of_vessels = 1.0; 
 	double _vessel_length = 13.34545455; //cm
-	double _young_modulus = 3000; //mmHg
+	double _young_modulus = 3000.0; //mmHg
 	double _vessel_thickness = 0.058535714; //cm
 	double _blood_density = 1.060; //g/cm3
-	double _initial_systolic_pressure = 120; //mmHg
-	double _initial_diastolic_pressure = 80; //mmHg
+	double _initial_systolic_pressure = 120.0; //mmHg
+	double _initial_diastolic_pressure = 80.0; //mmHg
 	double _initial_inertance = 0.013; //mmHg*s2/ml
 	double _cycle_duration = 0.8; //s
 	double _systolic_time = 0.25 * _cycle_duration; //s

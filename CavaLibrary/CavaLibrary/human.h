@@ -51,6 +51,9 @@ public:
 	Tissue* tissue;
 
 	bool alive = true;
+	double _test = 0.0;
+	double _test2 = 0.0;
+	double _test3 = 0.0;
 	
 	HumanCharacteristic _characteristics;
 private:

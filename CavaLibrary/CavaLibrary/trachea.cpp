@@ -37,10 +37,7 @@ double Trachea::Womersley()
 
 void Trachea::SwitchFlow()
 {
-	if (_inflow == 1)
-		_inflow = 0;
-	else
-		_inflow = 1;
+	_inflow = !_inflow;
 }
 
 double Trachea::TrachealDiameter()

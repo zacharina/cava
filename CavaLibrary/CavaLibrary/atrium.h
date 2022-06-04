@@ -8,8 +8,13 @@ public:
 	Atrium(double cycle_duration, double volume_over_time[9]) {
 		_cycle_duration = cycle_duration;
 		_atrial_duration = 0.8 * cycle_duration;
-		for (int i = 0; i < 9; i++)
+		_volume_at_zero_pressure = volume_over_time[0];
+		for (int i = 0; i < 9; i++) {
 			_volume_over_time[i] = volume_over_time[i];
+			if (_volume_over_time[i] < _volume_at_zero_pressure)
+				_volume_at_zero_pressure = _volume_over_time[i];
+		}
+		_volume_at_zero_pressure -= 1.0;
 	};
 	~Atrium() = default;
 
@@ -53,7 +58,7 @@ private:
 	void VolumeAtTime(double time);
 
 	double _cycle_duration = 0.0; //s
-	double _atrial_duration = 0.0; //s
+	double _atrial_duration = 0.8; //%
 	double _minimum_elastance = 0.2; //mmHg/ml
 	double _maximum_elastance = 0.3; //mmHg/ml
 	double _volume_at_zero_pressure = 5.0; //cm3

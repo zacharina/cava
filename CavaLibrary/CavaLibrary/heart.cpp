@@ -18,14 +18,14 @@ void Heart::OxygenTransport(double time, double& oxygen, HumanCharacteristic hum
 	right_atrium->Radius(time);
 	left_atrium->Elastance(time);
 	right_atrium->Elastance(time);
-	left_atrium->Pressure(time, 1.0/3.0);
-	right_atrium->Pressure(time, 4.0/6.0);
+	left_atrium->Pressure(time, (1.0/3.0));
+	right_atrium->Pressure(time, (4.0/6.0));
 	left_ventricle->Radius(time, _radius_addend_lv, _mitral_valve_flow_rate, _aortic_valve_flow_rate);
 	right_ventricle->Radius(time, _radius_addend_rv, _tricuspid_valve_flow_rate, _pulmonary_valve_flow_rate);
 	left_ventricle->InflowInertance();
 	right_ventricle->InflowInertance();
-	left_ventricle->Pressure(time, 1);
-	right_ventricle->Pressure(time, 1);
+	left_ventricle->Pressure(time, 1.0);
+	right_ventricle->Pressure(time, 1.0);
 
 	OxygenSaturation(human_characteristic);
 	Hemoglobin(human_characteristic);
@@ -66,7 +66,7 @@ void Heart::TricuspidValveFlowRate(double new_tricuspid_valve_flow_rate)
 void Heart::HeartRate(double new_heart_rate)
 {
 	_heart_rate = new_heart_rate;
-	_cycle_duration = 60 / _heart_rate;
+	_cycle_duration = 60.0 / _heart_rate;
 	left_ventricle->CycleDuration(_cycle_duration);
 	right_ventricle->CycleDuration(_cycle_duration);
 	left_atrium->CycleDuration(_cycle_duration);
@@ -81,7 +81,7 @@ void Heart::StrokeVolume(double new_stroke_volume)
 void Heart::CycleDuration(double new_cycle_duration)
 {
 	_cycle_duration = new_cycle_duration;
-	_heart_rate = 60 / _cycle_duration;
+	_heart_rate = 60.0 / _cycle_duration;
 	left_ventricle->CycleDuration(_cycle_duration);
 	right_ventricle->CycleDuration(_cycle_duration);
 	left_atrium->CycleDuration(_cycle_duration);
@@ -100,49 +100,49 @@ void Heart::RadiusSummandRV(double new_radius_addend)
 
 void Heart::ResetAorticValveFlowRate()
 {
-	_aortic_valve_flow_rate = 182;
+	_aortic_valve_flow_rate = 182.0;
 }
 
 void Heart::ResetMitralValveFlowRate()
 {
-	_mitral_valve_flow_rate = 221;
+	_mitral_valve_flow_rate = 221.0;
 }
 
 void Heart::ResetPulmonaryValveFlowRate()
 {
-	_pulmonary_valve_flow_rate = 320;
+	_pulmonary_valve_flow_rate = 320.0;
 }
 
 void Heart::ResetTricuspidValveFlowRate()
 {
-	_tricuspid_valve_flow_rate = 126;
+	_tricuspid_valve_flow_rate = 126.0;
 }
 
 void Heart::ResetHeartRate()
 {
-	_heart_rate = 70;
+	_heart_rate = 70.0;
 	_cycle_duration = 0.8;
 }
 
 void Heart::ResetStrokeVolume()
 {
-	_stroke_volume = 80;
+	_stroke_volume = 80.0;
 }
 
 void Heart::ResetCycleDuration()
 {
 	_cycle_duration = 0.8;
-	_heart_rate = 70;
+	_heart_rate = 70.0;
 }
 
 void Heart::ResetRadiusSummandLV()
 {
-	_radius_addend_lv = 1;
+	_radius_addend_lv = 1.0;
 }
 
 void Heart::ResetRadiusSummandRV()
 {
-	_radius_addend_rv = 1;
+	_radius_addend_rv = 1.0;
 }
 
 double Heart::AorticValveFlowRate()

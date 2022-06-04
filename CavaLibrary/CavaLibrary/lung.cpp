@@ -16,7 +16,7 @@ using namespace std;
 void Lung::OxygenTransport(double time, double& oxygen, HumanCharacteristic human_characteristic)
 {
 	Airflow(human_characteristic.temperature);
-	Pressure(time, human_characteristic.temperature, inflow, _pressure_summand);
+	Pressure(time, human_characteristic.temperature, _pressure_summand);
 	OxygenSaturation(human_characteristic);
 	Hemoglobin(human_characteristic);
 	this->oxygen = OxygenContent(oxygen_saturation, _volume, hemoglobin_level);
@@ -24,10 +24,7 @@ void Lung::OxygenTransport(double time, double& oxygen, HumanCharacteristic huma
 
 void Lung::SwitchFlow()
 {
-	if(_inflow == 1)
-		_inflow = 0;
-	else
-		_inflow = 1;
+	_inflow = !_inflow;
 }
 
 double Lung::MassOfAir()
@@ -95,7 +92,7 @@ double Lung::CycleDuration()
 	return _cycle_time_breath;
 }
 
-int Lung::Inflow()
+bool Lung::Inflow()
 {
 	return _inflow;
 }
@@ -163,7 +160,7 @@ void Lung::AirMassFlow(double new_air_mass_flow)
 void Lung::RespiratoryRate(double new_respiratory_rate)
 {
 	_respiratory_rate = new_respiratory_rate;
-	_cycle_time_breath = 60 / _respiratory_rate;
+	_cycle_time_breath = 60.0 / _respiratory_rate;
 }
 
 void Lung::ResetMassOfAir()
@@ -233,27 +230,27 @@ void Lung::ResetRespiratoryRate()
 
 void Lung::Airflow(double temperature)
 {
-	double flow_coefficient = -1;
-	if (_inflow == 1)
-		flow_coefficient = 1;
+	double flow_coefficient = -1.0;
+	if (_inflow)
+		flow_coefficient = 1.0;
 
 	double kelvin_temperature = 274.15 + temperature;
-	double numerator = flow_coefficient * _area_of_throttle * _upstream_pressure * sqrt(1-_critical_pressure_ratio);
+	double numerator = flow_coefficient * _area_of_throttle * _upstream_pressure * sqrt(1.0 -_critical_pressure_ratio);
 	double denominator = _atmospheric_density * sqrt(_gas_constant * kelvin_temperature);
-	double factor = sqrt(1 - pow((_downstream_pressure / _upstream_pressure - _critical_pressure_ratio) / (1 - _critical_pressure_ratio), 2));
+	double factor = sqrt(1.0 - pow((_downstream_pressure / _upstream_pressure - _critical_pressure_ratio) / (1.0 - _critical_pressure_ratio), 2.0));
 	oxygen_flow = 0.980665 * 0.00001 * (numerator / denominator) * factor; //unit adjustment 
 }
 
-void Lung::Pressure(double time, double temperature, int inflow, double summand)
+void Lung::Pressure(double time, double temperature, double summand)
 {
 	double kelvin_temperature = 274.15  + temperature;
 	double numerator = _air_mass_flow * _gas_constant * kelvin_temperature * _volume * time;
-	if (inflow)
+	if (_inflow)
 		_respiratory_compliance = _respiratory_compliance_inflow;
 	else
 		_respiratory_compliance = _respiratory_compliance_outflow;
 
-	double denominator = pow(_volume, 2) + _respiratory_compliance * _mass_of_air * _gas_constant * kelvin_temperature;
+	double denominator = pow(_volume, 2.0) + _respiratory_compliance * _mass_of_air * _gas_constant * kelvin_temperature;
 	pressure = (0.5 * 0.0101971621297793 * numerator / denominator) + summand;	// 0.5 unit adjustment to cmH20
 }
 
