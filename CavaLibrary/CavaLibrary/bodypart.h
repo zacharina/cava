@@ -8,10 +8,13 @@ public:
 	BodyPart() = default;
 	~BodyPart() = default;
 
-	double oxygen = 0;
-	void OxygenTransport(double time, double& oxygen, HumanCharacteristic human_characteristic) {};
+	void ComputeOxygenTransport(double time, double& oxygen, HumanCharacteristic human_characteristic) {};
+	double GetOxygen() { return oxygen; }
+	void SetOxygen(double ox) { oxygen = ox; }
 
 protected:
+
+	double oxygen = 0;
 
 	/*
 	* Basic calculation of the oxygen content in a compartment
@@ -19,7 +22,7 @@ protected:
 	* @param volume	
 	* @param hemoglobin_level
 	*/
-	static double OxygenContent(double oxygen_saturation, double volume, double hemoglobin_level)
+	static double GetOxygenContent(double oxygen_saturation, double volume, double hemoglobin_level)
 	{
 		return 0.0000316 * oxygen_saturation * volume * hemoglobin_level;
 	}
@@ -31,7 +34,7 @@ protected:
 	* Basic calculation of the hemoglobin level in a compartment dependant on the gender
 	* @param human_characteristic
 	*/
-	void Hemoglobin(const HumanCharacteristic& human_characteristic) {
+	void SetHemoglobinFor(const HumanCharacteristic& human_characteristic) {
 
 		if(human_characteristic.age < 15)
 		{
@@ -60,7 +63,7 @@ protected:
 	* Basic calculation of the oxygen saturation in a compartment dependant on the gender
 	* @param human_characteristic
 	*/
-	void OxygenSaturation(const HumanCharacteristic& human_characteristic) {
+	void SetOxygenSaturationFor(const HumanCharacteristic& human_characteristic) {
 
 		if (human_characteristic.gender == Gender::female)
 		{

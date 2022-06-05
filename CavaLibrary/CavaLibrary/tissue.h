@@ -10,8 +10,12 @@ public:
 	}
 	~Tissue() = default;
 
-	void OxygenTransport(double time, double& oxygen, HumanCharacteristic human_characteristic);
+	void ComputeOxygenTransport(double time, double& oxygen, HumanCharacteristic human_characteristic);
 
+	double GetPartialPressure() { return partial_pressure; }
+	void SetPartialPressure(double pr) { partial_pressure = pr; }
+
+private:
 	//Set by blood circulation
 	double partial_pressure = 0.0;
 };

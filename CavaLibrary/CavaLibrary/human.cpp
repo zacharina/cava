@@ -12,17 +12,17 @@ void Human::CardiovascularSystem(double time, double* oxygen)
 		return;
 
 	_test = (_simulation_time + time) - _last_breath_cycle;
-	_test2 = lung->CycleDuration();
-	_test3 = lung->Inflow();
-	if ((_simulation_time + time) - _last_breath_cycle > lung->CycleDuration())
+	_test2 = lung->GetCycleDuration();
+	_test3 = lung->GetInflow();
+	if ((_simulation_time + time) - _last_breath_cycle > lung->GetCycleDuration())
 	{
 		_last_breath_cycle = _simulation_time + time;
 		lung->SwitchFlow();
 		trachea->SwitchFlow();
 	}
 	
-	if(abs(heart->CycleDuration() - blood_vessel->CycleDuration()) > 0.0)
-		blood_vessel->CycleDuration(heart->CycleDuration());
+	if(abs(heart->CycleDuration() - blood_vessel->GetCycleDuration()) > 0.0)
+		blood_vessel->SetCycleDuration(heart->CycleDuration());
 
 	if ((_simulation_time + time) - _last_heart_cycle > heart->CycleDuration())
 		_last_heart_cycle = _simulation_time + time;
@@ -31,12 +31,12 @@ void Human::CardiovascularSystem(double time, double* oxygen)
 	double heart_difference = _simulation_time - _last_heart_cycle;
 
 
-	trachea->OxygenTransport(breath_difference, *oxygen, _characteristics);
-	lung->OxygenTransport(heart_difference, *oxygen, _characteristics);
-	heart->OxygenTransport(heart_difference, *oxygen, _characteristics);
-	blood_vessel->OxygenTransport(heart_difference, *oxygen, _characteristics);
-	tissue->partial_pressure = blood_vessel->partial_pressure_tissue;
-	tissue->oxygen = blood_vessel->oxygen_consumption_tissue;
+	trachea->ComputeOxygenTransport(breath_difference, *oxygen, _characteristics);
+	lung->ComputeOxygenTransport(heart_difference, *oxygen, _characteristics);
+	heart->ComputeOxygenTransport(heart_difference, *oxygen, _characteristics);
+	blood_vessel->ComputeOxygenTransport(heart_difference, *oxygen, _characteristics);
+	tissue->SetPartialPressure(blood_vessel->GetPartialPressureTissue());
+	tissue->SetOxygen(blood_vessel->GetOxygenConsumptionTissue());
 	
 	_simulation_time += time;
 }

@@ -22,9 +22,9 @@ public:
 	double pressure = 0.0; //mmHg
 	double radius = 0.0; //cm
 
-	void Radius(double time);
-	double Elastance(double time);
-	void Pressure(double time, double factor);
+	void ComputeRadius(double time);
+	void ComputePressure(double time, double factor);
+	void ComputeElastance(double time);
 
 	double MinimumElastance();
 	double MaximumElastance();

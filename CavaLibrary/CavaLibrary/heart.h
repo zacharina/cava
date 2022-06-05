@@ -21,7 +21,7 @@ public:
 		delete right_ventricle;
 	}
 
-	void OxygenTransport(double time, double& oxygen, HumanCharacteristic human_characteristic);
+	void ComputeOxygenTransport(double time, double& oxygen, HumanCharacteristic human_characteristic);
 	
 	Atrium* left_atrium;
 	Atrium* right_atrium;
@@ -69,7 +69,7 @@ private:
 	double _pulmonary_valve_flow_rate = 100.0; //ml/s
 	double _tricuspid_valve_flow_rate = 260.0; //ml/s
 	
-	double _heart_rate = 70.0; //bpm
+	double _heart_rate = 60.0; //bpm
 	double _stroke_volume = 0.08; //L
 	
 	double _cycle_duration = 0.8; //s

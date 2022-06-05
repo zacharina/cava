@@ -1495,37 +1495,37 @@ namespace CavaSystem {
 	private: System::Void numThrottle_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 private: System::Void numUpPress_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-	human_parent_ptr->lung->UpstreamPressure((double)numUpPress->Value);
+	human_parent_ptr->lung->SetUpstreamPressure((double)numUpPress->Value);
 }
 private: System::Void numDownPress_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-	human_parent_ptr->lung->DownstreamPressure((double)numDownPress->Value);
+	human_parent_ptr->lung->SetDownstreamPressure((double)numDownPress->Value);
 }
 private: System::Void numCritical_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-	human_parent_ptr->lung->CriticalPressureRatio((double)numCritical->Value);
+	human_parent_ptr->lung->SetCriticalPressureRatio((double)numCritical->Value);
 }
 private: System::Void numGas_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-	human_parent_ptr->lung->GasConstant((double)numGas->Value);
+	human_parent_ptr->lung->SetGasConstant((double)numGas->Value);
 }
 private: System::Void numLungVol_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-	human_parent_ptr->lung->Volume((double)numLungVol->Value);
+	human_parent_ptr->lung->SetVolume((double)numLungVol->Value);
 }
 private: System::Void numMassAir_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-	human_parent_ptr->lung->MassOfAir((double)numMassAir->Value);
+	human_parent_ptr->lung->SetMassOfAir((double)numMassAir->Value);
 }
 private: System::Void numAtmosDen_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-	human_parent_ptr->lung->AtmosphericDensity((double)numAtmosDen->Value);
+	human_parent_ptr->lung->SetAtmosphericDensity((double)numAtmosDen->Value);
 }
 private: System::Void numInflow_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-	human_parent_ptr->lung->RespiratoryComplianceInflow((double)numInflow->Value);
+	human_parent_ptr->lung->SetRespiratoryComplianceInflow((double)numInflow->Value);
 }
 private: System::Void numOutflow_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-	human_parent_ptr->lung->RespiratoryComplianceOutflow((double)numOutflow->Value);
+	human_parent_ptr->lung->SetRespiratoryComplianceOutflow((double)numOutflow->Value);
 }
 private: System::Void numMassFlow_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-	human_parent_ptr->lung->AirMassFlow((double)numMassFlow->Value);
+	human_parent_ptr->lung->SetAirMassFlow((double)numMassFlow->Value);
 }
 private: System::Void numCoefficient_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-	human_parent_ptr->lung->PressureSummand((double)numCoefficient->Value);
+	human_parent_ptr->lung->SetPressureSummand((double)numCoefficient->Value);
 }
 };
 }

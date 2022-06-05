@@ -7,7 +7,8 @@
 
 #include<iostream>
 #include<fstream>
-#include <regex>
+#include<regex>
+#include<filesystem>
 
 namespace CavaSystem {
 
@@ -486,7 +487,7 @@ namespace CavaSystem {
 			// 
 			this->cavaTimer->Enabled = true;
 			this->cavaTimer->Interval = 1;
-			this->cavaTimer->Tick += gcnew System::EventHandler(this, &CavaForm::timer1_Tick);
+			this->cavaTimer->Tick += gcnew System::EventHandler(this, &CavaForm::cavatimer_Tick);
 			// 
 			// chData
 			// 
@@ -641,8 +642,7 @@ private: System::Void cmdExit_Click(System::Object^ sender, System::EventArgs^ e
 	Application::Exit();
 }
 
-
-private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void cavatimer_Tick(System::Object^ sender, System::EventArgs^ e) {
 	timer_intern++;
 	if (timer_intern >= 1000)
 		timer_intern = 0;
@@ -652,13 +652,13 @@ private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) 
 
 	human_ptr->CardiovascularSystem(time_since_frame, &oxygen);
 	//Update trachea
-	trachea_form->UpdateFlowRate(std::ceil(human_ptr->trachea->flow_rate * 100.0) / 100.0);
-	trachea_form->UpdateOxygen(std::ceil(human_ptr->trachea->oxygen * 100.0) / 100.0);
+	trachea_form->UpdateFlowRate(std::ceil(human_ptr->trachea->GetFlowRate() * 100.0) / 100.0);
+	trachea_form->UpdateOxygen(std::ceil(human_ptr->trachea->GetOxygen() * 100.0) / 100.0);
 	//Update lung
-	lung_form->UpdateOxygenFlow(std::ceil(human_ptr->lung->oxygen_flow * 100.0) / 100.0);
-	lung_form->UpdatePressure(std::ceil(human_ptr->lung->pressure * 100.0) / 100.0);
+	lung_form->UpdateOxygenFlow(std::ceil(human_ptr->lung->GetOxygenFlow() * 100.0) / 100.0);
+	lung_form->UpdatePressure(std::ceil(human_ptr->lung->GetPressure() * 100.0) / 100.0);
 	//Update heart
-	heart_form->UpdateOxygen(std::ceil(human_ptr->heart->oxygen * 100.0) / 100.0);
+	heart_form->UpdateOxygen(std::ceil(human_ptr->heart->GetOxygen() * 100.0) / 100.0);
     heart_form->UpdateFlowRate(std::ceil(human_ptr->heart->flow_rate * 100.0) / 100.0);
 	heart_form->UpdateLAElastance(std::ceil(human_ptr->heart->left_atrium->elastance * 100.0) / 100.0);
 	heart_form->UpdateLAPressure(std::ceil(human_ptr->heart->left_atrium->pressure * 100.0) / 100.0);
@@ -673,19 +673,21 @@ private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) 
 	heart_form->UpdateRVPressureTotal(std::ceil(human_ptr->heart->right_ventricle->pressure * 100.0) / 100.0);
 	heart_form->UpdateRVRadius(std::ceil(human_ptr->heart->right_ventricle->radius * 100.0) / 100.0);
 	//Update vascular system
-	blood_form->UpdateOxygen(std::ceil(human_ptr->blood_vessel->oxygen * 100.0) / 100.0);
-	blood_form->UpdateDiastolicPressure(std::ceil(human_ptr->blood_vessel->diastolic_pressure * 100.0) / 100.0);
-	blood_form->UpdateSystolicPressure(std::ceil(human_ptr->blood_vessel->systolic_pressure * 100.0) / 100.00);
-	blood_form->UpdatePartialPressureVessel(std::ceil(human_ptr->blood_vessel->partial_pressure * 100.0) / 100.0);
-	blood_form->UpdateVelocity(std::ceil(human_ptr->blood_vessel->velocity * 100.0) / 100.0);
-	blood_form->UpdateFlowRate(std::ceil(human_ptr->blood_vessel->oxygen_flow * 100.0) / 100.0);
-	blood_form->UpdateResistance(std::ceil(human_ptr->blood_vessel->resistance * 100.0) / 100.0);
-	blood_form->UpdateInertance(std::ceil(human_ptr->blood_vessel->inertance * 100.0) / 100.0);
-	blood_form->UpdateCompliance(std::ceil(human_ptr->blood_vessel->compliance * 100.0) / 100.0);
-	blood_form->UpdateElastance(std::ceil(human_ptr->blood_vessel->elastance * 100.0) / 100.0);
-	blood_form->UpdatePartialPressureTissue(std::ceil(human_ptr->blood_vessel->partial_pressure_tissue * 100.0) / 100.0);
-	blood_form->UpdateConsumptionRate(std::ceil(human_ptr->blood_vessel->oxygen_consumption_tissue * 100.0) / 100.0);
+	blood_form->UpdateOxygen(std::ceil(human_ptr->blood_vessel->GetOxygen() * 100.0) / 100.0);
+	blood_form->UpdateDiastolicPressure(std::ceil(human_ptr->blood_vessel->GetDiastolicPressure() * 100.0) / 100.0);
+	blood_form->UpdateSystolicPressure(std::ceil(human_ptr->blood_vessel->GetSystolicPressure() * 100.0) / 100.00);
+	blood_form->UpdatePartialPressureVessel(std::ceil(human_ptr->blood_vessel->GetPartialPressure()* 100.0) / 100.0);
+	blood_form->UpdateVelocity(std::ceil(human_ptr->blood_vessel->GetVelocity() * 100.0) / 100.0);
+	blood_form->UpdateFlowRate(std::ceil(human_ptr->blood_vessel->GetOxygenFlow() * 100.0) / 100.0);
+	blood_form->UpdateResistance(std::ceil(human_ptr->blood_vessel->GetResistance() * 100.0) / 100.0);
+	blood_form->UpdateInertance(std::ceil(human_ptr->blood_vessel->GetInertance() * 100.0) / 100.0);
+	blood_form->UpdateCompliance(std::ceil(human_ptr->blood_vessel->GetCompliance() * 100.0) / 100.0);
+	blood_form->UpdateElastance(std::ceil(human_ptr->blood_vessel->GetElastance() * 100.0) / 100.0);
+	blood_form->UpdatePartialPressureTissue(std::ceil(human_ptr->blood_vessel->GetPartialPressureTissue() * 100.0) / 100.0);
+	blood_form->UpdateConsumptionRate(std::ceil(human_ptr->blood_vessel->GetOxygenConsumptionTissue() * 100.0) / 100.0);
+
 }
+
 
 };
 

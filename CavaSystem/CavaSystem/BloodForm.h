@@ -2363,31 +2363,31 @@ private: System::Void cmdLength_Click(System::Object^ sender, System::EventArgs^
 	numThickness->Value = 1;
 }
 private: System::Void numSaturation_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-	human_parent_ptr->blood_vessel->HemoglobinOxygenSaturation((double)numSaturation->Value);
+	human_parent_ptr->blood_vessel->SetHemoglobinOxygenSaturation((double)numSaturation->Value);
 }
 private: System::Void numRBC_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-	human_parent_ptr->blood_vessel->RBCVelocity((double)numRBC->Value);
+	human_parent_ptr->blood_vessel->SetRBCVelocity((double)numRBC->Value);
 }
 private: System::Void numTRadius_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-	human_parent_ptr->blood_vessel->TissueRadius((double)numTRadius->Value);
+	human_parent_ptr->blood_vessel->SetTissueRadius((double)numTRadius->Value);
 }
 private: System::Void numBRadius_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-	human_parent_ptr->blood_vessel->VesselRadius((double)numBRadius->Value);
+	human_parent_ptr->blood_vessel->SetVesselRadius((double)numBRadius->Value);
 }
 private: System::Void numMetabolic_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-	human_parent_ptr->blood_vessel->MetabolicRate((double)numMetabolic->Value);
+	human_parent_ptr->blood_vessel->SetMetabolicRate((double)numMetabolic->Value);
 }
 private: System::Void numInitSysPress_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-	human_parent_ptr->blood_vessel->InitialSystolicPressure((double)numInitSysPress->Value);
+	human_parent_ptr->blood_vessel->SetInitialSystolicPressure((double)numInitSysPress->Value);
 }
 private: System::Void numRate_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-	human_parent_ptr->blood_vessel->MaxConsumption((double)numRate->Value);
+	human_parent_ptr->blood_vessel->SetMaxConsumption((double)numRate->Value);
 }
 private: System::Void numThickness_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-	human_parent_ptr->blood_vessel->VesselThickness((double)numThickness->Value);
+	human_parent_ptr->blood_vessel->SetVesselThickness((double)numThickness->Value);
 }
 private: System::Void numLength_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-	human_parent_ptr->blood_vessel->VesselLength((double)numLength->Value);
+	human_parent_ptr->blood_vessel->SetVesselLength((double)numLength->Value);
 }
 };
 }

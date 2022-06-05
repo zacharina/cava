@@ -11,15 +11,15 @@ using namespace std;
 * @param oxygen					provided amount of oxygen to the in percent
 * @param human_characteristic
 */
-void Heart::OxygenTransport(double time, double& oxygen, HumanCharacteristic human_characteristic)
+void Heart::ComputeOxygenTransport(double time, double& oxygen, HumanCharacteristic human_characteristic)
 {
 	FlowRate();
-	left_atrium->Radius(time);
-	right_atrium->Radius(time);
-	left_atrium->Elastance(time);
-	right_atrium->Elastance(time);
-	left_atrium->Pressure(time, (1.0/3.0));
-	right_atrium->Pressure(time, (4.0/6.0));
+	left_atrium->ComputeRadius(time);
+	right_atrium->ComputeRadius(time);
+	left_atrium->ComputeElastance(time);
+	right_atrium->ComputeElastance(time);
+	left_atrium->ComputePressure(time, (1.0/3.0));
+	right_atrium->ComputePressure(time, (4.0/6.0));
 	left_ventricle->Radius(time, _radius_addend_lv, _mitral_valve_flow_rate, _aortic_valve_flow_rate);
 	right_ventricle->Radius(time, _radius_addend_rv, _tricuspid_valve_flow_rate, _pulmonary_valve_flow_rate);
 	left_ventricle->InflowInertance();
@@ -27,10 +27,10 @@ void Heart::OxygenTransport(double time, double& oxygen, HumanCharacteristic hum
 	left_ventricle->Pressure(time, 1.0);
 	right_ventricle->Pressure(time, 1.0);
 
-	OxygenSaturation(human_characteristic);
-	Hemoglobin(human_characteristic);
+	SetOxygenSaturationFor(human_characteristic);
+	SetHemoglobinFor(human_characteristic);
 	Volume();
-	this->oxygen = OxygenContent(oxygen_saturation, hemoglobin_level, _volume);
+	this->oxygen = GetOxygenContent(oxygen_saturation, hemoglobin_level, _volume);
 }
 
 void Heart::FlowRate()

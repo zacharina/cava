@@ -8,26 +8,27 @@ public:
 	Trachea() : BodyPart() {};
 	~Trachea() = default;
 
-	void OxygenTransport(double time, double& oxygen, HumanCharacteristic human_characteristic);
-	double Womersley();
+	void ComputeOxygenTransport(double time, double& oxygen, HumanCharacteristic human_characteristic);
+	double ComputeWomersley();
 	
-	double block_percentage = 0.0;
-	double flow_rate = 0.0; //l/min
+	double GetBlockPercentage() { return block_percentage; }
+	void SetBlockPercentag(double val) { block_percentage = val; }
+	double GetFlowRate() { return flow_rate; }
 
 	void SwitchFlow();
 
-	double TrachealDiameter();
-	double ViscosityOfAir();
-	double MeanFlowSpeed();
-	double RespiratoryRate();
-	double OuterThickness();
-	int Inflow();
+	double GetTrachealDiameter();
+	double GetViscosityOfAir();
+	double GetMeanFlowSpeed();
+	double GetRespiratoryRate();
+	double GetOuterThickness();
+	bool GetInflow();
 
-	void TrachealDiameter(double new_tracheal_diameter);
-	void ViscosityOfAir(double new_viscosity_of_air);
-	void MeanFlowSpeed(double new_mean_flow_speed);
-	void RespiratoryRate(double new_respiratory_rate);
-	void OuterThickness(double new_thickness);
+	void SetTrachealDiameter(double new_tracheal_diameter);
+	void SetViscosityOfAir(double new_viscosity_of_air);
+	void SetMeanFlowSpeed(double new_mean_flow_speed);
+	void SetRespiratoryRate(double new_respiratory_rate);
+	void SetOuterThickness(double new_thickness);
 
 	void ResetTrachealDiameter();
 	void ResetViscosityOfAir();
@@ -36,21 +37,35 @@ public:
 	void ResetOuterThickness();
 
 private:
+	const bool INIT_INFLOW = true;
+	const double INIT_TRACHEAL_DIAMETER = 18.0;
+	const double INIT_CROSS_SECTIONAL_AREA = 0.0;
+	const double INIT_VISCOSITY_OF_AIR = 1.46 * 0.00001;
+	const double INIT_REYNOLDS_NUMER = 0.0;
+	const double INIT_MEAN_FLOW_SPEED = 3.4;
+	const double INIT_RESPIRATORY_RATE = 16.0;
+	const double INIT_BREATHING_TIME = 60.0 / INIT_RESPIRATORY_RATE;
+	const double INIT_INHALATION_TIME = 0.45 * INIT_BREATHING_TIME;
+	const double INIT_WOMERSLEY = 0.0;
+	const double INIT_OUTER_THICKNESS = 3.0;
 
-	void ReynoldsNumber();
-	void FlowRate();
-	void CrossSectionalArea();
+	void ComputeReynoldsNumber();
+	void ComputeFlowRate();
+	void ComputeCrossSectionalArea();
 
-	bool _inflow = true;
-	double _tracheal_diameter = 18.0; //mm
-	double _cross_sectional_area = 0.0; //mm2 
-	double _viscosity_of_air = 1.46 * 0.00001; //m2/s
-	double _reynolds_number = 0.0;
-	double _mean_flow_speed = 3.4; //m/s
-	double _respiratory_rate = 16.0; //bpm
-	double _breathing_time = 60.0 / _respiratory_rate; //s
-	double _inhalation_time = 0.45 * _breathing_time; //s
-	double _womersley = 0.0;
-	double _outer_thickness = 3.0; //mm
+	double block_percentage = 0.0;
+	double flow_rate = 0.0; //l/min
+
+	bool _inflow = INIT_INFLOW;
+	double _tracheal_diameter = INIT_TRACHEAL_DIAMETER; //mm
+	double _cross_sectional_area = INIT_CROSS_SECTIONAL_AREA; //mm2 
+	double _viscosity_of_air = INIT_VISCOSITY_OF_AIR; //m2/s
+	double _reynolds_number = INIT_REYNOLDS_NUMER;
+	double _mean_flow_speed = INIT_MEAN_FLOW_SPEED; //m/s
+	double _respiratory_rate = INIT_RESPIRATORY_RATE; //bpm
+	double _breathing_time = INIT_BREATHING_TIME; //s
+	double _inhalation_time = INIT_INHALATION_TIME; //s
+	double _womersley = INIT_WOMERSLEY;
+	double _outer_thickness = INIT_OUTER_THICKNESS; //mm
 };
 

@@ -877,22 +877,22 @@ private: System::Void cmdThickness_Click(System::Object^ sender, System::EventAr
     numThickness->Value = 3;
 }
 private: System::Void numBlock_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-    human_parent_ptr->trachea->block_percentage = (double)numBlock->Value;
+    human_parent_ptr->trachea->SetBlockPercentag((double)numBlock->Value);
 }
 private: System::Void numDiameter_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-    human_parent_ptr->trachea->TrachealDiameter((double)numDiameter->Value);
+    human_parent_ptr->trachea->SetTrachealDiameter((double)numDiameter->Value);
 }
 private: System::Void numSpeed_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-    human_parent_ptr->trachea->MeanFlowSpeed((double)numSpeed->Value);
+    human_parent_ptr->trachea->SetMeanFlowSpeed((double)numSpeed->Value);
 }
 private: System::Void numVis_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-    human_parent_ptr->trachea->ViscosityOfAir((double)numVis->Value);
+    human_parent_ptr->trachea->SetViscosityOfAir((double)numVis->Value);
 }
 private: System::Void numResRate_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-    human_parent_ptr->trachea->RespiratoryRate((double)numResRate->Value);
+    human_parent_ptr->trachea->SetRespiratoryRate((double)numResRate->Value);
 }
 private: System::Void numThickness_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-    human_parent_ptr->trachea->OuterThickness((double)numThickness->Value);
+    human_parent_ptr->trachea->SetOuterThickness((double)numThickness->Value);
 }
 };
 }
