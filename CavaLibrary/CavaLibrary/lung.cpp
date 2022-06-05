@@ -38,7 +38,7 @@ void Lung::ComputeAirflow(double temperature)
 void Lung::ComputePressure(double time, double temperature, double summand)
 {
 	double kelvin_temperature = 274.15 + temperature;
-	double numerator = _air_mass_flow * _gas_constant * kelvin_temperature * _volume * time;
+	double numerator = _air_mass_flow * _gas_constant * kelvin_temperature * _volume * (time * _cycle_time_breath);
 	if (_inflow)
 		_respiratory_compliance = _respiratory_compliance_inflow;
 	else

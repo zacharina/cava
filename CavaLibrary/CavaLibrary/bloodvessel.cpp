@@ -87,14 +87,11 @@ void BloodVessel::ComputeWindkessel(double time)
 	double subtotal_diastolic = exp(-diastolic_time_seconds / (resistance * compliance * 750.0));
 	
 	if (time <= systolic_time_seconds) {
-		//double tmp_flow = (1000.0 / 60.0) * _flow * _cycle_duration / (60.0 * (-systolic_time_seconds * cos(time * PI / systolic_time_seconds) / PI + _flow_addend));
 		double tmp_flow = (1000.0 / 60.0) * _flow * _cycle_duration / (60.0 * (2.0 * systolic_time_seconds) / PI);
 		systolic_pressure = _initial_systolic_pressure * subtotal_systolic + (tmp_flow * systolic_time_seconds * compliance * PI * pow(resistance, 2.0)) / (pow(systolic_time_seconds, 2.0) + pow(compliance, 2.0) * pow(PI, 2.0) * pow(resistance, 2.0)) * (1.0 + subtotal_systolic);
-		//_initial_diastolic_pressure = systolic_pressure;
 	}
 	else {
 		diastolic_pressure = _initial_diastolic_pressure * subtotal_diastolic;
-		//_initial_systolic_pressure = diastolic_pressure;
 	}
 }
 
