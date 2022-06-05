@@ -44,6 +44,8 @@ public:
 	void ArtificialComa();
 	void Resuscitate();
 
+	double GetCurrentCycleTime() { return _current_cycle_time; }
+
 	Trachea* trachea;
 	Lung* lung;
 	Heart* heart;
@@ -51,9 +53,6 @@ public:
 	Tissue* tissue;
 
 	bool alive = true;
-	double _test = 0.0;
-	double _test2 = 0.0;
-	double _test3 = 0.0;
 	
 	HumanCharacteristic _characteristics;
 private:
@@ -61,5 +60,7 @@ private:
 	double _simulation_time = 0.0;
 	double _last_heart_cycle = 0.0;
 	double _last_breath_cycle = 0.0;
+
+	double _current_cycle_time = 0.0;
 };
 

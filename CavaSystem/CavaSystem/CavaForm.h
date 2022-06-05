@@ -4,11 +4,7 @@
 #include "HeartForm.h"
 #include "BloodForm.h"
 #include "Human.h"
-
-#include<iostream>
-#include<fstream>
-#include<regex>
-#include<filesystem>
+#include "Utils.h"
 
 namespace CavaSystem {
 
@@ -19,13 +15,13 @@ namespace CavaSystem {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	using namespace std;
-
 	public ref class CavaForm : public System::Windows::Forms::Form
 	{
 	public:
 		CavaForm()
 		{
+			clearOldDebugLogs();
+
 			InitializeComponent();
 
 			Gender gender = Gender::female;
@@ -685,8 +681,8 @@ private: System::Void cavatimer_Tick(System::Object^ sender, System::EventArgs^ 
 	blood_form->UpdateElastance(std::ceil(human_ptr->blood_vessel->GetElastance() * 100.0) / 100.0);
 	blood_form->UpdatePartialPressureTissue(std::ceil(human_ptr->blood_vessel->GetPartialPressureTissue() * 100.0) / 100.0);
 	blood_form->UpdateConsumptionRate(std::ceil(human_ptr->blood_vessel->GetOxygenConsumptionTissue() * 100.0) / 100.0);
-
 }
+
 
 
 };

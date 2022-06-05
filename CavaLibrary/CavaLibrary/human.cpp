@@ -11,9 +11,8 @@ void Human::CardiovascularSystem(double time, double* oxygen)
 	if (!alive)
 		return;
 
-	_test = (_simulation_time + time) - _last_breath_cycle;
-	_test2 = lung->GetCycleDuration();
-	_test3 = lung->GetInflow();
+	heart->HeartRate(60);
+
 	if ((_simulation_time + time) - _last_breath_cycle > lung->GetCycleDuration())
 	{
 		_last_breath_cycle = _simulation_time + time;
@@ -29,6 +28,7 @@ void Human::CardiovascularSystem(double time, double* oxygen)
 
 	double breath_difference = _simulation_time - _last_breath_cycle;
 	double heart_difference = _simulation_time - _last_heart_cycle;
+	_current_cycle_time = heart_difference;
 
 
 	trachea->ComputeOxygenTransport(breath_difference, *oxygen, _characteristics);

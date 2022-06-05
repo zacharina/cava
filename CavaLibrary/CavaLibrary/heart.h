@@ -30,30 +30,18 @@ public:
 
 	double flow_rate = 0.0; //l/min
 
-	double AorticValveFlowRate();
-	double MitralValveFlowRate();
-	double PulmonaryValveFlowRate();
-	double TricuspidValveFlowRate();
 	double HeartRate();
 	double StrokeVolume();
 	double CycleDuration();
 	double RadiusSummandLV();
 	double RadiusSummandRV();
 
-	void AorticValveFlowRate(double new_aortic_valve_flow_rate);
-	void MitralValveFlowRate(double new_mitral_valve_flow_rate);
-	void PulmonaryValveFlowRate(double new_pulmonary_valve_flow_rate);
-	void TricuspidValveFlowRate(double new_tricuspid_valve_flow_rate);
 	void HeartRate(double new_heart_rate);
 	void StrokeVolume(double new_stroke_volume);
 	void CycleDuration(double new_cycle_duration);
 	void RadiusSummandLV(double new_radius_summand);
 	void RadiusSummandRV(double new_radius_summand);
 
-	void ResetAorticValveFlowRate();
-	void ResetMitralValveFlowRate();
-	void ResetPulmonaryValveFlowRate();
-	void ResetTricuspidValveFlowRate();
 	void ResetHeartRate();
 	void ResetStrokeVolume();
 	void ResetCycleDuration();
@@ -64,11 +52,6 @@ private:
 	void FlowRate();
 	void Volume();
 	
-	double _aortic_valve_flow_rate = 242.0; //ml/s
-	double _mitral_valve_flow_rate = 450.0; //ml/s
-	double _pulmonary_valve_flow_rate = 100.0; //ml/s
-	double _tricuspid_valve_flow_rate = 260.0; //ml/s
-	
 	double _heart_rate = 60.0; //bpm
 	double _stroke_volume = 0.08; //L
 	
@@ -78,12 +61,12 @@ private:
 	
 	double _volume = 0.0; //cm3
 
-	double _radius_addend_lv = 0.5; //left ventricle
-	double _radius_addend_rv = 0.5; //right ventricle
+	double _radius_addend_lv = 2.0; //left ventricle
+	double _radius_addend_rv = 1.2; //right ventricle
 
 	double _left_ventricular_volume_over_time[9] = {126.0, 120.0, 69.0, 59.0, 97.0, 105.0, 110.0, 115.0, 126.0};
 	double _right_ventricular_volume_over_time[9] = {135.0, 108.0, 73.0, 68.0, 109.0, 115.0, 119.0, 125.0, 135.0};
 	double _left_atrial_volume_over_time[9] = {45.0, 51.0, 58.0, 62.0, 36.0, 40.0, 45.0, 49.0, 45.0};
-	double _right_atrial_volume_over_time[9] = {50.0, 56.0, 63.0, 67.0, 41.0, 45.0, 50.0, 54.0, 50.0 };
+	double _right_atrial_volume_over_time[9] = {50.0, 56.0, 63.0, 67.0, 41.0, 45.0, 50.0, 54.0, 50.0};
 };
 

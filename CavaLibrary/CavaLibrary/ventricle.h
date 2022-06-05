@@ -22,7 +22,7 @@ public:
 	double pressure = 0.0; //mmHg
 	double radius = 2.5; //cm
 
-	void Radius(double time, double addend, double valve_flow_rate_1, double valve_flow_rate_2);
+	void Radius(double time, double addend);
 	void Pressure(double time, double factor);
 	void InflowInertance();
 
@@ -44,6 +44,8 @@ public:
 	void ResetBloodDensity();
 	void ResetInflowLength();
 	void ResetScalingCoefficient();
+	double _volume = 0.0; //cm3
+	double _volume_over_time[9] = { 0 }; //ml
 	
 private:
 	void PressureActive(double time, double factor);
@@ -51,11 +53,9 @@ private:
 	double ActivationFunction(double time);
 	void VolumeAtTime(double time);
 
-	double _volume = 0.0; //cm3
 	double _radius_at_zero_pressure = 0.0; //cm3
 	double _end_systolic_elastance = 0.0; //mmHg/ml
 	double _coefficient = 0.0;
-	double _volume_over_time[9] = { 0 }; //ml
 
 	double _blood_density = 1.06; //g/cm3
 	double _inflow_length = 0;

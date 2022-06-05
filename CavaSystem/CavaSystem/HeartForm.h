@@ -2481,15 +2481,16 @@ namespace CavaSystem {
 		parent_form->BringToFront();
 	}
     private: System::Void numAortic_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
+        //
     }
 private: System::Void numMitral_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-    human_parent_ptr->heart->MitralValveFlowRate((double)numMitral->Value);
+    //human_parent_ptr->heart->MitralValveFlowRate((double)numMitral->Value);
 }
 private: System::Void numPulmonary_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-    human_parent_ptr->heart->PulmonaryValveFlowRate((double)numPulmonary->Value);
+   // human_parent_ptr->heart->PulmonaryValveFlowRate((double)numPulmonary->Value);
 }
 private: System::Void numTriscupid_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-    human_parent_ptr->heart->TricuspidValveFlowRate((double)numTriscupid->Value);
+   // human_parent_ptr->heart->TricuspidValveFlowRate((double)numTriscupid->Value);
 }
 private: System::Void numHeartRate_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
     human_parent_ptr->heart->HeartRate((double)numHeartRate->Value);

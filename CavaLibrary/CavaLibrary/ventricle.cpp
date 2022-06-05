@@ -3,13 +3,11 @@
 #include "definitions.h"
 #include <cmath>
 
-void Ventricle::Radius(double time, double addend, double valve_flow_rate_1, double valve_flow_rate_2)
+void Ventricle::Radius(double time, double addend)
 {
 	_radius_at_zero_pressure = addend;
 	VolumeAtTime(time);
-	double coefficients = _coefficient * _scaling_coefficient * PI;
-	radius = (3.0 * (valve_flow_rate_1 - valve_flow_rate_2) * time) / (2.0 * coefficients * sqrt((3.0 * _volume) / coefficients)) + addend;
-	
+	radius = sqrt(_volume * 3.0 / (2.0 * PI)) / (2.0 * _coefficient * _scaling_coefficient) + addend;
 	_inflow_length = 2.0 * radius;
 }
 
