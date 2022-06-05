@@ -2512,8 +2512,7 @@ private: System::Void numMaxElas_ValueChanged(System::Object^ sender, System::Ev
     human_parent_ptr->heart->right_atrium->MaximumElastance((double)numMaxElas->Value);
 }
 private: System::Void numVolume0_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-    human_parent_ptr->heart->left_atrium->VolumeAtZeroPressure((double)numVolume0->Value);
-    human_parent_ptr->heart->right_atrium->VolumeAtZeroPressure((double)numVolume0->Value);
+    //
 }
 private: System::Void numAtrialKey_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
     human_parent_ptr->heart->left_atrium->KeytimeInCycle((double)numAtrialKey->Value);

@@ -43,7 +43,6 @@ void Atrium::ComputeElastance(double time)
 
 void Atrium::ComputePressure(double time, double factor)
 {
-	_radius_at_zero_pressure = pow(3.0 * _volume_at_zero_pressure / (4.0 * PI) , 1.0 / 3.0);
 	pressure = elastance * factor * PI * _coefficient * _scaling_coefficient * (pow(radius, 2.0) - pow(_radius_at_zero_pressure, 2.0));
 }
 
@@ -61,11 +60,6 @@ double Atrium::MinimumElastance()
 double Atrium::MaximumElastance()
 {
 	return _maximum_elastance;
-}
-
-double Atrium::ZeroPressureVolume()
-{
-	return _volume_at_zero_pressure;
 }
 
 double Atrium::ZeroPressureRadius()
@@ -88,11 +82,6 @@ double Atrium::Volume()
 	return _volume;
 }
 
-double Atrium::VolumeAtZeroPressure()
-{
-	return _volume_at_zero_pressure;
-}
-
 double Atrium::KeytimeInCycle()
 {
 	return _keytime_1;
@@ -108,11 +97,6 @@ void Atrium::MaximumElastance(double new_maximum_elastance)
 	_maximum_elastance = new_maximum_elastance;
 }
 
-void Atrium::ZeroPressureVolume(double new_zero_pressure_volume)
-{
-	_volume_at_zero_pressure = new_zero_pressure_volume;
-}
-
 void Atrium::ZeroPressureRadius(double new_zero_pressure_radius)
 {
 	_radius_at_zero_pressure = new_zero_pressure_radius;
@@ -126,11 +110,6 @@ void Atrium::CycleDuration(double new_cycle_duration)
 void Atrium::AtrialDuration(double new_atrial_duration)
 {
 	_atrial_duration = new_atrial_duration;
-}
-
-void Atrium::VolumeAtZeroPressure(double new_volume)
-{
-	_volume_at_zero_pressure = new_volume;
 }
 
 void Atrium::Volume(double new_volume)
@@ -153,11 +132,6 @@ void Atrium::ResetMaximumElastance()
 	_maximum_elastance = 0.3;
 }
 
-void Atrium::ResetZeroPressureVolume()
-{
-	_volume_at_zero_pressure = 1.06;
-}
-
 void Atrium::ResetZeroPressureRadius()
 {
 	_radius_at_zero_pressure = 1.316;
@@ -166,9 +140,4 @@ void Atrium::ResetZeroPressureRadius()
 void Atrium::ResetKeytimeInCycle()
 {
 	_keytime_1 = 0.05;
-}
-
-void Atrium::ResetVolumeAtZeroPressure()
-{
-	_volume_at_zero_pressure = 5.0;
 }

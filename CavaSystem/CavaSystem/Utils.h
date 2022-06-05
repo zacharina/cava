@@ -11,8 +11,13 @@ namespace CavaSystem {
 	namespace fs = std::filesystem;
 
 	static void clearOldDebugLogs() {
-		for (const auto& entry : fs::directory_iterator("DebugData"))
-			fs::remove_all(entry.path());
+		try {
+			for (const auto& entry : fs::directory_iterator("DebugData"))
+				fs::remove_all(entry.path());
+		}
+		catch (exception& exc) {
+			return;
+		}
 	}
 
 	static string replaceValueInString(string input, char search, char replace) {

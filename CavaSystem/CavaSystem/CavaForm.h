@@ -21,7 +21,6 @@ namespace CavaSystem {
 		CavaForm()
 		{
 			clearOldDebugLogs();
-
 			InitializeComponent();
 
 			Gender gender = Gender::female;
