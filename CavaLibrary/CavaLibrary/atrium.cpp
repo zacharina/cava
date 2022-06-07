@@ -3,8 +3,23 @@
 #include "definitions.h"
 #include <cmath>
 
+void Atrium::ComputeElastance(double time)
+{
+	elastance = _minimum_elastance + 0.5 * (_maximum_elastance - _minimum_elastance) * ComputeActivationValue(time - _keytime_elastance * _cycle_duration);
+}
 
-double Atrium::ActivationFunction(double time)
+void Atrium::ComputePressure(double time, double factor)
+{
+	pressure = elastance * factor * PI * _coefficient * _scaling_coefficient * (pow(radius, 2.0) - pow(_radius_at_zero_pressure, 2.0));
+}
+
+void Atrium::ComputeRadius(double time)
+{
+	GetVolumeAtTime(time);
+	radius = pow(3.0 * _volume / (4.0 * PI), 1.0 / 3.0);
+}
+
+double Atrium::ComputeActivationValue(double time)
 {
 	double result = 0.0;
 	if (time < _cycle_duration && time >= _atrial_duration * _cycle_duration)
@@ -12,7 +27,9 @@ double Atrium::ActivationFunction(double time)
 	return result;
 }
 
-void Atrium::VolumeAtTime(double time)
+/*GETTER*/
+
+void Atrium::GetVolumeAtTime(double time)
 {
 	//note: inefficient //to be changed with volume calculation
 	double cycle_time_percentage = time / _cycle_duration;
@@ -36,108 +53,96 @@ void Atrium::VolumeAtTime(double time)
 		_volume = _volume_over_time[8];
 }
 
-void Atrium::ComputeElastance(double time)
-{
-	elastance = _minimum_elastance + 0.5 * (_maximum_elastance - _minimum_elastance) * ActivationFunction(time - _keytime_1 * _cycle_duration);
-}
-
-void Atrium::ComputePressure(double time, double factor)
-{
-	pressure = elastance * factor * PI * _coefficient * _scaling_coefficient * (pow(radius, 2.0) - pow(_radius_at_zero_pressure, 2.0));
-}
-
-void Atrium::ComputeRadius(double time)
-{
-	VolumeAtTime(time);
-	radius = pow(3.0 * _volume / (4.0 * PI) , 1.0 / 3.0);
-}
-
-double Atrium::MinimumElastance()
+double Atrium::GetMinimumElastance()
 {
 	return _minimum_elastance;
 }
 
-double Atrium::MaximumElastance()
+double Atrium::GetMaximumElastance()
 {
 	return _maximum_elastance;
 }
 
-double Atrium::ZeroPressureRadius()
+double Atrium::GetZeroPressureRadius()
 {
 	return _radius_at_zero_pressure;
 }
 
-double Atrium::CycleDuration()
+double Atrium::GetCycleDuration()
 {
 	return _cycle_duration;
 }
 
-double Atrium::AtrialDuration()
+double Atrium::GetAtrialDuration()
 {
 	return _atrial_duration;
 }
 
-double Atrium::Volume()
+double Atrium::GetVolume()
 {
 	return _volume;
 }
 
-double Atrium::KeytimeInCycle()
+double Atrium::GetElastanceKeytimeInCycle()
 {
-	return _keytime_1;
+	return _keytime_elastance;
 }
 
-void Atrium::MinimumElastance(double new_minimum_elastance) 
+/*SETTER*/
+
+void Atrium::SetMinimumElastance(double new_minimum_elastance)
 {
 	_minimum_elastance = new_minimum_elastance;
 }
 
-void Atrium::MaximumElastance(double new_maximum_elastance)
+void Atrium::SetMaximumElastance(double new_maximum_elastance)
 {
 	_maximum_elastance = new_maximum_elastance;
 }
 
-void Atrium::ZeroPressureRadius(double new_zero_pressure_radius)
+void Atrium::SetZeroPressureRadius(double new_zero_pressure_radius)
 {
 	_radius_at_zero_pressure = new_zero_pressure_radius;
 }
 
-void Atrium::CycleDuration(double new_cycle_duration)
+void Atrium::SetCycleDuration(double new_cycle_duration)
 {
 	_cycle_duration = new_cycle_duration;
 }
 
-void Atrium::AtrialDuration(double new_atrial_duration)
+void Atrium::SetAtrialDuration(double new_atrial_duration)
 {
 	_atrial_duration = new_atrial_duration;
 }
 
-void Atrium::Volume(double new_volume)
+void Atrium::SetVolume(double new_volume)
 {
 	_volume = new_volume;
 }
 
-void Atrium::KeytimeInCycle(double new_keytime)
+void Atrium::SetElastanceKeytimeInCycle(double new_keytime)
 {
-	_keytime_1 = new_keytime;
+	_keytime_elastance = new_keytime;
 }
+
+/*RESETTER*/
 
 void Atrium::ResetMinimumElastance()
 {
-	_minimum_elastance = 0.2;
+	SetMinimumElastance(INIT_MINIMUM_ELASTANCE);
 }
 
 void Atrium::ResetMaximumElastance()
 {
-	_maximum_elastance = 0.3;
+	SetMaximumElastance(INIT_MAXIMUM_ELASTANCE);
 }
 
 void Atrium::ResetZeroPressureRadius()
 {
-	_radius_at_zero_pressure = 1.316;
+	SetZeroPressureRadius(INIT_RADIUS_AT_ZERO_PRESSURE);
 }
 
-void Atrium::ResetKeytimeInCycle()
+void Atrium::ResetElastanceKeytimeInCycle()
 {
-	_keytime_1 = 0.05;
+	SetElastanceKeytimeInCycle(INIT_KEYTIME_ELASTANCE);
 }

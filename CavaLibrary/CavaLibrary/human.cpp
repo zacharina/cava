@@ -11,8 +11,6 @@ void Human::CardiovascularSystem(double time, double* oxygen)
 	if (!alive)
 		return;
 
-	heart->HeartRate(60);
-
 	if ((_simulation_time + time) - _last_breath_cycle > lung->GetCycleDuration())
 	{
 		_last_breath_cycle = _simulation_time + time;
@@ -20,10 +18,10 @@ void Human::CardiovascularSystem(double time, double* oxygen)
 		trachea->SwitchFlow();
 	}
 	
-	if(abs(heart->CycleDuration() - blood_vessel->GetCycleDuration()) > 0.0)
-		blood_vessel->SetCycleDuration(heart->CycleDuration());
+	if(abs(heart->GetCycleDuration() - blood_vessel->GetCycleDuration()) > 0.0)
+		blood_vessel->SetCycleDuration(heart->GetCycleDuration());
 
-	if ((_simulation_time + time) - _last_heart_cycle > heart->CycleDuration())
+	if ((_simulation_time + time) - _last_heart_cycle > heart->GetCycleDuration())
 		_last_heart_cycle = _simulation_time + time;
 
 	double breath_difference = _simulation_time - _last_breath_cycle;

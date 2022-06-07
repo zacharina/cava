@@ -118,6 +118,120 @@ void BloodVessel::ComputeOxygenConsumptionTissue()
 	oxygen_consumption_tissue = _max_consumption_rate * partial_pressure_tissue / (_half_pressure + partial_pressure);
 }
 
+/*GETTER*/
+
+double BloodVessel::GetStartVelocity()
+{
+	return _start_velocity;
+}
+
+double BloodVessel::GetVelocityCoefficient()
+{
+	return _velocity_coefficient;
+}
+
+double BloodVessel::GetNumberOfVessels()
+{
+	return _number_of_vessels;
+}
+
+double BloodVessel::GetVesselLength()
+{
+	return _vessel_length;
+}
+
+double BloodVessel::GetVesselThickness()
+{
+	return _vessel_thickness;
+}
+
+double BloodVessel::GetBloodDensity()
+{
+	return _blood_density;
+}
+
+double BloodVessel::GetInitialSystolicPressure()
+{
+	return _initial_systolic_pressure;
+}
+
+double BloodVessel::GetInitialDiastolicPressure()
+{
+	return _initial_diastolic_pressure;
+}
+
+double BloodVessel::GetSystolicTime()
+{
+	return _systolic_time;
+}
+
+double BloodVessel::GetDiastolicTime()
+{
+	return _diastolic_time;
+}
+
+double BloodVessel::GetOxygenBindingCapacity()
+{
+	return _oxygen_binding_capacity;
+}
+
+double BloodVessel::GetHemoglobinConcentration()
+{
+	return _hemoglobin_concentration;
+}
+
+double BloodVessel::GetHemoglobinOxygenSaturation()
+{
+	return _hemoglobin_oxygen_saturation;
+}
+
+double BloodVessel::GetRBCVelocity()
+{
+	return _rbc_velocity;
+}
+
+double BloodVessel::GetTissueRadius()
+{
+	return _tissue_radius;
+}
+
+double BloodVessel::GetMetabolicRate()
+{
+	return _metabolic_rate;
+}
+
+double BloodVessel::GetVesselRadius()
+{
+	return _vessel_radius;
+}
+
+double BloodVessel::GetMaxConsumption()
+{
+	return _max_consumption_rate;
+}
+
+double BloodVessel::GetInitialInertance()
+{
+	return _initial_inertance;
+}
+
+double BloodVessel::GetViscosity()
+{
+	return _viscosity;
+}
+
+double BloodVessel::GetFlow()
+{
+	return _flow;
+}
+
+double BloodVessel::GetCycleDuration()
+{
+	return _cycle_duration;
+}
+
+/*SETTER*/
+
 void BloodVessel::SetStartVelocity(double new_start_velocity)
 {
 	_start_velocity = new_start_velocity;
@@ -233,7 +347,7 @@ void BloodVessel::SetCycleDuration(double new_cycle_duration)
 	_cycle_duration = new_cycle_duration;
 }
 
-// RESET PARAMS
+/*RESETTER*/
 
 void BloodVessel::ResetStartVelocity()
 {
@@ -345,112 +459,3 @@ void BloodVessel::ResetFlowAddend()
 	SetFlowAddend(INIT_FLOW_ADDEND);
 }
 
-double BloodVessel::GetStartVelocity()
-{
-	return _start_velocity;
-}
-
-double BloodVessel::GetVelocityCoefficient()
-{
-	return _velocity_coefficient;
-}
-
-double BloodVessel::GetNumberOfVessels()
-{
-	return _number_of_vessels;
-}
-
-double BloodVessel::GetVesselLength()
-{
-	return _vessel_length;
-}
-
-double BloodVessel::GetVesselThickness()
-{
-	return _vessel_thickness;
-}
-
-double BloodVessel::GetBloodDensity()
-{
-	return _blood_density;
-}
-
-double BloodVessel::GetInitialSystolicPressure()
-{
-	return _initial_systolic_pressure;
-}
-
-double BloodVessel::GetInitialDiastolicPressure()
-{
-	return _initial_diastolic_pressure;
-}
-
-double BloodVessel::GetSystolicTime()
-{
-	return _systolic_time;
-}
-
-double BloodVessel::GetDiastolicTime()
-{
-	return _diastolic_time;
-}
-
-double BloodVessel::GetOxygenBindingCapacity()
-{
-	return _oxygen_binding_capacity;
-}
-
-double BloodVessel::GetHemoglobinConcentration()
-{
-	return _hemoglobin_concentration;
-}
-
-double BloodVessel::GetHemoglobinOxygenSaturation()
-{
-	return _hemoglobin_oxygen_saturation;
-}
-
-double BloodVessel::GetRBCVelocity()
-{
-	return _rbc_velocity;
-}
-
-double BloodVessel::GetTissueRadius()
-{
-	return _tissue_radius;
-}
-
-double BloodVessel::GetMetabolicRate()
-{
-	return _metabolic_rate;
-}
-
-double BloodVessel::GetVesselRadius()
-{
-	return _vessel_radius;
-}
-
-double BloodVessel::GetMaxConsumption()
-{
-	return _max_consumption_rate;
-}
-
-double BloodVessel::GetInitialInertance()
-{
-	return _initial_inertance;
-}
-
-double BloodVessel::GetViscosity()
-{
-	return _viscosity;
-}
-
-double BloodVessel::GetFlow()
-{
-	return _flow;
-}
-
-double BloodVessel::GetCycleDuration()
-{
-	return _cycle_duration;
-}

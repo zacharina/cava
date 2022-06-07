@@ -16,53 +16,63 @@ public:
 	};
 	~Ventricle() = default;
 
-	double inflow_inertance = 0.0; //mmHg*s2/ml
-	double pressure_active = 0.0; //mmHg
-	double pressure_passive = 0.0; //mmHg
-	double pressure = 0.0; //mmHg
-	double radius = 2.5; //cm
+	void ComputeRadius(double time, double addend);
+	void ComputePressure(double time, double factor);
+	void ComputeInflowInertance();
 
-	void Radius(double time, double addend);
-	void Pressure(double time, double factor);
-	void InflowInertance();
+	double GetVolume();
+	double GetRadiusAtZeroPressure();
+	double GetEndSystolicElastance();
+	double GetBloodDensity();
+	double GetInflowLength();
+	double GetScalingCoefficient();
+	double GetCycleDuration();
 
-	double Volume();
-	double RadiusAtZeroPressure();
-	double EndSystolicElastance();
-	double BloodDensity();
-	double InflowLength();
-	double ScalingCoefficient();
-	double CycleDuration();
-
-	void RadiusAtZeroPressure(double new_volume_at_zero_pressure);
-	void EndSystolicElastance(double new_end_systolic_elastance);
-	void BloodDensity(double new_blood_density);
-	void InflowLength(double new_inflow_length);
-	void ScalingCoefficient(double new_scaling_coefficient);
-	void CycleDuration(double new_cycle_duration);
+	void SetRadiusAtZeroPressure(double new_volume_at_zero_pressure);
+	void SetEndSystolicElastance(double new_end_systolic_elastance);
+	void SetBloodDensity(double new_blood_density);
+	void SetInflowLength(double new_inflow_length);
+	void SetScalingCoefficient(double new_scaling_coefficient);
+	void SetCycleDuration(double new_cycle_duration);
 
 	void ResetBloodDensity();
 	void ResetInflowLength();
 	void ResetScalingCoefficient();
-	double _volume = 0.0; //cm3
-	double _volume_over_time[9] = { 0 }; //ml
 	
 private:
-	void PressureActive(double time, double factor);
-	void PressurePassive(double time, double factor);
-	double ActivationFunction(double time);
-	void VolumeAtTime(double time);
+	// Constant Values
+	const double INIT_ZERO = 0.0;
+	const double INIT_BLOOD_DENSITY = 1.6;
+	const double INIT_SCALING_COEFFICIENT = 0.0;
+	const double INIT_RADIUS = 2.5;
+	const double INIT_INFLOW_LENGTH = 2.0 * INIT_RADIUS;
 
-	double _radius_at_zero_pressure = 0.0; //cm3
-	double _end_systolic_elastance = 0.0; //mmHg/ml
-	double _coefficient = 0.0;
+	// Relevant private params of the library
+	double inflow_inertance = INIT_ZERO; //mmHg*s2/ml
+	double pressure_active = INIT_ZERO; //mmHg
+	double pressure_passive = INIT_ZERO; //mmHg
+	double pressure = INIT_ZERO; //mmHg
+	double radius = INIT_RADIUS; //cm
 
-	double _blood_density = 1.06; //g/cm3
-	double _inflow_length = 0;
+	void ComputePressureActive(double time, double factor);
+	void ComputePressurePassive(double time, double factor);
+	double _end_systolic_elastance = INIT_ZERO; //mmHg/ml
+	double _coefficient = INIT_ZERO;
+	double _scaling_coefficient = INIT_SCALING_COEFFICIENT;
+	double _radius_at_zero_pressure = INIT_ZERO; //cm3
+
+	double ComputeActivationValue(double time);
+	double _cycle_duration = INIT_ZERO; //s
+	double _keytime_1 = INIT_ZERO; //s
+	double _keytime_2 = INIT_ZERO; //s
+
+	void GetVolumeAtTime(double time);
+	double _volume = INIT_ZERO; //cm3
+	double _volume_over_time[9] = { 0 }; //ml
+
+	//InflowInertance
+	double _blood_density = INIT_BLOOD_DENSITY; //g/cm3
+	double _inflow_length = INIT_ZERO;
 	
-	double _scaling_coefficient = 8.0; 
-	double _cycle_duration = 0.0; //s
-	double _keytime_1 = 0.0; //s
-	double _keytime_2 = 0.0; //s
 };
 
