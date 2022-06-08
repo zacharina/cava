@@ -654,19 +654,19 @@ private: System::Void cavatimer_Tick(System::Object^ sender, System::EventArgs^ 
 	lung_form->UpdatePressure(std::ceil(human_ptr->lung->GetPressure() * 100.0) / 100.0);
 	//Update heart
 	heart_form->UpdateOxygen(std::ceil(human_ptr->heart->GetOxygen() * 100.0) / 100.0);
-    heart_form->UpdateFlowRate(std::ceil(human_ptr->heart->flow_rate * 100.0) / 100.0);
-	heart_form->UpdateLAElastance(std::ceil(human_ptr->heart->left_atrium->elastance * 100.0) / 100.0);
-	heart_form->UpdateLAPressure(std::ceil(human_ptr->heart->left_atrium->pressure * 100.0) / 100.0);
-	heart_form->UpdateLARadius(std::ceil(human_ptr->heart->left_atrium->radius * 100.0) / 100.0);
-	heart_form->UpdateRAElastance(std::ceil(human_ptr->heart->right_atrium->elastance * 100.0) / 100.0);
-	heart_form->UpdateRAPressure(std::ceil(human_ptr->heart->right_atrium->pressure * 100.0) / 100.0);
-	heart_form->UpdateRARadius(std::ceil(human_ptr->heart->right_atrium->radius * 100.0) / 100.0);
-	heart_form->UpdateLVInertance(std::ceil(human_ptr->heart->left_ventricle->inflow_inertance * 100.0) / 100.0);
-	heart_form->UpdateLVPressureTotal(std::ceil(human_ptr->heart->left_ventricle->pressure * 100.0) / 100.0);
-	heart_form->UpdateLVRadius(std::ceil(human_ptr->heart->left_ventricle->radius * 100.0) / 100.0);
-	heart_form->UpdateRVInertance(std::ceil(human_ptr->heart->right_ventricle->inflow_inertance * 100.0) / 100.0);
-	heart_form->UpdateRVPressureTotal(std::ceil(human_ptr->heart->right_ventricle->pressure * 100.0) / 100.0);
-	heart_form->UpdateRVRadius(std::ceil(human_ptr->heart->right_ventricle->radius * 100.0) / 100.0);
+    heart_form->UpdateFlowRate(std::ceil(human_ptr->heart->GetFlowRate() * 100.0) / 100.0);
+	heart_form->UpdateLAElastance(std::ceil(human_ptr->heart->left_atrium->GetElastance() * 100.0) / 100.0);
+	heart_form->UpdateLAPressure(std::ceil(human_ptr->heart->left_atrium->GetPressure() * 100.0) / 100.0);
+	heart_form->UpdateLARadius(std::ceil(human_ptr->heart->left_atrium->GetRadius() * 100.0) / 100.0);
+	heart_form->UpdateRAElastance(std::ceil(human_ptr->heart->right_atrium->GetElastance() * 100.0) / 100.0);
+	heart_form->UpdateRAPressure(std::ceil(human_ptr->heart->right_atrium->GetPressure() * 100.0) / 100.0);
+	heart_form->UpdateRARadius(std::ceil(human_ptr->heart->right_atrium->GetRadius() * 100.0) / 100.0);
+	heart_form->UpdateLVInertance(std::ceil(human_ptr->heart->left_ventricle->GetInertance() * 100.0) / 100.0);
+	heart_form->UpdateLVPressureTotal(std::ceil(human_ptr->heart->left_ventricle->GetPressure() * 100.0) / 100.0);
+	heart_form->UpdateLVRadius(std::ceil(human_ptr->heart->left_ventricle->GetRadius() * 100.0) / 100.0);
+	heart_form->UpdateRVInertance(std::ceil(human_ptr->heart->right_ventricle->GetInertance() * 100.0) / 100.0);
+	heart_form->UpdateRVPressureTotal(std::ceil(human_ptr->heart->right_ventricle->GetPressure() * 100.0) / 100.0);
+	heart_form->UpdateRVRadius(std::ceil(human_ptr->heart->right_ventricle->GetRadius() * 100.0) / 100.0);
 	//Update vascular system
 	blood_form->UpdateOxygen(std::ceil(human_ptr->blood_vessel->GetOxygen() * 100.0) / 100.0);
 	blood_form->UpdateDiastolicPressure(std::ceil(human_ptr->blood_vessel->GetDiastolicPressure() * 100.0) / 100.0);

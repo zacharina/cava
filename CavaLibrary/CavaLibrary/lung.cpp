@@ -93,6 +93,16 @@ double Lung::GetRespiratoryCompliance()
 	return _respiratory_compliance;
 }
 
+double Lung::GetRespiratoryComplianceInflow()
+{
+	return _respiratory_compliance_inflow;
+}
+
+double Lung::GetRespiratoryComplianceOutflow()
+{
+	return _respiratory_compliance_outflow;
+}
+
 double Lung::GetAtmosphericDensity()
 {
 	return _atmospheric_density;

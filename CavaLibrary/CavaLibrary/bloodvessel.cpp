@@ -230,6 +230,16 @@ double BloodVessel::GetCycleDuration()
 	return _cycle_duration;
 }
 
+double BloodVessel::GetYoungModulus()
+{
+	return _young_modulus;
+}
+
+double BloodVessel::GetBunsenSolubilityCoefficient()
+{
+	return _bunsen_solubility_coefficient;
+}
+
 /*SETTER*/
 
 void BloodVessel::SetStartVelocity(double new_start_velocity)
@@ -347,6 +357,16 @@ void BloodVessel::SetCycleDuration(double new_cycle_duration)
 	_cycle_duration = new_cycle_duration;
 }
 
+void BloodVessel::SetYoungModulus(double new_young_modulus)
+{
+	_young_modulus = new_young_modulus;
+}
+
+void BloodVessel::SetBunsenSolubilityCoefficient(double new_coefficient)
+{
+	_bunsen_solubility_coefficient = new_coefficient;
+}
+
 /*RESETTER*/
 
 void BloodVessel::ResetStartVelocity()
@@ -457,5 +477,15 @@ void BloodVessel::ResetFlow()
 void BloodVessel::ResetFlowAddend()
 {
 	SetFlowAddend(INIT_FLOW_ADDEND);
+}
+
+void BloodVessel::ResetYoungModulus()
+{
+	SetYoungModulus(INIT_YOUNG_MODULUS);
+}
+
+void BloodVessel::ResetBunsenSolubilityCoefficient()
+{
+	SetBunsenSolubilityCoefficient(INIT_BUNSEN_SOLUBILITY_COEFFICIENT);
 }
 

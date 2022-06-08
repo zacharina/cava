@@ -3,26 +3,6 @@
 
 using namespace System;
 
-Decimal CavaSystem::HeartForm::GetAortic()
-{
-    return numAortic->Value;
-}
-
-Decimal CavaSystem::HeartForm::GetMitral()
-{
-    return numMitral->Value;
-}
-
-Decimal CavaSystem::HeartForm::GetPulmonary()
-{
-    return numPulmonary->Value;
-}
-
-Decimal CavaSystem::HeartForm::GetTriscupid()
-{
-    return numTriscupid->Value;
-}
-
 Decimal CavaSystem::HeartForm::GetHeartRate()
 {
     return numHeartRate->Value;
@@ -48,9 +28,9 @@ Decimal CavaSystem::HeartForm::GetMaxElastance()
     return numMaxElas->Value;
 }
 
-Decimal CavaSystem::HeartForm::GetVolumeAtZeroPressure()
+Decimal CavaSystem::HeartForm::GetRadiusAtZeroPressure()
 {
-    return numVolume0->Value;
+    return numRadius0->Value;
 }
 
 Decimal CavaSystem::HeartForm::GetAtrialKeytime()

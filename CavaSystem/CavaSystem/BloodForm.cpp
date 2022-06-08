@@ -3,11 +3,6 @@
 
 using namespace System;
 
-Decimal CavaSystem::BloodForm::GetStartVelocity()
-{
-    return numStartVel->Value;
-}
-
 Decimal CavaSystem::BloodForm::GetNumberOfVessels()
 {
     return numNumber->Value;
@@ -20,32 +15,17 @@ Decimal CavaSystem::BloodForm::GetVesselLength()
 
 Decimal CavaSystem::BloodForm::GetVesselThickness()
 {
-    return numThick->Value;
-}
-
-Decimal CavaSystem::BloodForm::GetBloodDensity()
-{
-    return numDensity->Value;
-}
-
-Decimal CavaSystem::BloodForm::GetInitialSystolicPressure()
-{
-    return numInitSysPress->Value;
-}
-
-Decimal CavaSystem::BloodForm::GetInitialDiastolicPressure()
-{
-    return numInitDiaPress->Value;
+    return numThickness->Value;
 }
 
 Decimal CavaSystem::BloodForm::GetOxygenBindingCapacity()
 {
-    return numBinding->Value;
+    return numBind->Value;
 }
 
 Decimal CavaSystem::BloodForm::GetHemoglobinConcentration()
 {
-    return numConcentration->Value;
+    return numHemoglobin->Value;
 }
 
 Decimal CavaSystem::BloodForm::GetOxygenHemoglobinSaturation()
@@ -58,14 +38,9 @@ Decimal CavaSystem::BloodForm::GetRBCVelocity()
     return numRBC->Value;
 }
 
-Decimal CavaSystem::BloodForm::GetTissueRadius()
-{
-    return numTRadius->Value;
-}
-
 Decimal CavaSystem::BloodForm::GetVesselRadius()
 {
-    return numBRadius->Value;
+    return numRadius->Value;
 }
 
 Decimal CavaSystem::BloodForm::GetMetabolicRate()

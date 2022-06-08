@@ -9,6 +9,7 @@ public:
 		_cycle_duration = cycle_duration;
 		_keytime_1 = keytime_1;
 		_keytime_2 = keytime_2;
+		INIT_END_SYSTOLIC_ELASTANCE = end_systolic_elastance;
 		_end_systolic_elastance = end_systolic_elastance;
 		_coefficient = coefficient;
 		for (int i = 0; i < 9; i++)
@@ -19,6 +20,11 @@ public:
 	void ComputeRadius(double time, double addend);
 	void ComputePressure(double time, double factor);
 	void ComputeInflowInertance();
+
+	// Exposed Getter Functions for Library usage
+	double GetInertance() { return inflow_inertance; }
+	double GetPressure() { return pressure; }
+	double GetRadius() { return radius; }
 
 	double GetVolume();
 	double GetRadiusAtZeroPressure();
@@ -38,6 +44,7 @@ public:
 	void ResetBloodDensity();
 	void ResetInflowLength();
 	void ResetScalingCoefficient();
+	void ResetEndSystolicElastance();
 	
 private:
 	// Constant Values
@@ -46,11 +53,10 @@ private:
 	const double INIT_SCALING_COEFFICIENT = 0.0;
 	const double INIT_RADIUS = 2.5;
 	const double INIT_INFLOW_LENGTH = 2.0 * INIT_RADIUS;
+	double INIT_END_SYSTOLIC_ELASTANCE = 0.0;
 
 	// Relevant private params of the library
 	double inflow_inertance = INIT_ZERO; //mmHg*s2/ml
-	double pressure_active = INIT_ZERO; //mmHg
-	double pressure_passive = INIT_ZERO; //mmHg
 	double pressure = INIT_ZERO; //mmHg
 	double radius = INIT_RADIUS; //cm
 
@@ -60,6 +66,8 @@ private:
 	double _coefficient = INIT_ZERO;
 	double _scaling_coefficient = INIT_SCALING_COEFFICIENT;
 	double _radius_at_zero_pressure = INIT_ZERO; //cm3
+	double _pressure_active = INIT_ZERO; //mmHg
+	double _pressure_passive = INIT_ZERO; //mmHg
 
 	double ComputeActivationValue(double time);
 	double _cycle_duration = INIT_ZERO; //s

@@ -20,17 +20,17 @@ void Ventricle::ComputePressure(double time, double factor)
 {
 	ComputePressureActive(time, factor);
 	ComputePressurePassive(time, factor);
-	pressure = pressure_active + pressure_passive;
+	pressure = _pressure_active + _pressure_passive;
 }
 
 void Ventricle::ComputePressureActive(double time, double factor)
 {
-	pressure_active = _end_systolic_elastance * factor * PI * _coefficient * _scaling_coefficient * (pow(radius, 2.0) - pow(_radius_at_zero_pressure, 2.0)) * ComputeActivationValue(time);
+	_pressure_active = _end_systolic_elastance * factor * PI * _coefficient * _scaling_coefficient * (pow(radius, 2.0) - pow(_radius_at_zero_pressure, 2.0)) * ComputeActivationValue(time);
 }
 
 void Ventricle::ComputePressurePassive(double time, double factor)
 {
-	pressure_passive = exp(0.02 * factor * PI * _coefficient * pow(radius, 2.0) * _scaling_coefficient) - 1.0;
+	_pressure_passive = exp(0.02 * factor * PI * _coefficient * pow(radius, 2.0) * _scaling_coefficient) - 1.0;
 }
 
 double Ventricle::ComputeActivationValue(double time)
@@ -151,5 +151,10 @@ void Ventricle::ResetInflowLength()
 void Ventricle::ResetScalingCoefficient()
 {
 	SetScalingCoefficient(INIT_SCALING_COEFFICIENT);
+}
+
+void Ventricle::ResetEndSystolicElastance()
+{
+	SetEndSystolicElastance(INIT_END_SYSTOLIC_ELASTANCE);
 }
 

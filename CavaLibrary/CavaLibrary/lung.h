@@ -23,6 +23,8 @@ public:
 	double GetCriticalPressureRatio();
 	double GetGasConstant();
 	double GetRespiratoryCompliance();
+	double GetRespiratoryComplianceInflow();
+	double GetRespiratoryComplianceOutflow();
 	double GetAtmosphericDensity();
 	double GetPressureSummand();
 	double GetAirMassFlow();
@@ -86,7 +88,7 @@ private:
 	bool _inflow = true;
 	double _respiratory_rate = RESPIRATORY_RATE;
 	double _cycle_time_breath = CYCLE_TIME_BREATH;
-	double _air_mass_flow = AIR_MASS_FLOW; //l/min
+	double _air_mass_flow = AIR_MASS_FLOW; //kg/s
 	double _area_of_throttle = AREA_OF_THROTTLE; //mm2
 	double _upstream_pressure = UPSTREAM_PRESSURE; //cmH20
 	double _downstream_pressure = DOWNSTREAM_PRESSURE; //cmH20

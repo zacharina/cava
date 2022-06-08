@@ -46,6 +46,8 @@ public:
 	double GetViscosity();
 	double GetFlow();
 	double GetCycleDuration();
+	double GetYoungModulus();
+	double GetBunsenSolubilityCoefficient();
 
 	void SetStartVelocity(double new_start_velocity);
 	void SetVelocityCoefficient(double new_velocity_coefficient);
@@ -70,6 +72,8 @@ public:
 	void SetFlow(double new_flow);
 	void SetFlowAddend(double new_addend);
 	void SetCycleDuration(double new_cycle_duration);
+	void SetYoungModulus(double new_young_modulus);
+	void SetBunsenSolubilityCoefficient(double new_coefficient);
 
 	void ResetStartVelocity();
 	void ResetVelocityCoefficient();
@@ -93,6 +97,8 @@ public:
 	void ResetViscosity();
 	void ResetFlow();
 	void ResetFlowAddend();
+	void ResetYoungModulus();
+	void ResetBunsenSolubilityCoefficient();
 
 private:
 	// Constant Values

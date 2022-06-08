@@ -12,7 +12,7 @@ public:
 	double ComputeWomersley();
 	
 	double GetBlockPercentage() { return block_percentage; }
-	void SetBlockPercentag(double val) { block_percentage = val; }
+	void SetBlockPercentage(double val) { block_percentage = val; }
 	double GetFlowRate() { return flow_rate; }
 
 	void SwitchFlow();
