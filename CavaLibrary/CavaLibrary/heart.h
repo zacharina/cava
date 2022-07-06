@@ -66,8 +66,8 @@ private:
 	const double INIT_KEYTIME_1 = 0.33;
 	const double INIT_KEYTIME_2 = 0.45;
 	const double INIT_VOLUME = 300.0;
-	const double INIT_RADIUS_ADDEND_LV = 2.0;
-	const double INIT_RADIUS_ADDEND_RV = 1.2; 
+	const double INIT_RADIUS_ADDEND_LV = 1.75;
+	const double INIT_RADIUS_ADDEND_RV = 1.1; 
 	const double INIT_VOLUME_LV_OVER_TIME[9] = { 126.0, 120.0, 69.0, 59.0, 97.0, 105.0, 110.0, 115.0, 126.0 }; 
 	const double INIT_VOLUME_RV_OVER_TIME[9] = { 135.0, 108.0, 73.0, 68.0, 109.0, 115.0, 119.0, 125.0, 135.0 }; 
 	const double INIT_VOLUME_LA_OVER_TIME[9] = { 45.0, 51.0, 58.0, 62.0, 36.0, 40.0, 45.0, 49.0, 45.0 }; 
