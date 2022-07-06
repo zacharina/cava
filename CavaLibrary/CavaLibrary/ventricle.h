@@ -50,7 +50,7 @@ private:
 	// Constant Values
 	const double INIT_ZERO = 0.0;
 	const double INIT_BLOOD_DENSITY = 1.6;
-	const double INIT_SCALING_COEFFICIENT = 0.0;
+	const double INIT_SCALING_COEFFICIENT = 8.0;
 	const double INIT_RADIUS = 2.5;
 	const double INIT_INFLOW_LENGTH = 2.0 * INIT_RADIUS;
 	double INIT_END_SYSTOLIC_ELASTANCE = 0.0;

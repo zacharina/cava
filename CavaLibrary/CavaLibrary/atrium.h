@@ -48,8 +48,8 @@ private:
 	// Constant Values
 	const double INIT_ZERO = 0.0;
 	const double INIT_ATRIAL_DURATION = 0.0;
-	const double INIT_MINIMUM_ELASTANCE = 0.0; 
-	const double INIT_MAXIMUM_ELASTANCE = 0.0;
+	const double INIT_MINIMUM_ELASTANCE = 0.2; 
+	const double INIT_MAXIMUM_ELASTANCE = 0.3;
 	const double INIT_RADIUS_AT_ZERO_PRESSURE = 1.316; 
 	const double INIT_KEYTIME_ELASTANCE = 0.05;
 	const double INIT_COEFFICIENT = 1.2;
