@@ -1373,9 +1373,9 @@ namespace CavaSystem {
 			   this->lblHeartRate->ForeColor = System::Drawing::Color::White;
 			   this->lblHeartRate->Location = System::Drawing::Point(14, 13);
 			   this->lblHeartRate->Name = L"lblHeartRate";
-			   this->lblHeartRate->Size = System::Drawing::Size(15, 19);
+			   this->lblHeartRate->Size = System::Drawing::Size(79, 19);
 			   this->lblHeartRate->TabIndex = 104;
-			   this->lblHeartRate->Text = L"r";
+			   this->lblHeartRate->Text = L"Heart rate";
 			   // 
 			   // lblUnitFlowRate
 			   // 

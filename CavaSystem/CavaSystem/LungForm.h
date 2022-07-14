@@ -54,7 +54,7 @@ namespace CavaSystem {
 	private: System::Windows::Forms::Label^ lblCritical;
 	private: System::Windows::Forms::Label^ lblUpPress;
 	private: System::Windows::Forms::Label^ lblThrottle;
-	private: System::Windows::Forms::Label^ lblResCom;
+
 	private: System::Windows::Forms::Label^ lblPressure;
 	private: System::Windows::Forms::Label^ lblFlowRate;
 	private: System::Windows::Forms::Label^ lblOutflow;
@@ -80,10 +80,10 @@ namespace CavaSystem {
 	private: System::Windows::Forms::Label^ lblUnitOxygenFlow2;
 	private: System::Windows::Forms::Label^ lblUnitOxygenFlow3;
 	private: System::Windows::Forms::Label^ lblUnitPressure;
-	private: System::Windows::Forms::Label^ lblUnitResCom1;
-	private: System::Windows::Forms::Label^ lblUnitResCom2;
-	private: System::Windows::Forms::Label^ lblUnitResCom3;
-	private: System::Windows::Forms::Label^ lblNumResCom;
+
+
+
+
 	private: System::Windows::Forms::Label^ lblNumPressure;
 	private: System::Windows::Forms::Label^ lblNumOxygenFlow;
 	private: System::Windows::Forms::NumericUpDown^ numAtmosDen;
@@ -183,12 +183,7 @@ namespace CavaSystem {
 			   this->lblUpPress = (gcnew System::Windows::Forms::Label());
 			   this->lblThrottle = (gcnew System::Windows::Forms::Label());
 			   this->pnOxValues = (gcnew System::Windows::Forms::Panel());
-			   this->lblUnitResCom2 = (gcnew System::Windows::Forms::Label());
-			   this->lblUnitResCom1 = (gcnew System::Windows::Forms::Label());
-			   this->lblUnitResCom3 = (gcnew System::Windows::Forms::Label());
 			   this->lblUnitOxygenFlow2 = (gcnew System::Windows::Forms::Label());
-			   this->lblNumResCom = (gcnew System::Windows::Forms::Label());
-			   this->lblResCom = (gcnew System::Windows::Forms::Label());
 			   this->lblUnitPressure = (gcnew System::Windows::Forms::Label());
 			   this->lblUnitOxygenFlow1 = (gcnew System::Windows::Forms::Label());
 			   this->lblNumPressure = (gcnew System::Windows::Forms::Label());
@@ -222,7 +217,7 @@ namespace CavaSystem {
 				   static_cast<System::Int32>(static_cast<System::Byte>(47)));
 			   this->pnPreset->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			   this->pnPreset->Controls->Add(this->lblParameters);
-			   this->pnPreset->Location = System::Drawing::Point(144, 285);
+			   this->pnPreset->Location = System::Drawing::Point(144, 219);
 			   this->pnPreset->Name = L"pnPreset";
 			   this->pnPreset->Size = System::Drawing::Size(791, 28);
 			   this->pnPreset->TabIndex = 58;
@@ -403,7 +398,7 @@ namespace CavaSystem {
 			   this->pnParameters->Controls->Add(this->lblCritical);
 			   this->pnParameters->Controls->Add(this->lblUpPress);
 			   this->pnParameters->Controls->Add(this->lblThrottle);
-			   this->pnParameters->Location = System::Drawing::Point(144, 320);
+			   this->pnParameters->Location = System::Drawing::Point(144, 254);
 			   this->pnParameters->Name = L"pnParameters";
 			   this->pnParameters->Size = System::Drawing::Size(788, 423);
 			   this->pnParameters->TabIndex = 87;
@@ -1178,12 +1173,7 @@ namespace CavaSystem {
 			   this->pnOxValues->AutoSize = true;
 			   this->pnOxValues->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
-			   this->pnOxValues->Controls->Add(this->lblUnitResCom2);
-			   this->pnOxValues->Controls->Add(this->lblUnitResCom1);
-			   this->pnOxValues->Controls->Add(this->lblUnitResCom3);
 			   this->pnOxValues->Controls->Add(this->lblUnitOxygenFlow2);
-			   this->pnOxValues->Controls->Add(this->lblNumResCom);
-			   this->pnOxValues->Controls->Add(this->lblResCom);
 			   this->pnOxValues->Controls->Add(this->lblUnitPressure);
 			   this->pnOxValues->Controls->Add(this->lblUnitOxygenFlow1);
 			   this->pnOxValues->Controls->Add(this->lblNumPressure);
@@ -1193,50 +1183,8 @@ namespace CavaSystem {
 			   this->pnOxValues->Controls->Add(this->lblUnitOxygenFlow3);
 			   this->pnOxValues->Location = System::Drawing::Point(144, 134);
 			   this->pnOxValues->Name = L"pnOxValues";
-			   this->pnOxValues->Size = System::Drawing::Size(788, 145);
+			   this->pnOxValues->Size = System::Drawing::Size(788, 77);
 			   this->pnOxValues->TabIndex = 91;
-			   // 
-			   // lblUnitResCom2
-			   // 
-			   this->lblUnitResCom2->AutoSize = true;
-			   this->lblUnitResCom2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
-				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
-			   this->lblUnitResCom2->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->lblUnitResCom2->ForeColor = System::Drawing::Color::White;
-			   this->lblUnitResCom2->Location = System::Drawing::Point(343, 104);
-			   this->lblUnitResCom2->Name = L"lblUnitResCom2";
-			   this->lblUnitResCom2->Size = System::Drawing::Size(12, 13);
-			   this->lblUnitResCom2->TabIndex = 106;
-			   this->lblUnitResCom2->Text = L"3";
-			   // 
-			   // lblUnitResCom1
-			   // 
-			   this->lblUnitResCom1->AutoSize = true;
-			   this->lblUnitResCom1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
-				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
-			   this->lblUnitResCom1->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->lblUnitResCom1->ForeColor = System::Drawing::Color::White;
-			   this->lblUnitResCom1->Location = System::Drawing::Point(326, 105);
-			   this->lblUnitResCom1->Name = L"lblUnitResCom1";
-			   this->lblUnitResCom1->Size = System::Drawing::Size(23, 19);
-			   this->lblUnitResCom1->TabIndex = 105;
-			   this->lblUnitResCom1->Text = L"m";
-			   // 
-			   // lblUnitResCom3
-			   // 
-			   this->lblUnitResCom3->AutoSize = true;
-			   this->lblUnitResCom3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
-				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
-			   this->lblUnitResCom3->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->lblUnitResCom3->ForeColor = System::Drawing::Color::White;
-			   this->lblUnitResCom3->Location = System::Drawing::Point(350, 105);
-			   this->lblUnitResCom3->Name = L"lblUnitResCom3";
-			   this->lblUnitResCom3->Size = System::Drawing::Size(21, 19);
-			   this->lblUnitResCom3->TabIndex = 107;
-			   this->lblUnitResCom3->Text = L"/s";
 			   // 
 			   // lblUnitOxygenFlow2
 			   // 
@@ -1251,34 +1199,6 @@ namespace CavaSystem {
 			   this->lblUnitOxygenFlow2->Size = System::Drawing::Size(12, 13);
 			   this->lblUnitOxygenFlow2->TabIndex = 103;
 			   this->lblUnitOxygenFlow2->Text = L"3";
-			   // 
-			   // lblNumResCom
-			   // 
-			   this->lblNumResCom->AutoSize = true;
-			   this->lblNumResCom->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
-				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
-			   this->lblNumResCom->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->lblNumResCom->ForeColor = System::Drawing::Color::White;
-			   this->lblNumResCom->Location = System::Drawing::Point(219, 105);
-			   this->lblNumResCom->Name = L"lblNumResCom";
-			   this->lblNumResCom->Size = System::Drawing::Size(74, 19);
-			   this->lblNumResCom->TabIndex = 101;
-			   this->lblNumResCom->Text = L"5ml/mdld";
-			   // 
-			   // lblResCom
-			   // 
-			   this->lblResCom->AutoSize = true;
-			   this->lblResCom->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
-				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
-			   this->lblResCom->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->lblResCom->ForeColor = System::Drawing::Color::White;
-			   this->lblResCom->Location = System::Drawing::Point(13, 104);
-			   this->lblResCom->Name = L"lblResCom";
-			   this->lblResCom->Size = System::Drawing::Size(170, 19);
-			   this->lblResCom->TabIndex = 100;
-			   this->lblResCom->Text = L"Respiratory Compliance";
 			   // 
 			   // lblUnitPressure
 			   // 
@@ -1386,7 +1306,7 @@ namespace CavaSystem {
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(33)), static_cast<System::Int32>(static_cast<System::Byte>(33)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(33)));
-			   this->ClientSize = System::Drawing::Size(1241, 760);
+			   this->ClientSize = System::Drawing::Size(1241, 688);
 			   this->Controls->Add(this->pnParameters);
 			   this->Controls->Add(this->pnPreset);
 			   this->Controls->Add(this->picVis);

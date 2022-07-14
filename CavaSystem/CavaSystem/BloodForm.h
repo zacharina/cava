@@ -104,8 +104,7 @@ namespace CavaSystem {
 	private: System::Windows::Forms::Label^ lblUnitIner1;
 	private: System::Windows::Forms::Label^ lblUnitIner2;
 	private: System::Windows::Forms::Label^ lblUnitIner3;
-	private: System::Windows::Forms::Label^ lblUnitResis1;
-	private: System::Windows::Forms::Label^ lblUnitResis3;
+	private: System::Windows::Forms::Label^ lblUnitResis;
 	private: System::Windows::Forms::Label^ lblUnitSysPressure;
 	private: System::Windows::Forms::Label^ lblUnitMetabolic;
 	private: System::Windows::Forms::Label^ lblUnitConsumption2;
@@ -173,8 +172,7 @@ namespace CavaSystem {
 			   this->lblUnitIner2 = (gcnew System::Windows::Forms::Label());
 			   this->lblUnitIner1 = (gcnew System::Windows::Forms::Label());
 			   this->lblUnitIner3 = (gcnew System::Windows::Forms::Label());
-			   this->lblUnitResis1 = (gcnew System::Windows::Forms::Label());
-			   this->lblUnitResis3 = (gcnew System::Windows::Forms::Label());
+			   this->lblUnitResis = (gcnew System::Windows::Forms::Label());
 			   this->lblUnitCompliance = (gcnew System::Windows::Forms::Label());
 			   this->lblUnitFlowRate = (gcnew System::Windows::Forms::Label());
 			   this->lblUnitElastance = (gcnew System::Windows::Forms::Label());
@@ -424,11 +422,10 @@ namespace CavaSystem {
 			   this->pnBloodVessel->Controls->Add(this->lblUnitSysPressure);
 			   this->pnBloodVessel->Controls->Add(this->lblNumSysPressure);
 			   this->pnBloodVessel->Controls->Add(this->lblSysPressure);
-			   this->pnBloodVessel->Controls->Add(this->lblUnitIner2);
 			   this->pnBloodVessel->Controls->Add(this->lblUnitIner1);
+			   this->pnBloodVessel->Controls->Add(this->lblUnitIner2);
 			   this->pnBloodVessel->Controls->Add(this->lblUnitIner3);
-			   this->pnBloodVessel->Controls->Add(this->lblUnitResis1);
-			   this->pnBloodVessel->Controls->Add(this->lblUnitResis3);
+			   this->pnBloodVessel->Controls->Add(this->lblUnitResis);
 			   this->pnBloodVessel->Controls->Add(this->lblUnitCompliance);
 			   this->pnBloodVessel->Controls->Add(this->lblUnitFlowRate);
 			   this->pnBloodVessel->Controls->Add(this->lblUnitElastance);
@@ -540,33 +537,19 @@ namespace CavaSystem {
 			   this->lblUnitIner3->TabIndex = 163;
 			   this->lblUnitIner3->Text = L"/ ml";
 			   // 
-			   // lblUnitResis1
+			   // lblUnitResis
 			   // 
-			   this->lblUnitResis1->AutoSize = true;
-			   this->lblUnitResis1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
+			   this->lblUnitResis->AutoSize = true;
+			   this->lblUnitResis->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
-			   this->lblUnitResis1->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->lblUnitResis->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->lblUnitResis1->ForeColor = System::Drawing::Color::White;
-			   this->lblUnitResis1->Location = System::Drawing::Point(526, 14);
-			   this->lblUnitResis1->Name = L"lblUnitResis1";
-			   this->lblUnitResis1->Size = System::Drawing::Size(70, 13);
-			   this->lblUnitResis1->TabIndex = 158;
-			   this->lblUnitResis1->Text = L"mmHg · s / ml";
-			   // 
-			   // lblUnitResis3
-			   // 
-			   this->lblUnitResis3->AutoSize = true;
-			   this->lblUnitResis3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(40)),
-				   static_cast<System::Int32>(static_cast<System::Byte>(40)));
-			   this->lblUnitResis3->Font = (gcnew System::Drawing::Font(L"Louis George Café Light", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->lblUnitResis3->ForeColor = System::Drawing::Color::White;
-			   this->lblUnitResis3->Location = System::Drawing::Point(574, 14);
-			   this->lblUnitResis3->Name = L"lblUnitResis3";
-			   this->lblUnitResis3->Size = System::Drawing::Size(21, 13);
-			   this->lblUnitResis3->TabIndex = 160;
-			   this->lblUnitResis3->Text = L"/ml";
+			   this->lblUnitResis->ForeColor = System::Drawing::Color::White;
+			   this->lblUnitResis->Location = System::Drawing::Point(526, 14);
+			   this->lblUnitResis->Name = L"lblUnitResis";
+			   this->lblUnitResis->Size = System::Drawing::Size(70, 13);
+			   this->lblUnitResis->TabIndex = 158;
+			   this->lblUnitResis->Text = L"mmHg · s / ml";
 			   // 
 			   // lblUnitCompliance
 			   // 
